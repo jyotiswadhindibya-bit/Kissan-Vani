@@ -1,0 +1,78 @@
+{
+  "Bhubaneswar": {
+    "updated_at": "08-02-2026",
+    "region": "Odisha",
+    "commodities": [
+      { "name": "Potato (Aloo)", "price": "₹22/kg", "trend": "Stable" },
+      { "name": "Onion (Pyaaz)", "price": "₹35/kg", "trend": "Rising" },
+      { "name": "Tomato", "price": "₹18/kg", "trend": "Falling" },
+      { "name": "Rice (Common)", "price": "₹2,100/quintal", "trend": "Stable" },
+      { "name": "Wheat", "price": "₹2,400/quintal", "trend": "Rising" }
+    ]
+  },
+  "Cuttack": {
+    "updated_at": "08-02-2026",
+    "region": "Odisha",
+    "commodities": [
+      { "name": "Potato", "price": "₹21/kg", "trend": "Stable" },
+      { "name": "Brinjal (Baigana)", "price": "₹40/kg", "trend": "Stable" },
+      { "name": "Pointed Gourd (Potala)", "price": "₹60/kg", "trend": "Expensive" }
+    ]
+  },
+  "Delhi": {
+    "updated_at": "08-02-2026",
+    "region": "North India",
+    "commodities": [
+      { "name": "Wheat (Sharbati)", "price": "₹2,600/quintal", "trend": "High Demand" },
+      { "name": "Mustard Oil", "price": "₹140/liter", "trend": "Stable" },
+      { "name": "Carrot (Red)", "price": "₹25/kg", "trend": "End of Season" },
+      { "name": "Peas (Matar)", "price": "₹40/kg", "trend": "Rising" }
+    ]
+  },
+  "Mumbai": {
+    "updated_at": "08-02-2026",
+    "region": "Maharashtra",
+    "commodities": [
+      { "name": "Onion (Nasik Red)", "price": "₹18/kg", "trend": "Very Low (Surplus)" },
+      { "name": "Cotton", "price": "₹6,500/quintal", "trend": "Stable" },
+      { "name": "Alphonso Mango", "price": "₹1,200/dozen", "trend": "Early Season Premium" }
+    ]
+  },
+  "Kolkata": {
+    "updated_at": "08-02-2026",
+    "region": "West Bengal",
+    "commodities": [
+      { "name": "Rice (Jyoti)", "price": "₹2,800/quintal", "trend": "Stable" },
+      { "name": "Jute", "price": "₹5,200/quintal", "trend": "High Demand" },
+      { "name": "Fish (Rohu)", "price": "₹250/kg", "trend": "Fluctuating" },
+      { "name": "Potato (Jyoti)", "price": "₹18/kg", "trend": "Harvest Season" }
+    ]
+  },
+  "Chennai": {
+    "updated_at": "08-02-2026",
+    "region": "Tamil Nadu",
+    "commodities": [
+      { "name": "Rice (Ponni)", "price": "₹3,200/quintal", "trend": "High" },
+      { "name": "Coconut", "price": "₹25/piece", "trend": "Stable" },
+      { "name": "Banana (Yelakki)", "price": "₹60/dozen", "trend": "Stable" }
+    ]
+  },
+  "Bangalore": {
+    "updated_at": "08-02-2026",
+    "region": "Karnataka",
+    "commodities": [
+      { "name": "Tomato (Kolar)", "price": "₹15/kg", "trend": "Crashing (Over-supply)" },
+      { "name": "Ragi", "price": "₹2,800/quintal", "trend": "Rising" },
+      { "name": "Silk Cocoons", "price": "₹450/kg", "trend": "High" }
+    ]
+  },
+  "Hyderabad": {
+    "updated_at": "08-02-2026",
+    "region": "Telangana",
+    "commodities": [
+      { "name": "Turmeric", "price": "₹7,500/quintal", "trend": "Export Demand" },
+      { "name": "Chilli (Guntur)", "price": "₹180/kg", "trend": "Spicy/Hot" },
+      { "name": "Maize", "price": "₹2,100/quintal", "trend": "Stable" }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kissan Vani | Digital Saathi</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>🌾 Kisan Vani</h1>
+            <p>Your AI Agriculture Expert</p>
+        </header>
+
+        <div class="lang-switch">
+            <label for="language">Choose Language / भाषा चुनें:</label>
+            <select id="language">
+                <option value="hi-IN">Hindi (हिंदी)</option>
+                <option value="en-IN">English</option>
+                <option value="hi-IN">Odia (ଓଡ଼ିଆ - Text Mode)</option> 
+            </select>
+        </div>
+
+        <div class="mic-container">
+            <button id="mic-btn">
+                <span id="mic-icon">🎙️</span>
+            </button>
+            <div class="pulse-ring"></div>
+        </div>
+
+        <p id="status-text">Tap the mic to ask a question</p>
+
+        <div class="chat-box" id="chat-box">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
