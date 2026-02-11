@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require('fs');
-const pdf = require('pdf-parse');
+const pdfParse = require('pdf-extraction'); 
 const path = require('path');
 
 const app = express();
@@ -15,7 +15,18 @@ app.use(express.static(__dirname));
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
-
+const chatSession = model.startChat({
+    history: [
+        {
+            role: "user",
+            parts: [{ text: "You are Kisan Vani, an expert agricultural AI assistant. Keep answers short, simple, and helpful for Indian farmers." }],
+        },
+        {
+            role: "model",
+            parts: [{ text: "Namaste! I am Kisan Vani. I am ready to help you with crops, weather, and mandi prices." }],
+        },
+    ],
+});
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 
 let SCHEME_CONTEXT = "";
@@ -25,7 +36,7 @@ async function loadPDF() {
     try {
         if (fs.existsSync('./scheme.pdf')) {
             const dataBuffer = fs.readFileSync('./scheme.pdf');
-            const data = await pdf(dataBuffer);
+            const data = await pdfParse(dataBuffer);
             SCHEME_CONTEXT = data.text.substring(0, 30000); 
             console.log("✅ PDF Loaded");
         } else {
@@ -104,29 +115,36 @@ app.get('/', (_req, res) => {
 
 app.post('/api/chat', async (req, res) => {
     try {
-        const { text, language } = req.body;
-        console.log(`User asked: ${text}`);
+        const { text, language, image } = req.body;
+        console.log(`User asked: ${text} | Image attached: ${!!image}`);
 
         const city = detectLocation(text);
         const weatherInfo = await getWeather(city);
-        console.log(`🌤️ Weather Info: ${weatherInfo}`);
 
-        const prompt = `
-        You are 'Kisan Vani', an agriculture expert.
+        let promptText = `
+        [System Context Update]
         User Language: ${language} (Reply in this language).
-        
-        REAL-TIME CONTEXT:
-        1. Weather: ${weatherInfo} 
-           (If rain is predicted, warn about crop protection).
-        2. Mandi Rates: ${JSON.stringify(MANDI_DB)}
-        3. Government Schemes: ${SCHEME_CONTEXT}
+        Current Weather: ${weatherInfo}
+        Mandi Rates: ${JSON.stringify(MANDI_DB)}
+        Govt Schemes: ${SCHEME_CONTEXT}
         
         User Question: ${text}
-        
-        Keep answer short (maximum 2 sentences).
         `;
 
-        const result = await model.generateContent(prompt);
+        if (image) {
+            promptText += " (User has also attached an image. Analyze it.)";
+        }
+        let parts = [{ text: promptText }];
+        if (image) {
+            parts.push({
+                inlineData: {
+                    mimeType: "image/jpeg",
+                    data: image
+                }
+            });
+        }
+        const result = await chatSession.sendMessage(parts);
+        
         const response = await result.response;
         const replyText = response.text();
 
@@ -135,9 +153,8 @@ app.post('/api/chat', async (req, res) => {
 
     } catch (error) {
         console.error("Server Error:", error);
-        res.status(500).json({ reply: "Sorry, I am having trouble connecting to the brain." });
+        res.status(500).json({ reply: "Sorry, I lost my train of thought. Please ask again." });
     }
 });
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Kisan Vani running on http://localhost:${PORT}`));

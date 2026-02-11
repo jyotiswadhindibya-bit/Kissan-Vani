@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+<body>
 
     <div class="app-container">
         <header>
@@ -24,19 +25,35 @@
             </select>
         </div>
 
-        <div class="mic-container">
-            <button id="mic-btn">
-                <span id="mic-icon">🎙️</span>
-            </button>
-            <div class="pulse-ring"></div>
-        </div>
+        <div class="chat-box" id="chat-box">
+            </div>
 
         <p id="status-text">Tap the mic to ask a question</p>
 
-        <div class="chat-box" id="chat-box">
+        <div class="mic-container">
+            
+            <div class="mic-group">
+                <button id="mic-btn">
+                    <span id="mic-icon">🎙️</span>
+                </button>
+                <div class="pulse-ring"></div>
             </div>
+
+            <input type="file" id="imageInput" accept="image/*" class="hidden">
+
+            <button id="camera-btn" onclick="document.getElementById('imageInput').click()">
+                📷
+            </button>
+
+            <div id="imagePreviewContainer" class="hidden">
+                <img id="imagePreview" src="" alt="Crop Preview">
+                <button id="clearBtn" onclick="clearImage()">✖</button>
+            </div>
+
+        </div>
     </div>
 
     <script src="script.js"></script>
+</body>
 </body>
 </html>

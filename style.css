@@ -116,3 +116,104 @@ select{
     color: #666; 
     font-size: 0.8rem;
 }
+.hidden {
+    display: none !important;
+}
+#camera-btn {
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    background: #0288d1; 
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    margin-left: 20px; 
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#camera-btn:active {
+    transform: scale(0.95);
+    background: #01579b;
+}
+#imagePreviewContainer {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    background: white;
+    padding: 3px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 20;
+    animation: slideUp 0.3s ease-out;
+}
+#imagePreview {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    display: block;
+}
+#clearBtn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 22px;
+    height: 22px;
+    background: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.mic-group {
+    position: relative;
+    width: 80px; 
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pulse-ring {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; 
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(67, 160, 71, 0.4);
+    z-index: 1;
+    pointer-events: none; 
+}
+#camera-btn {
+    margin-left: 20px; 
+    position: relative;
+    z-index: 10;
+}
+#imagePreviewContainer {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    padding: 3px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 20;
+}
