@@ -87,3 +87,6 @@ function speak(text, lang) {
     utterance.lang = lang;
     window.speechSynthesis.speak(utterance);
 }
+
+
+//Added comments
