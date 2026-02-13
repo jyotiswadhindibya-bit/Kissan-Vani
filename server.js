@@ -175,9 +175,6 @@ app.post('/api/chat', async (req, res) => {
         console.log(`AI Replied: ${replyText}`);
         res.json({ reply: replyText });
 
-        console.log(`AI Replied: ${replyText}`);
-        res.json({ reply: replyText });
-
     } catch (error) {
         console.error("Server Error:", error);
         res.status(500).json({ reply: "Sorry, I lost my train of thought. Please ask again." });
