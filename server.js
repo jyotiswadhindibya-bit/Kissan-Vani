@@ -19,7 +19,7 @@ const chatSession = model.startChat({
     history: [
         {
             role: "user",
-            parts: [{ text: "You are Kisan Vani, an expert agricultural AI assistant. Keep answers short, simple, and helpful for Indian farmers." }],
+            parts: [{ text: "You are Kisan Vani, an expert agricultural AI assistant. Keep answers short, simple, and helpful for Indian farmers.IMPORTANT: Do not use Markdown, bolding, italics, or symbols like asterisks (**)Provide plain text only so it is easy to read aloud.Answer ONLY what is asked. If the user asks about schemes, do not mention mandi rates or weather. You must provide mandi rates, only mention the crop the user asked for.`"}],
         },
         {
             role: "model",
@@ -62,7 +62,7 @@ loadMandiDB();
 
 function detectLocation(text) {
     const textLower = text.toLowerCase();
-const cityMap = {
+    const cityMap = {
         "balasore": "Balasore", "baleswar": "Balasore", "बालासोर": "Balasore", "ବାଲେଶ୍ୱର": "Balasore",
         "bhadrak": "Bhadrak", "भद्रक": "Bhadrak", "ଭଦ୍ରକ": "Bhadrak",
         "cuttack": "Cuttack", "katak": "Cuttack", "कटक": "Cuttack", "କଟକ": "Cuttack",
@@ -87,7 +87,12 @@ const cityMap = {
             return englishName;
         }
     }
-    return "Bhubaneswar";
+    return null;
+}
+function detectCrop(text) {
+    const crops = ["dhan", "paddy", "potato", "alu", "onion", "piaz", "wheat", "gehun"];
+    const textLower = text.toLowerCase();
+    return crops.find(crop => textLower.includes(crop)) || null;
 }
 
 async function getWeather(city) {
@@ -119,7 +124,19 @@ app.post('/api/chat', async (req, res) => {
         console.log(`User asked: ${text} | Image attached: ${!!image}`);
 
         const city = detectLocation(text);
+        const mentionedCrop = detectCrop(text);
+        let mandiContext = "";
         const weatherInfo = await getWeather(city);
+
+        if (city && mentionedCrop) {
+        // Only provide data for the specific crop and city
+            const rate = MANDI_DB[city]?.[mentionedCrop];
+            if (rate) mandiContext = `In ${city}, ${mentionedCrop} rate is ${rate}.`;
+        }
+        else if (city && text.includes("mandi")) {
+                 // If they ask for "all rates" in a city
+                 mandiContext = JSON.stringify(MANDI_DB[city]);
+        }
 
         let promptText = `
         [System Context Update]
@@ -127,6 +144,12 @@ app.post('/api/chat', async (req, res) => {
         Current Weather: ${weatherInfo}
         Mandi Rates: ${JSON.stringify(MANDI_DB)}
         Govt Schemes: ${SCHEME_CONTEXT}
+        [INSTRUCTION]
+        Answer the user's question using the context above. 
+        1. If the user asks about schemes, only talk about schemes.
+        2. If the user asks about weather or prices, only then talk about weather or prices.
+        3. Do not provide weather or mandi updates unless specifically asked or if relevant to the crop advice.
+        4. Use plain text only (no asterisks).
         
         User Question: ${text}
         `;
@@ -146,7 +169,11 @@ app.post('/api/chat', async (req, res) => {
         const result = await chatSession.sendMessage(parts);
         
         const response = await result.response;
-        const replyText = response.text();
+        let replyText = response.text();
+        replyText = replyText.replace(/[*#_~]/g, ''); 
+
+        console.log(`AI Replied: ${replyText}`);
+        res.json({ reply: replyText });
 
         console.log(`AI Replied: ${replyText}`);
         res.json({ reply: replyText });
