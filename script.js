@@ -10,10 +10,18 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 const recognition = new SpeechRecognition();
 
 micBtn.addEventListener('click', () => {
-    const langcode = langSelect.value ==='Odia' ? 'or-IN' : langSelect.value;
-    recognition.lang = langcode;
+    let selectedLang = langSelect.value; 
+
+    if (selectedLang === "Odia") selectedLang = "or-IN";
+    if (selectedLang === "Hindi") selectedLang = "hi-IN";
+    if (selectedLang === "English") selectedLang = "en-IN";
+
+    recognition.lang = selectedLang;
+
+    recognition.start();
+    
     micBtn.classList.add('listening');
-    statusText.innerText = "Listening...बोलिए...କୁହନ୍ତୁ...";
+    statusText.innerText = "Listening...";
 });
 imageInput.addEventListener('change', function(event) {
     const file = event.target.files[0];

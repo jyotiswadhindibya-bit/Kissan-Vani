@@ -90,7 +90,7 @@ function detectLocation(text) {
     return null;
 }
 function detectCrop(text) {
-    const crops = ["dhan", "paddy", "potato", "alu", "onion", "piaz", "wheat", "gehun"];
+    const crops = ["potato", "आलू", "ଆଳୁ", "onion", "प्याज", "ପିଆଜ", "Wheat", "गेहूँ","ଗହମ","Rice","धान","ଧାନ","brinjal","बैंगन","ବାଇଗଣ","Tomato","टमाटर","ଟମାଟୋ","Pointed Gourd","परवल","ପୋଟଳ"];
     const textLower = text.toLowerCase();
     return crops.find(crop => textLower.includes(crop)) || null;
 }
@@ -140,7 +140,7 @@ app.post('/api/chat', async (req, res) => {
 
         let promptText = `
         [System Context Update]
-        User Language: ${language} (Reply in this language).
+        User Language: ${language} (IMPORTANT: Respond strictly in the ${language} script. For example, if the language is Odia, use Odia script characters, not English transliteration).
         Current Weather: ${weatherInfo}
         Mandi Rates: ${JSON.stringify(MANDI_DB)}
         Govt Schemes: ${SCHEME_CONTEXT}
@@ -150,6 +150,11 @@ app.post('/api/chat', async (req, res) => {
         2. If the user asks about weather or prices, only then talk about weather or prices.
         3. Do not provide weather or mandi updates unless specifically asked or if relevant to the crop advice.
         4. Use plain text only (no asterisks).
+        5.IMPORTANT: You must respond using the native script of the ${language}. 
+                         - For Odia, use ଓଡ଼ିଆ script (e.g., ନମସ୍କାର).
+                         - For Hindi, use देवनागरी script (e.g., नमस्ते).
+                         - For English, use Latin script (e.g., Hello).
+                         - NEVER use English letters (Latin script) to write Odia or Hindi words.
         
         User Question: ${text}
         `;
@@ -173,6 +178,7 @@ app.post('/api/chat', async (req, res) => {
         replyText = replyText.replace(/[*#_~]/g, ''); 
 
         console.log(`AI Replied: ${replyText}`);
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.json({ reply: replyText });
 
     } catch (error) {
