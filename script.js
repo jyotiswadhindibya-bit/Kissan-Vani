@@ -89,5 +89,3 @@ function speak(text, lang) {
 }
 
 
-//Added comments
-//test
