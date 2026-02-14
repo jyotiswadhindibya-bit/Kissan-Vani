@@ -3,76 +3,104 @@
     "updated_at": "08-02-2026",
     "region": "Odisha",
     "commodities": [
-      { "name": "Potato (Aloo)", "price": "₹22/kg", "trend": "Stable" },
-      { "name": "Onion (Pyaaz)", "price": "₹35/kg", "trend": "Rising" },
-      { "name": "Tomato", "price": "₹18/kg", "trend": "Falling" },
-      { "name": "Rice (Common)", "price": "₹2,100/quintal", "trend": "Stable" },
-      { "name": "Wheat", "price": "₹2,400/quintal", "trend": "Rising" }
+      { "name": "Potato (Aloo)", "price": "₹20/kg", "trend": "Falling" },
+      { "name": "Onion (Pyaaz)", "price": "₹25/kg", "trend": "Falling" },
+      { "name": "Tomato", "price": "₹40/kg", "trend": "Rising" },
+      { "name": "Rice (Common)", "price": "₹3800/quintal", "trend": "Stable" },
+      { "name": "Wheat", "price": "₹3200/quintal", "trend": "Stable" }
+      { "name": "Brinjal (Baigana)", "price": "₹40/kg", "trend": "Falling" },
+      { "name": "Pointed Gourd (Potala)", "price": "₹60/kg", "trend": "Stable" }
     ]
   },
   "Cuttack": {
     "updated_at": "08-02-2026",
     "region": "Odisha",
     "commodities": [
-      { "name": "Potato", "price": "₹21/kg", "trend": "Stable" },
-      { "name": "Brinjal (Baigana)", "price": "₹40/kg", "trend": "Stable" },
-      { "name": "Pointed Gourd (Potala)", "price": "₹60/kg", "trend": "Expensive" }
+      { "name": "Potato (Aloo)", "price": "₹18/kg", "trend": "Falling" },
+      { "name": "Onion (Pyaaz)", "price": "₹24/kg", "trend": "Falling" },
+      { "name": "Tomato", "price": "₹38/kg", "trend": "Rising" },
+      { "name": "Rice (Common)", "price": "₹3600/quintal", "trend": "Stable" },
+      { "name": "Wheat", "price": "₹3000/quintal", "trend": "Stable" }
+      { "name": "Brinjal (Baigana)", "price": "₹35/kg", "trend": "Falling" },
+      { "name": "Pointed Gourd (Potala)", "price": "₹65/kg", "trend": "Stable" }
     ]
   },
   "Delhi": {
     "updated_at": "08-02-2026",
     "region": "North India",
     "commodities": [
-      { "name": "Wheat (Sharbati)", "price": "₹2,600/quintal", "trend": "High Demand" },
-      { "name": "Mustard Oil", "price": "₹140/liter", "trend": "Stable" },
-      { "name": "Carrot (Red)", "price": "₹25/kg", "trend": "End of Season" },
-      { "name": "Peas (Matar)", "price": "₹40/kg", "trend": "Rising" }
+      { "name": "Potato (Aloo)", "price": "₹15/kg", "trend": "Falling" },
+      { "name": "Onion (Pyaaz)", "price": "₹30/kg", "trend": "Stable" },
+      { "name": "Tomato", "price": "₹25/kg", "trend": "Stable" },
+      { "name": "Rice (Common)", "price": "₹4200/quintal", "trend": "Stable" },
+      { "name": "Wheat", "price": "₹2800/quintal", "trend": "Stable" }
+      { "name": "Brinjal (Baigana)", "price": "₹30/kg", "trend": "Stable" },
+      { "name": "Pointed Gourd (Potala)", "price": "₹90/kg", "trend": "Expensive" }
     ]
   },
   "Mumbai": {
     "updated_at": "08-02-2026",
     "region": "Maharashtra",
     "commodities": [
-      { "name": "Onion (Nasik Red)", "price": "₹18/kg", "trend": "Very Low (Surplus)" },
-      { "name": "Cotton", "price": "₹6,500/quintal", "trend": "Stable" },
-      { "name": "Alphonso Mango", "price": "₹1,200/dozen", "trend": "Early Season Premium" }
+     { "name": "Potato (Aloo)", "price": "₹22/kg", "trend": "Stable" },
+      { "name": "Onion (Pyaaz)", "price": "₹35/kg", "trend": "Stable" },
+      { "name": "Tomato", "price": "₹30/kg", "trend": "Rising" },
+      { "name": "Rice (Common)", "price": "₹5000/quintal", "trend": "Stable" },
+      { "name": "Wheat", "price": "₹4200/quintal", "trend": "Rising" }
+      { "name": "Brinjal (Baigana)", "price": "₹45/kg", "trend": "Stable" },
+      { "name": "Pointed Gourd (Potala)", "price": "₹110/kg", "trend": "Expensive" }
     ]
   },
   "Kolkata": {
     "updated_at": "08-02-2026",
     "region": "West Bengal",
     "commodities": [
-      { "name": "Rice (Jyoti)", "price": "₹2,800/quintal", "trend": "Stable" },
-      { "name": "Jute", "price": "₹5,200/quintal", "trend": "High Demand" },
-      { "name": "Fish (Rohu)", "price": "₹250/kg", "trend": "Fluctuating" },
-      { "name": "Potato (Jyoti)", "price": "₹18/kg", "trend": "Harvest Season" }
+      { "name": "Potato (Aloo)", "price": "₹12/kg", "trend": "Falling" },
+      { "name": "Onion (Pyaaz)", "price": "₹26/kg", "trend": "Falling" },
+      { "name": "Tomato", "price": "₹24/kg", "trend": "Falling" },
+      { "name": "Rice (Common)", "price": "₹4000/quintal", "trend": "Stable" },
+      { "name": "Wheat", "price": "₹3000/quintal", "trend": "Stable" }
+      { "name": "Brinjal (Baigana)", "price": "₹32/kg", "trend": "Falling" },
+      { "name": "Pointed Gourd (Potala)", "price": "₹50/kg", "trend": "Stable" }
     ]
   },
   "Chennai": {
     "updated_at": "08-02-2026",
     "region": "Tamil Nadu",
     "commodities": [
-      { "name": "Rice (Ponni)", "price": "₹3,200/quintal", "trend": "High" },
-      { "name": "Coconut", "price": "₹25/piece", "trend": "Stable" },
-      { "name": "Banana (Yelakki)", "price": "₹60/dozen", "trend": "Stable" }
+      { "name": "Potato (Aloo)", "price": "₹25/kg", "trend": "Stable" },
+      { "name": "Onion (Pyaaz)", "price": "₹32/kg", "trend": "Stable" },
+      { "name": "Tomato", "price": "₹45/kg", "trend": "Stable" },
+      { "name": "Rice (Common)", "price": "₹4800/quintal", "trend": "Rising" },
+      { "name": "Wheat", "price": "₹3800/quintal", "trend": "Stable" }
+      { "name": "Brinjal (Baigana)", "price": "₹50/kg", "trend": "Rising" },
+      { "name": "Pointed Gourd (Potala)", "price": "₹120/kg", "trend": "Expensive" }
     ]
   },
   "Bangalore": {
     "updated_at": "08-02-2026",
     "region": "Karnataka",
     "commodities": [
-      { "name": "Tomato (Kolar)", "price": "₹15/kg", "trend": "Crashing (Over-supply)" },
-      { "name": "Ragi", "price": "₹2,800/quintal", "trend": "Rising" },
-      { "name": "Silk Cocoons", "price": "₹450/kg", "trend": "High" }
+     { "name": "Potato (Aloo)", "price": "₹24/kg", "trend": "Stable" },
+      { "name": "Onion (Pyaaz)", "price": "₹28/kg", "trend": "Stable" },
+      { "name": "Tomato", "price": "₹45/kg", "trend": "Rising" },
+      { "name": "Rice (Common)", "price": "₹5200/quintal", "trend": "Rising" },
+      { "name": "Wheat", "price": "₹3600/quintal", "trend": "Stable" }
+      { "name": "Brinjal (Baigana)", "price": "₹40/kg", "trend": "Stable" },
+      { "name": "Pointed Gourd (Potala)", "price": "₹110/kg", "trend": "Expensive" }
     ]
   },
   "Hyderabad": {
     "updated_at": "08-02-2026",
     "region": "Telangana",
     "commodities": [
-      { "name": "Turmeric", "price": "₹7,500/quintal", "trend": "Export Demand" },
-      { "name": "Chilli (Guntur)", "price": "₹180/kg", "trend": "Spicy/Hot" },
-      { "name": "Maize", "price": "₹2,100/quintal", "trend": "Stable" }
+      { "name": "Potato (Aloo)", "price": "₹20/kg", "trend": "Stable" },
+      { "name": "Onion (Pyaaz)", "price": "₹22/kg", "trend": "Falling" },
+      { "name": "Tomato", "price": "₹18/kg", "trend": "Stable" },
+      { "name": "Rice (Common)", "price": "₹4500/quintal", "trend": "Rising" },
+      { "name": "Wheat", "price": "₹3400/quintal", "trend": "Stable" }
+      { "name": "Brinjal (Baigana)", "price": "₹25/kg", "trend": "Falling" },
+      { "name": "Pointed Gourd (Potala)", "price": "₹105/kg", "trend": "Expensive" }
     ]
   }
 }
