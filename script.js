@@ -10,10 +10,10 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 const recognition = new SpeechRecognition();
 
 micBtn.addEventListener('click', () => {
-    recognition.lang = langSelect.value;
-    recognition.start();
+    const langcode = langSelect.value ==='Odia' ? 'or-IN' : langSelect.value;
+    recognition.lang = langcode;
     micBtn.classList.add('listening');
-    statusText.innerText = "Listening... (Bolिये)";
+    statusText.innerText = "Listening...बोलिए...କୁହନ୍ତୁ...";
 });
 imageInput.addEventListener('change', function(event) {
     const file = event.target.files[0];
