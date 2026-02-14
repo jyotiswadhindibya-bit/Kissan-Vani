@@ -7,7 +7,7 @@
       { "name": "Onion (Pyaaz)", "price": "₹25/kg", "trend": "Falling" },
       { "name": "Tomato", "price": "₹40/kg", "trend": "Rising" },
       { "name": "Rice (Common)", "price": "₹3800/quintal", "trend": "Stable" },
-      { "name": "Wheat", "price": "₹3200/quintal", "trend": "Stable" }
+      { "name": "Wheat", "price": "₹3200/quintal", "trend": "Stable" },
       { "name": "Brinjal (Baigana)", "price": "₹40/kg", "trend": "Falling" },
       { "name": "Pointed Gourd (Potala)", "price": "₹60/kg", "trend": "Stable" }
     ]
@@ -20,7 +20,7 @@
       { "name": "Onion (Pyaaz)", "price": "₹24/kg", "trend": "Falling" },
       { "name": "Tomato", "price": "₹38/kg", "trend": "Rising" },
       { "name": "Rice (Common)", "price": "₹3600/quintal", "trend": "Stable" },
-      { "name": "Wheat", "price": "₹3000/quintal", "trend": "Stable" }
+      { "name": "Wheat", "price": "₹3000/quintal", "trend": "Stable" },
       { "name": "Brinjal (Baigana)", "price": "₹35/kg", "trend": "Falling" },
       { "name": "Pointed Gourd (Potala)", "price": "₹65/kg", "trend": "Stable" }
     ]
@@ -33,7 +33,7 @@
       { "name": "Onion (Pyaaz)", "price": "₹30/kg", "trend": "Stable" },
       { "name": "Tomato", "price": "₹25/kg", "trend": "Stable" },
       { "name": "Rice (Common)", "price": "₹4200/quintal", "trend": "Stable" },
-      { "name": "Wheat", "price": "₹2800/quintal", "trend": "Stable" }
+      { "name": "Wheat", "price": "₹2800/quintal", "trend": "Stable" },
       { "name": "Brinjal (Baigana)", "price": "₹30/kg", "trend": "Stable" },
       { "name": "Pointed Gourd (Potala)", "price": "₹90/kg", "trend": "Expensive" }
     ]
@@ -46,7 +46,7 @@
       { "name": "Onion (Pyaaz)", "price": "₹35/kg", "trend": "Stable" },
       { "name": "Tomato", "price": "₹30/kg", "trend": "Rising" },
       { "name": "Rice (Common)", "price": "₹5000/quintal", "trend": "Stable" },
-      { "name": "Wheat", "price": "₹4200/quintal", "trend": "Rising" }
+      { "name": "Wheat", "price": "₹4200/quintal", "trend": "Rising" },
       { "name": "Brinjal (Baigana)", "price": "₹45/kg", "trend": "Stable" },
       { "name": "Pointed Gourd (Potala)", "price": "₹110/kg", "trend": "Expensive" }
     ]
@@ -59,7 +59,7 @@
       { "name": "Onion (Pyaaz)", "price": "₹26/kg", "trend": "Falling" },
       { "name": "Tomato", "price": "₹24/kg", "trend": "Falling" },
       { "name": "Rice (Common)", "price": "₹4000/quintal", "trend": "Stable" },
-      { "name": "Wheat", "price": "₹3000/quintal", "trend": "Stable" }
+      { "name": "Wheat", "price": "₹3000/quintal", "trend": "Stable" },
       { "name": "Brinjal (Baigana)", "price": "₹32/kg", "trend": "Falling" },
       { "name": "Pointed Gourd (Potala)", "price": "₹50/kg", "trend": "Stable" }
     ]
@@ -72,7 +72,7 @@
       { "name": "Onion (Pyaaz)", "price": "₹32/kg", "trend": "Stable" },
       { "name": "Tomato", "price": "₹45/kg", "trend": "Stable" },
       { "name": "Rice (Common)", "price": "₹4800/quintal", "trend": "Rising" },
-      { "name": "Wheat", "price": "₹3800/quintal", "trend": "Stable" }
+      { "name": "Wheat", "price": "₹3800/quintal", "trend": "Stable" },
       { "name": "Brinjal (Baigana)", "price": "₹50/kg", "trend": "Rising" },
       { "name": "Pointed Gourd (Potala)", "price": "₹120/kg", "trend": "Expensive" }
     ]
@@ -85,7 +85,7 @@
       { "name": "Onion (Pyaaz)", "price": "₹28/kg", "trend": "Stable" },
       { "name": "Tomato", "price": "₹45/kg", "trend": "Rising" },
       { "name": "Rice (Common)", "price": "₹5200/quintal", "trend": "Rising" },
-      { "name": "Wheat", "price": "₹3600/quintal", "trend": "Stable" }
+      { "name": "Wheat", "price": "₹3600/quintal", "trend": "Stable" },
       { "name": "Brinjal (Baigana)", "price": "₹40/kg", "trend": "Stable" },
       { "name": "Pointed Gourd (Potala)", "price": "₹110/kg", "trend": "Expensive" }
     ]
@@ -98,7 +98,7 @@
       { "name": "Onion (Pyaaz)", "price": "₹22/kg", "trend": "Falling" },
       { "name": "Tomato", "price": "₹18/kg", "trend": "Stable" },
       { "name": "Rice (Common)", "price": "₹4500/quintal", "trend": "Rising" },
-      { "name": "Wheat", "price": "₹3400/quintal", "trend": "Stable" }
+      { "name": "Wheat", "price": "₹3400/quintal", "trend": "Stable" },
       { "name": "Brinjal (Baigana)", "price": "₹25/kg", "trend": "Falling" },
       { "name": "Pointed Gourd (Potala)", "price": "₹105/kg", "trend": "Expensive" }
     ]
