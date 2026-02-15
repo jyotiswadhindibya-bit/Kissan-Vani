@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kissan Vani | Digital Saathi</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>🌾 Kisan Vani</h1>
+            <p>Your AI Agriculture Expert</p>
+            <a href="dashboard.html" onclick="logout()" class="logout-btn">Logout</a>
+        </header>
+
+        <div class="lang-switch">
+            <label for="language">Choose Language / भाषा चुनें:</label>
+            <select id="language">
+                <option value="hi-IN">Hindi (हिंदी)</option>
+                <option value="en-IN">English</option>
+<<<<<<< Updated upstream:index.html
+                <option value="or-IN">Odia (ଓଡ଼ିଆ-Text mode)</option> 
+=======
+                <option value="or-IN">Odia (ଓଡ଼ିଆ)</option> 
+>>>>>>> Stashed changes:html/index.html
+            </select>
+        </div>
+
+        <div class="chat-box" id="chat-box">
+        </div>
+
+        <p id="status-text">Tap the mic to ask a question</p>
+
+        <div class="mic-container">
+            
+            <div class="mic-group">
+                <button id="mic-btn">
+                    <span id="mic-icon">🎙️</span>
+                </button>
+                <div class="pulse-ring"></div>
+            </div>
+
+            <input type="file" id="imageInput" accept="image/*" class="hidden">
+
+            <button id="camera-btn" onclick="document.getElementById('imageInput').click()">
+                📷
+            </button>
+
+            <div id="imagePreviewContainer" class="hidden">
+                <img id="imagePreview" src="" alt="Crop Preview">
+                <button id="clearBtn" onclick="clearImage()">✖</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+
+</body>
+</html>

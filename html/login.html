@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisan Vani | Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="login-header">
+            <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
+            <select id="login-lang" class="lang-select">
+                <option value="en-IN">English</option>
+                <option value="hi-IN">हिंदी</option>
+                <option value="or-IN">ଓଡ଼ିଆ</option>
+            </select>
+        </div>
+
+        <div class="login-body">
+            <div class="brand-title">🌾 Kisan Vani</div>
+            <h2>Welcome Back</h2>
+            <p>Enter your details to open your Digital Saathi</p>
+
+            <form id="loginForm">
+                
+                <div class="input-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="E.g. Ramesh Kumar">
+                </div>
+                
+                <div class="input-group">
+                    <label for="phone">Mobile Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+91" pattern="[0-9]{10}" title="Please enter a valid 10-digit number">
+                </div>
+
+                <button type="button" class="login-submit-btn" onclick="handleLogin()">GET STARTED</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/login.js"></script>
+
+</body>
+</html>
