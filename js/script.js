@@ -130,9 +130,3 @@ function speak(text, lang) {
     utterance.lang = lang;
     window.speechSynthesis.speak(utterance);
 }
-<<<<<<< Updated upstream:script.js
-
-
-//testing
-=======
->>>>>>> Stashed changes:js/script.js
