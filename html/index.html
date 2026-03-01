@@ -11,7 +11,6 @@
 
     <div class="app-container">
         <header>
-<<<<<<< HEAD
             <h1 data-key="logo">🌾 Kisan Vani</h1>
             <p data-key="hero-desc">Your AI Agriculture Expert</p>
             <a href="dashboard.html" onclick="logout()" class="logout-btn" data-key="logout-text">Logout</a>
@@ -20,16 +19,6 @@
         <div class="lang-switch">
             <label for="dashboard-lang" data-key="lang-label">Choose Language / भाषा चुनें:</label>
             <select id="dashboard-lang">
-=======
-            <h1>🌾 Kisan Vani</h1>
-            <p id="appSubTitle">Your AI Agriculture Expert</p>
-            <a href="dashboard.html" onclick="logout()" class="logout-btn" id="logoutBtn">Logout</a>
-        </header>
-
-        <div class="lang-switch">
-            <label for="language" id="langLabel">Choose Language / भाषा चुनें:</label>
-            <select id="language">
->>>>>>> 90007a46577bbcbfe5662a63784027e7f62df416
                 <option value="en-IN">English</option>
                 <option value="hi-IN">Hindi (हिंदी)</option>
                 <option value="or-IN">Odia (ଓଡ଼ିଆ)</option>
@@ -62,63 +51,7 @@
         </div>
     </div>
 
-<<<<<<< HEAD
     <script src="../js/translations.js"></script>
-=======
-    <script>
-        const indexTranslations = {
-            "en-IN": {
-                appSubTitle: "Your AI Agriculture Expert",
-                logoutBtn: "Logout",
-                langLabel: "Choose Language / भाषा चुनें:",
-                statusText: "Tap the mic to ask a question"
-            },
-            "hi-IN": {
-                appSubTitle: "आपका एआई कृषि विशेषज्ञ",
-                logoutBtn: "लॉगआउट",
-                langLabel: "भाषा चुनें:",
-                statusText: "प्रश्न पूछने के लिए माइक पर टैप करें"
-            },
-            "or-IN": {
-                appSubTitle: "ଆପଣଙ୍କର AI କୃଷି ବିଶେଷଜ୍ଞ",
-                logoutBtn: "ଲଗଆଉଟ୍",
-                langLabel: "ଭାଷା ବାଛନ୍ତୁ:",
-                statusText: "ପ୍ରଶ୍ନ ପଚାରିବାକୁ ମାଇକ୍ ଟ୍ୟାପ୍ କରନ୍ତୁ"
-            }
-        };
-
-        const appLangSelect = document.getElementById('language');
-
-        function applyIndexTranslation(lang) {
-            const t = indexTranslations[lang];
-            if (!t) return;
-            
-            document.getElementById('appSubTitle').innerText = t.appSubTitle;
-            document.getElementById('logoutBtn').innerText = t.logoutBtn;
-            document.getElementById('langLabel').innerText = t.langLabel;
-            
-            const statusEl = document.getElementById('status-text');
-            if (statusEl.innerText.includes('Tap') || statusEl.innerText.includes('टैप') || statusEl.innerText.includes('ଟ୍ୟାପ୍')) {
-                statusEl.innerText = t.statusText;
-            }
-        }
-
-        appLangSelect.addEventListener('change', (e) => {
-            const lang = e.target.value;
-            localStorage.setItem('kisanGlobalLang', lang);
-            applyIndexTranslation(lang);
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('kisanGlobalLang');
-            if (savedLang) {
-                appLangSelect.value = savedLang;
-                applyIndexTranslation(savedLang);
-            }
-        });
-    </script>
-    
->>>>>>> 90007a46577bbcbfe5662a63784027e7f62df416
     <script src="../js/script.js"></script>
 
 </body>
