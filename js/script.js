@@ -1,24 +1,66 @@
-// ========== WELCOME MESSAGE ON LOAD ==========
+// ==========================================
+// 0. MULTILINGUAL DICTIONARY FOR JS
+// ==========================================
+const statusDict = {
+    "en-IN": {
+        welcome: (name) => `Welcome ${name}! I am Kisan Vani, your Digital Saathi. How can I help you today?`,
+        listening: "Listening... (Sun raha hoon)...",
+        imgAttached: "📷 Image attached. Tap Mic to ask!",
+        analyzing: "Analyzing Crop Image...",
+        consulting: "Consulting AI Expert...",
+        tapAgain: "Tap mic to ask again",
+        error: "Error connecting to server.",
+        clearImg: "Tap the mic to ask a question"
+    },
+    "hi-IN": {
+        welcome: (name) => `नमस्ते ${name}! मैं किसान वाणी हूँ, आपका डिजिटल साथी। आज मैं आपकी कैसे मदद कर सकता हूँ?`,
+        listening: "सुन रहा हूँ...",
+        imgAttached: "📷 फोटो जुड़ गई है। पूछने के लिए माइक दबाएं!",
+        analyzing: "फसल की फोटो जांची जा रही है...",
+        consulting: "एआई विशेषज्ञ से सलाह ले रहा हूँ...",
+        tapAgain: "दोबारा पूछने के लिए माइक दबाएं",
+        error: "सर्वर से जुड़ने में त्रुटि।",
+        clearImg: "प्रश्न पूछने के लिए माइक पर टैप करें"
+    },
+    "or-IN": {
+        welcome: (name) => `ନମସ୍କାର ${name}! ମୁଁ କିଷାନ ବାଣୀ, ଆପଣଙ୍କର ଡିଜିଟାଲ୍ ସାଥୀ। ଆଜି ମୁଁ ଆପଣଙ୍କୁ କିପରି ସାହାଯ୍ୟ କରିପାରିବି?`,
+        listening: "ଶୁଣୁଛି...",
+        imgAttached: "📷 ଫଟୋ ସଂଲଗ୍ନ ହୋଇଛି। ପଚାରିବା ପାଇଁ ମାଇକ୍ ଦବାନ୍ତୁ!",
+        analyzing: "ଫସଲ ଫଟୋ ଯାଞ୍ଚ କରାଯାଉଛି...",
+        consulting: "ଏଆଇ ବିଶେଷଜ୍ଞଙ୍କ ସହ ପରାମର୍ଶ କରାଯାଉଛି...",
+        tapAgain: "ପୁଣି ପଚାରିବା ପାଇଁ ମାଇକ୍ ଦବାନ୍ତୁ",
+        error: "ସର୍ଭର ସହିତ ସଂଯୋଗ କରିବାରେ ତ୍ରୁଟି।",
+        clearImg: "ପ୍ରଶ୍ନ ପଚାରିବାକୁ ମାଇକ୍ ଟ୍ୟାପ୍ କରନ୍ତୁ"
+    }
+};
+
+function getStatus(key) {
+    const lang = localStorage.getItem('kisanGlobalLang') || 'en-IN';
+    return statusDict[lang][key];
+}
+
+// ==========================================
+// 1. WELCOME MESSAGE & LOGOUT
+// ==========================================
 window.addEventListener('DOMContentLoaded', function() {
     const userName = localStorage.getItem('userName');
-    
     if (userName) {
         setTimeout(() => {
-            const welcomeMsg = `Welcome ${userName}! I am Kisan Vani, your Digital Saathi. How can I help you today?`;
+            const welcomeMsg = getStatus('welcome')(userName);
             addMessage(welcomeMsg, 'bot-msg');
         }, 500);
     }
 });
 
-// ========== LOGOUT FUNCTION ==========
 function logout() {
     localStorage.removeItem('userName');
     localStorage.removeItem('userPhone');
-    return true; // Allow navigation to dashboard
+    return true; 
 }
 
-// ========== VOICE & CAMERA FUNCTIONALITY ==========
-
+// ==========================================
+// 2. VOICE, CAMERA & CHAT LOGIC
+// ==========================================
 const micBtn = document.getElementById('mic-btn');
 const statusText = document.getElementById('status-text');
 const chatBox = document.getElementById('chat-box');
@@ -31,23 +73,13 @@ const imagePreview = document.getElementById('imagePreview');
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
 
-// Mic button click listener
 micBtn.addEventListener('click', () => {
-    let selectedLang = langSelect.value; 
-
-    if (selectedLang === "Odia") selectedLang = "or-IN";
-    if (selectedLang === "Hindi") selectedLang = "hi-IN";
-    if (selectedLang === "English") selectedLang = "en-IN";
-
-    recognition.lang = selectedLang;
-
-    recognition.start();
-    
+    recognition.lang = langSelect.value; 
+    recognition.start(); 
     micBtn.classList.add('listening');
-    statusText.innerText = "Listening...";
+    statusText.innerText = getStatus('listening');
 });
 
-// Image upload listener
 imageInput.addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (file) {
@@ -56,77 +88,87 @@ imageInput.addEventListener('change', function(event) {
             selectedImageBase64 = e.target.result.split(',')[1]; 
             imagePreview.src = e.target.result;
             imagePreviewContainer.classList.remove('hidden');
-            statusText.innerText = "📷 Image attached. Tap Mic to ask!";
+            statusText.innerText = getStatus('imgAttached');
         };
         reader.readAsDataURL(file);
     }
 });
 
-// Clear image function
 window.clearImage = function() {
     selectedImageBase64 = null;
     imageInput.value = "";
     imagePreviewContainer.classList.add('hidden');
-    statusText.innerText = "Tap the mic to ask a question";
+    statusText.innerText = getStatus('clearImg');
 };
 
-// Speech recognition result handler
+// --- SPEECH RESULT ---
 recognition.onresult = async (event) => {
     micBtn.classList.remove('listening');
     const userText = event.results[0][0].transcript;
 
-    addMessage(userText, 'user-msg');
+    const userBubble = addMessage(userText, 'user-msg');
     
     if (selectedImageBase64) {
-        statusText.innerText = "Analyzing Crop Image...";
+        statusText.innerText = getStatus('analyzing');
     } else {
-        statusText.innerText = "Consulting AI Expert...";
+        statusText.innerText = getStatus('consulting');
     }
 
     try {
-        const response = await fetch('http://localhost:5000/api/chat', {
+        const response = await fetch('/api/chat', {  
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
                 text: userText, 
-                language: langSelect.options[langSelect.selectedIndex].text,
+                language: langSelect.options[langSelect.selectedIndex].text, 
                 image: selectedImageBase64 
             })
         });
 
         const data = await response.json();
-        const botReply = data.reply;
+        
+        if (data.translatedQuery) {
+            userBubble.innerText = data.translatedQuery;
+        }
 
-        addMessage(botReply, 'bot-msg');
-        statusText.innerText = "Tap mic to ask again";
-        speak(botReply, langSelect.value);
+        addMessage(data.reply, 'bot-msg');
+        statusText.innerText = getStatus('tapAgain');
+        
+        const spokenReply = data.spokenReply || data.reply; 
+        
+        let voiceLang = langSelect.value;
+        if (voiceLang === 'or-IN') voiceLang = 'hi-IN'; 
+
+        speak(spokenReply, voiceLang);
         
         if (selectedImageBase64) clearImage();
 
     } catch (error) {
         console.error(error);
-        statusText.innerText = "Error connecting to server.";
+        statusText.innerText = getStatus('error');
+        addMessage("⚠️ Server Error. Please check if your backend is running.", 'bot-msg');
     }
 };
 
-// Speech recognition error handler
 recognition.onerror = () => {
     micBtn.classList.remove('listening');
-    statusText.innerText = "Didn't catch that. Try again.";
+    statusText.innerText = getStatus('tapAgain');
 };
 
-// Add message to chat box
 function addMessage(text, className) {
     const div = document.createElement('div');
     div.classList.add('msg', className);
     div.innerText = text;
     chatBox.appendChild(div);
-    chatBox.scrollTop = chatBox.scrollHeight;
+    chatBox.scrollTop = chatBox.scrollHeight; 
+    return div;
 }
 
-// Text-to-speech function
 function speak(text, lang) {
+    window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = lang;
+    utterance.rate = 0.9; 
+    utterance.pitch = 1;
     window.speechSynthesis.speak(utterance);
 }

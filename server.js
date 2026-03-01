@@ -1,3 +1,15 @@
+// ==========================================
+// 🟢 1. NETWORK FIX (CROSS-FETCH)
+// ==========================================
+const fetch = require('cross-fetch');
+global.fetch = fetch;
+global.Headers = fetch.Headers;
+global.Request = fetch.Request;
+global.Response = fetch.Response;
+
+// ==========================================
+// 📦 2. STANDARD SETUP
+// ==========================================
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -11,48 +23,48 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname));
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use(express.static(path.join(__dirname, 'html'), { index: false })); 
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
-const chatSession = model.startChat({
-    history: [
-        {
-            role: "user",
-            parts: [{ text: "You are Kisan Vani, an expert agricultural AI assistant. Keep answers short, simple, and helpful for Indian farmers.IMPORTANT: Do not use Markdown, bolding, italics, or symbols like asterisks (**)Provide plain text only so it is easy to read aloud.Answer ONLY what is asked. If the user asks about schemes, do not mention mandi rates or weather. You must provide mandi rates, only mention the crop the user asked for.`"}],
-        },
-        {
-            role: "model",
-            parts: [{ text: "Namaste! I am Kisan Vani. I am ready to help you with crops, weather, and mandi prices." }],
-        },
-    ],
+app.get('/', (_req, res) => {
+    res.sendFile(path.join(__dirname, 'html', 'dashboard.html'));
 });
-const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 
+// ==========================================
+// 🤖 3. AI SETUP & DATA
+// ==========================================
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+// 🟢 THE FIX: A list of fallback models to try if one is overloaded!
+const modelsToTry = [
+    "gemini-2.5-flash-lite", // 1st Choice (Fastest, High Quota)
+    "gemini-2.0-flash",      // 2nd Choice (Highly Stable)
+    "gemini-2.5-flash"       // 3rd Choice (Powerful, lower quota)
+];
+
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 let SCHEME_CONTEXT = "";
 let MANDI_DB = {};
 
 async function loadPDF() {
     try {
-        if (fs.existsSync('./scheme.pdf')) {
-            const dataBuffer = fs.readFileSync('./scheme.pdf');
+        const pdfPath = path.join(__dirname, 'scheme.pdf');
+        if (fs.existsSync(pdfPath)) {
+            const dataBuffer = fs.readFileSync(pdfPath);
             const data = await pdfParse(dataBuffer);
-            SCHEME_CONTEXT = data.text.substring(0, 30000); 
+            SCHEME_CONTEXT = data.text.substring(0, 40000); 
             console.log("✅ PDF Loaded");
-        } else {
-            console.log("⚠️ scheme.pdf not found (Skipping RAG)");
         }
     } catch (e) { console.log("⚠️ PDF Error:", e.message); }
 }
 
 function loadMandiDB() {
     try {
-        if (fs.existsSync('./mandi_rates.json')) {
-            const rawData = fs.readFileSync('./mandi_rates.json');
-            MANDI_DB = JSON.parse(rawData);
+        const jsonPath = path.join(__dirname, 'mandi_rates.json');
+        if (fs.existsSync(jsonPath)) {
+            MANDI_DB = JSON.parse(fs.readFileSync(jsonPath));
             console.log("✅ Mandi DB Loaded");
-        } else {
-            console.log("⚠️ mandi_rates.json not found");
         }
     } catch (e) { console.log("⚠️ Mandi DB Error:", e.message); }
 }
@@ -63,128 +75,129 @@ loadMandiDB();
 function detectLocation(text) {
     const textLower = text.toLowerCase();
     const cityMap = {
-        "balasore": "Balasore", "baleswar": "Balasore", "बालासोर": "Balasore", "ବାଲେଶ୍ୱର": "Balasore",
-        "bhadrak": "Bhadrak", "भद्रक": "Bhadrak", "ଭଦ୍ରକ": "Bhadrak",
-        "cuttack": "Cuttack", "katak": "Cuttack", "कटक": "Cuttack", "କଟକ": "Cuttack",
-        "ganjam": "Ganjam", "berhampur": "Berhampur", "brahmapur": "Berhampur", "गंजम": "Ganjam", "ଗଞ୍ଜାମ": "Ganjam",
-        "jajpur": "Jajpur", "जाजपुर": "Jajpur", "ଯାଜପୁର": "Jajpur",
-        "jagatsinghpur": "Jagatsinghpur", "जगतसिंहपुर": "Jagatsinghpur", "ଜଗତସିଂହପୁର": "Jagatsinghpur",
-        "kendrapara": "Kendrapara", "केंद्रपाड़ा": "Kendrapara", "କେନ୍ଦ୍ରାପଡା": "Kendrapara",
-        "khurda": "Khordha", "khordha": "Khordha", "खुर्दा": "Khordha", "ଖୋର୍ଦ୍ଧା": "Khordha",
-        "nayagarh": "Nayagarh", "नयागढ़": "Nayagarh", "ନୟାଗଡ଼": "Nayagarh",
-        "puri": "Puri", "jagannath dham": "Puri", "पुरी": "Puri", "ପୁରୀ": "Puri",
-        "bhubaneswar": "Bhubaneswar", "bbsr": "Bhubaneswar", "भुवनेश्वर": "Bhubaneswar", "ଭୁବନେଶ୍ୱର": "Bhubaneswar",
-
-        "delhi": "Delhi", "new delhi": "Delhi", "दिल्ली": "Delhi",
-        "mumbai": "Mumbai", "maharashtra": "Mumbai", "मुंबई": "Mumbai",
-        "kolkata": "Kolkata", "calcutta": "Kolkata", "कोलकाता": "Kolkata",
-        "chennai": "Chennai", "tamil nadu": "Chennai", "चेन्नई": "Chennai",
-        "bangalore": "Bangalore", "bengaluru": "Bangalore", "बंगलौर": "Bangalore",
-        "hyderabad": "Hyderabad", "telangana": "Hyderabad", "हैदराबाद": "Hyderabad"
+        "bhubaneswar": "Bhubaneswar", "bbsr": "Bhubaneswar",
+        "cuttack": "Cuttack", "puri": "Puri", 
+        "delhi": "Delhi", "mumbai": "Mumbai",
+        "kolkata": "Kolkata", "chennai": "Chennai",
+        "bangalore": "Bangalore", "hyderabad": "Hyderabad",
+        "balasore": "Balasore", "bhadrak": "Bhadrak"
     };
     for (const [keyword, englishName] of Object.entries(cityMap)) {
-        if (textLower.includes(keyword)) {
-            return englishName;
-        }
+        if (textLower.includes(keyword)) return englishName;
     }
-    return null;
-}
-function detectCrop(text) {
-    const crops = ["potato", "आलू", "ଆଳୁ", "onion", "प्याज", "ପିଆଜ", "Wheat", "गेहूँ","ଗହମ","Rice","धान","ଧାନ","brinjal","बैंगन","ବାଇଗଣ","Tomato","टमाटर","ଟମାଟୋ","Pointed Gourd","परवल","ପୋଟଳ"];
-    const textLower = text.toLowerCase();
-    return crops.find(crop => textLower.includes(crop)) || null;
+    return null; 
 }
 
 async function getWeather(city) {
-    if (!WEATHER_API_KEY) 
-        return "Weather API Key missing in .env";
-
+    if (!city) return "Location not detected.";
+    if (!WEATHER_API_KEY) return "Weather API Key missing.";
     try {
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${WEATHER_API_KEY}`;
         const response = await fetch(url);
         const data = await response.json();
-
-        if (data.cod !== 200) 
-            return `Weather unavailable for ${city}`;
-
-        return `In ${city}: Temp ${data.main.temp}°C, Humidity ${data.main.humidity}%, Condition: ${data.weather[0].description}`;
-    } catch (error) {
-        return "Weather Service Error";
-    }
+        if (data.cod !== 200) return `Weather unavailable`;
+        return `In ${city}: ${data.main.temp}°C, ${data.weather[0].description}`;
+    } catch (error) { return "Weather Service Error"; }
 }
 
-app.get('/', (_req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-
+// ==========================================
+// 🚀 5. CHAT API (With Auto-Fallback)
+// ==========================================
 app.post('/api/chat', async (req, res) => {
     try {
         const { text, language, image } = req.body;
-        console.log(`User asked: ${text} | Image attached: ${!!image}`);
+        console.log(`\nUser (${language}): ${text}`);
 
         const city = detectLocation(text);
-        const mentionedCrop = detectCrop(text);
-        let mandiContext = "";
         const weatherInfo = await getWeather(city);
 
-        if (city && mentionedCrop) {
-        // Only provide data for the specific crop and city
-            const rate = MANDI_DB[city]?.[mentionedCrop];
-            if (rate) mandiContext = `In ${city}, ${mentionedCrop} rate is ${rate}.`;
-        }
-        else if (city && text.includes("mandi")) {
-                 // If they ask for "all rates" in a city
-                 mandiContext = JSON.stringify(MANDI_DB[city]);
-        }
-
-        let promptText = `
-        [System Context Update]
-        User Language: ${language} (IMPORTANT: Respond strictly in the ${language} script. For example, if the language is Odia, use Odia script characters, not English transliteration).
-        Current Weather: ${weatherInfo}
-        Mandi Rates: ${JSON.stringify(MANDI_DB)}
-        Govt Schemes: ${SCHEME_CONTEXT}
-        [INSTRUCTION]
-        Answer the user's question using the context above. 
-        1. If the user asks about schemes, only talk about schemes.
-        2. If the user asks about weather or prices, only then talk about weather or prices.
-        3. Do not provide weather or mandi updates unless specifically asked or if relevant to the crop advice.
-        4. Use plain text only (no asterisks).
-        5.IMPORTANT: You must respond using the native script of the ${language}. 
-                         - For Odia, use ଓଡ଼ିଆ script (e.g., ନମସ୍କାର).
-                         - For Hindi, use देवनागरी script (e.g., नमस्ते).
-                         - For English, use Latin script (e.g., Hello).
-                         - NEVER use English letters (Latin script) to write Odia or Hindi words.
+        let scriptInstruction = "";
+        let translationRule = "";
         
-        User Question: ${text}
+        if (language.includes("Odia") || language.includes("or-IN")) {
+            scriptInstruction = "STRICTLY write the 'reply' in pure Odia script (e.g., ନମସ୍କାର).";
+            translationRule = "Translate the user's input into pure Odia script.";
+        } else if (language.includes("Hindi") || language.includes("hi-IN")) {
+            scriptInstruction = "STRICTLY write the 'reply' in pure Hindi Devanagari script.";
+            translationRule = "Translate the user's input into pure Hindi Devanagari script.";
+        } else {
+            scriptInstruction = "STRICTLY reply in English.";
+            translationRule = "DO NOT TRANSLATE. Return the exact English text.";
+        }
+        
+        let dynamicContext = `
+        [TASK]
+        Return a JSON object with THREE keys:
+        1. "translatedQuery": ${translationRule}
+        2. "reply": Your simple agricultural answer. ${scriptInstruction}
+        3. "spokenReply": The EXACT SAME answer from 'reply', but transliterated into English letters (e.g., 'Namaskar, aji weather bhala achi') so a computer voice can read it.
+        
+        [RULES]
+        - Weather: ${weatherInfo}
+        - Mandi Prices: ${JSON.stringify(MANDI_DB)}
+        - Govt Schemes: ${SCHEME_CONTEXT}
+        
+        [USER QUESTION]
+        "${text}"
         `;
 
-        if (image) {
-            promptText += " (User has also attached an image. Analyze it.)";
-        }
-        let parts = [{ text: promptText }];
-        if (image) {
-            parts.push({
-                inlineData: {
-                    mimeType: "image/jpeg",
-                    data: image
-                }
-            });
-        }
-        const result = await chatSession.sendMessage(parts);
+        let parts = [{ text: dynamicContext }];
         
-        const response = await result.response;
-        let replyText = response.text();
-        replyText = replyText.replace(/[*#_~]/g, ''); 
+        if (image) {
+            parts.push({ inlineData: { mimeType: "image/jpeg", data: image } });
+            parts.push({ text: " (Analyze this crop image for disease)" });
+        }
 
-        console.log(`AI Replied: ${replyText}`);
+        let aiData = null;
+        let lastError = null;
+
+        // 🟢 THE FIX: Loop through backups until one works!
+        for (const modelName of modelsToTry) {
+            try {
+                console.log(`🤖 Consulting model: ${modelName}...`);
+                const model = genAI.getGenerativeModel({ 
+                    model: modelName,
+                    generationConfig: { responseMimeType: "application/json" }
+                }); 
+                
+                const chatSession = model.startChat({
+                    history: [{ role: "user", parts: [{ text: "You are Kisan Vani. Always respond in JSON format." }] }]
+                });
+
+                const result = await chatSession.sendMessage(parts);
+                const responseText = result.response.text();
+                aiData = JSON.parse(responseText);
+                
+                console.log(`✅ Success using ${modelName}`);
+                break; // Stop looping, we got the answer!
+
+            } catch (error) {
+                console.log(`⚠️ ${modelName} failed (${error.statusText || error.message}). Trying backup...`);
+                lastError = error;
+            }
+        }
+
+        // If ALL models failed
+        if (!aiData) {
+            throw lastError; 
+        }
+
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
-        res.json({ reply: replyText });
+        res.json({ 
+            reply: aiData.reply,
+            translatedQuery: aiData.translatedQuery,
+            spokenReply: aiData.spokenReply 
+        });
 
     } catch (error) {
-        console.error("Server Error:", error);
-        res.status(500).json({ reply: "Sorry, I lost my train of thought. Please ask again." });
+        console.error("❌ Final Server Error:", error.message);
+        res.status(500).json({ 
+            reply: "Maaf karein, server par bahut load hai. Kripya thodi der baad prayas karein.", 
+            translatedQuery: "Server Busy", 
+            spokenReply: "Server is very busy right now. Please try again in a few minutes." 
+        });
     }
 });
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Kisan Vani running on http://localhost:${PORT}`));
