@@ -22,15 +22,15 @@
                 <option value="hi-IN">हिंदी</option>
                 <option value="or-IN">ଓଡ଼ିଆ</option>
             </select>
-            <a href="login.html" class="nav-login-btn">Login / Register</a>
+            <a href="login.html" class="nav-login-btn" id="navLogin">Login / Register</a>
         </div>
     </nav>
 
     <header class="hero-banner">
         <div class="hero-content">
-            <h1>Hello! I am <br><span class="highlight">Kisan Vani</span></h1>
-            <p>Your AI-powered Digital Saathi. Get real-time weather, accurate Mandi prices, and AI disease detection all in one place.</p>
-            <a href="login.html" class="cta-button">CLICK HERE TO LOGIN</a>
+            <h1 id="heroTitle">Hello! I am <br><span class="highlight">Kisan Vani</span></h1>
+            <p id="heroSub">Your AI-powered Digital Saathi. Get real-time weather, accurate Mandi prices, and AI disease detection all in one place.</p>
+            <a href="login.html" class="cta-button" id="ctaBtn">CLICK HERE TO LOGIN</a>
         </div>
         <div class="hero-image">
             <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=800&q=80" alt="Farmer" class="hero-img">
@@ -38,47 +38,46 @@
     </header>
 
     <section class="services-section">
-        <h2>Explore Our Services</h2>
+        <h2 id="exploreHeading">Explore Our Services</h2>
         <div class="services-grid">
             <div class="service-card">
                 <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" alt="Weather" class="card-img">
-                <h3>Live Weather</h3>
-                <p>Real-time updates for your area to plan your harvest safely.</p>
+                <h3 id="weatherTitle">Live Weather</h3>
+                <p id="weatherDesc">Real-time updates for your area to plan your harvest safely.</p>
             </div>
             <div class="service-card">
                 <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Mandi" class="card-img">
-                <h3>Mandi Prices</h3>
-                <p>Check today's live market prices for Paddy, Wheat, and other crops.</p>
+                <h3 id="mandiTitle">Mandi Prices</h3>
+                <p id="mandiDesc">Check today's live market prices for Paddy, Wheat, and other crops.</p>
             </div>
             <div class="service-card">
                 <img src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=600&q=80" alt="Crop Health" class="card-img">
-                <h3>AI Crop Health</h3>
-                <p>Upload a photo of your sick crop and our AI will instantly detect the disease.</p>
+                <h3 id="cropTitle">AI Crop Health</h3>
+                <p id="cropDesc">Upload a photo of your sick crop and our AI will instantly detect the disease.</p>
             </div>
             <div class="service-card">
                 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="Voice" class="card-img">
-                <h3>Voice Assistant</h3>
-                <p>Don't want to type? Just tap the mic and talk to me in your local language.</p>
+                <h3 id="voiceTitle">Voice Assistant</h3>
+                <p id="voiceDesc">Don't want to type? Just tap the mic and talk to me in your local language.</p>
             </div>
         </div>
     </section>
 
     <section class="features-section">
         <div class="features-header">
-            <span class="sub-title"><h2>Why choose KISAN VANI?</h2></span>
-            <h3 class="main-title">Unlock the power of technology for your farm. Our platform offers:</h3>
+            <span class="sub-title"><h2 id="whyHeading">Why choose KISAN VANI?</h2></span>
+            <h3 class="main-title" id="whyMain">Unlock the power of technology for your farm. Our platform offers:</h3>
         </div>
-        <p>
-            Choose Kissan Vaani to turn uncertainty into opportunity. 
-          <p>We empower your farming with real-time weather alerts for safer harvests and live Mandi prices to ensure you get the best deal for your crops.</p>   
-            Protect your hard work with our instant AI disease detection—just snap a photo to diagnose issues immediately—and navigate it all effortlessly using our Voice Assistant in your local language.
-             It's not just an app; it's your smart, 24/7 farming companion designed to make agriculture simple and profitable.
-        </p>
+        <div style="max-width: 900px; margin: 0 auto; color: #333; font-size: 16px; line-height: 1.6;">
+            <p id="whyDesc1">Choose Kissan Vaani to turn uncertainty into opportunity.</p> 
+            <p id="whyDesc2" style="margin: 15px 0;">We empower your farming with real-time weather alerts for safer harvests and live Mandi prices to ensure you get the best deal for your crops.</p>   
+            <p id="whyDesc3">Protect your hard work with our instant AI disease detection—just snap a photo to diagnose issues immediately—and navigate it all effortlessly using our Voice Assistant in your local language. It's not just an app; it's your smart, 24/7 farming companion designed to make agriculture simple and profitable.</p>
+        </div>
     </section>
 
     <section class="trust-section">
         <div class="trust-header">
-            <h2>LEARN MORE ABOUT US</h2>
+            <h2 id="learnMore">LEARN MORE ABOUT US</h2>
         </div>
         <div class="dashboard-video">
             <video controls autoplay muted loop>
@@ -87,5 +86,116 @@
         </div>
     </section>
 
+    <script>
+        const translations = {
+            "en-IN": {
+                navLogin: "Login / Register",
+                heroTitle: "Hello! I am <br><span class='highlight'>Kisan Vani</span>",
+                heroSub: "Your AI-powered Digital Saathi. Get real-time weather, accurate Mandi prices, and AI disease detection all in one place.",
+                ctaBtn: "CLICK HERE TO LOGIN",
+                exploreHeading: "Explore Our Services",
+                weatherTitle: "Live Weather",
+                weatherDesc: "Real-time updates for your area to plan your harvest safely.",
+                mandiTitle: "Mandi Prices",
+                mandiDesc: "Check today's live market prices for Paddy, Wheat, and other crops.",
+                cropTitle: "AI Crop Health",
+                cropDesc: "Upload a photo of your sick crop and our AI will instantly detect the disease.",
+                voiceTitle: "Voice Assistant",
+                voiceDesc: "Don't want to type? Just tap the mic and talk to me in your local language.",
+                whyHeading: "Why choose KISAN VANI?",
+                learnMore: "LEARN MORE ABOUT US",
+                whyMain: "Unlock the power of technology for your farm. Our platform offers:",
+                whyDesc1: "Choose Kissan Vaani to turn uncertainty into opportunity.",
+                whyDesc2: "We empower your farming with real-time weather alerts for safer harvests and live Mandi prices to ensure you get the best deal for your crops.",
+                whyDesc3: "Protect your hard work with our instant AI disease detection—just snap a photo to diagnose issues immediately—and navigate it all effortlessly using our Voice Assistant in your local language. It's not just an app; it's your smart, 24/7 farming companion designed to make agriculture simple and profitable."
+            },
+            "hi-IN": {
+                navLogin: "लॉगिन / रजिस्टर",
+                heroTitle: "नमस्ते! मैं <br><span class='highlight'>किसान वाणी</span> हूँ",
+                heroSub: "आपका एआई-संचालित डिजिटल साथी। एक ही स्थान पर वास्तविक समय का मौसम, सटीक मंडी मूल्य और एआई रोग का पता लगाएं।",
+                ctaBtn: "लॉगिन करने के लिए यहां क्लिक करें",
+                exploreHeading: "हमारी सेवाओं का अन्वेषण करें",
+                weatherTitle: "लाइव मौसम",
+                weatherDesc: "अपनी फसल की सुरक्षित योजना बनाने के लिए अपने क्षेत्र के वास्तविक समय के अपडेट पाएं।",
+                mandiTitle: "मंडी के भाव",
+                mandiDesc: "धान, गेहूं और अन्य फसलों के आज के लाइव बाजार मूल्य देखें।",
+                cropTitle: "एआई फसल स्वास्थ्य",
+                cropDesc: "अपनी बीमार फसल की फोटो अपलोड करें और हमारा एआई तुरंत बीमारी का पता लगा लेगा।",
+                voiceTitle: "वॉयस असिस्टेंट",
+                voiceDesc: "टाइप नहीं करना चाहते? बस माइक पर टैप करें और अपनी स्थानीय भाषा में मुझसे बात करें।",
+                whyHeading: "किसान वाणी क्यों चुनें?",
+                learnMore: "हमारे बारे में और जानें",
+                whyMain: "अपने खेत के लिए तकनीक की शक्ति को अनलॉक करें। हमारा मंच प्रदान करता है:",
+                whyDesc1: "अनिश्चितता को अवसर में बदलने के लिए किसान वाणी चुनें।",
+                whyDesc2: "हम सुरक्षित फसल के लिए रीयल-टाइम मौसम अलर्ट और आपकी फसलों का सर्वोत्तम मूल्य सुनिश्चित करने के लिए लाइव मंडी कीमतों के साथ आपकी खेती को सशक्त बनाते हैं।",
+                whyDesc3: "हमारे त्वरित एआई रोग पहचान के साथ अपनी कड़ी मेहनत की रक्षा करें—समस्याओं का तुरंत निदान करने के लिए बस एक फोटो लें—और अपनी स्थानीय भाषा में हमारे वॉयस असिस्टेंट का उपयोग करके आसानी से नेविगेट करें। यह केवल एक ऐप नहीं है; यह कृषि को सरल और लाभदायक बनाने के लिए डिज़ाइन किया गया आपका स्मार्ट, 24/7 खेती का साथी है।"
+            },
+            "or-IN": {
+                navLogin: "ଲଗଇନ୍ / ରେଜିଷ୍ଟର",
+                heroTitle: "ନମସ୍କାର! ମୁଁ <br><span class='highlight'>କିଷାନ ବାଣୀ</span>",
+                heroSub: "ଆପଣଙ୍କର AI-ଚାଳିତ ଡିଜିଟାଲ୍ ସାଥୀ। ଗୋଟିଏ ସ୍ଥାନରେ ରିଅଲ୍-ଟାଇମ୍ ପାଣିପାଗ, ସଠିକ୍ ମଣ୍ଡି ଦର ଏବଂ AI ରୋଗ ନିରୂପଣ ପାଆନ୍ତୁ।",
+                ctaBtn: "ଲଗଇନ୍ କରିବା ପାଇଁ ଏଠାରେ କ୍ଲିକ୍ କରନ୍ତୁ",
+                exploreHeading: "ଆମର ସେବାଗୁଡିକ ଅନୁସନ୍ଧାନ କରନ୍ତୁ",
+                weatherTitle: "ଲାଇଭ୍ ପାଣିପାଗ",
+                weatherDesc: "ଆପଣଙ୍କ ଅମଳର ସୁରକ୍ଷିତ ଯୋଜନା କରିବା ପାଇଁ ରିଅଲ୍-ଟାଇମ୍ ଅପଡେଟ୍।",
+                mandiTitle: "ମଣ୍ଡି ଦର",
+                mandiDesc: "ଧାନ, ଗହମ ଏବଂ ଅନ୍ୟାନ୍ୟ ଫସଲର ଆଜିର ଲାଇଭ୍ ବଜାର ଦର ଯାଞ୍ଚ କରନ୍ତୁ।",
+                cropTitle: "AI ଫସଲ ସ୍ୱାସ୍ଥ୍ୟ",
+                cropDesc: "ଆପଣଙ୍କ ରୋଗଗ୍ରସ୍ତ ଫସଲର ଫଟୋ ଅପଲୋଡ୍ କରନ୍ତୁ ଏବଂ ଆମର AI ତୁରନ୍ତ ରୋଗ ଚିହ୍ନଟ କରିବ।",
+                voiceTitle: "ଭଏସ୍ ଆସିଷ୍ଟାଣ୍ଟ",
+                voiceDesc: "ଟାଇପ୍ କରିବାକୁ ଚାହୁଁନାହାଁନ୍ତି କି? କେବଳ ମାଇକ୍ ଟ୍ୟାପ୍ କରନ୍ତୁ ଏବଂ ଆପଣଙ୍କ ସ୍ଥାନୀୟ ଭାଷାରେ ମୋ ସହିତ କଥା ହୁଅନ୍ତୁ।",
+                whyHeading: "କିଷାନ ବାଣୀ କାହିଁକି ବାଛିବେ?",
+                learnMore: "ଆମ ବିଷୟରେ ଅଧିକ ଜାଣନ୍ତୁ",
+                whyMain: "ଆପଣଙ୍କ ଫାର୍ମ ପାଇଁ ପ୍ରଯୁକ୍ତିବିଦ୍ୟାର ଶକ୍ତିକୁ ଖୋଲନ୍ତୁ। ଆମର ପ୍ଲାଟଫର୍ମ ପ୍ରଦାନ କରେ:",
+                whyDesc1: "ଅନିଶ୍ଚିତତାକୁ ସୁଯୋଗରେ ପରିଣତ କରିବାକୁ କିଷାନ ବାଣୀ ବାଛନ୍ତୁ।",
+                whyDesc2: "ନିରାପଦ ଅମଳ ପାଇଁ ରିଅଲ୍-ଟାଇମ୍ ପାଣିପାଗ ସତର୍କତା ଏବଂ ଆପଣଙ୍କ ଫସଲ ପାଇଁ ସର୍ବୋତ୍ତମ ମୂଲ୍ୟ ସୁନିଶ୍ଚିତ କରିବାକୁ ଲାଇଭ୍ ମଣ୍ଡି ଦର ସହିତ ଆମେ ଆପଣଙ୍କ ଚାଷକୁ ସଶକ୍ତ କରୁ।",
+                whyDesc3: "ଆମର ତୁରନ୍ତ ଏଆଇ ରୋଗ ଚିହ୍ନଟ ସହିତ ଆପଣଙ୍କର କଠିନ ପରିଶ୍ରମକୁ ରକ୍ଷା କରନ୍ତୁ - ସମସ୍ୟାର ତୁରନ୍ତ ନିରାକରଣ ପାଇଁ କେବଳ ଏକ ଫଟୋ ଉଠାନ୍ତୁ - ଏବଂ ଆପଣଙ୍କ ସ୍ଥାନୀୟ ଭାଷାରେ ଆମର ଭଏସ୍ ଆସିଷ୍ଟାଣ୍ଟ ବ୍ୟବହାର କରି ସହଜରେ ନେଭିଗେଟ୍ କରନ୍ତୁ। ଏହା କେବଳ ଏକ ଆପ୍ ନୁହେଁ; ଏହା କୃଷିକୁ ସରଳ ଏବଂ ଲାଭଦାୟକ କରିବା ପାଇଁ ଡିଜାଇନ୍ ହୋଇଥିବା ଆପଣଙ୍କର ସ୍ମାର୍ଟ, 24/7 ଚାଷ ସାଥୀ।"
+            }
+        };
+
+        const langSelect = document.getElementById('dashboard-lang');
+        
+        // Save choice and apply translation when dropdown changes
+        langSelect.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            localStorage.setItem('kisanGlobalLang', lang); 
+            applyTranslation(lang);
+        });
+
+        // The function that swaps the text
+        function applyTranslation(lang) {
+            const t = translations[lang];
+            if (!t) return;
+            
+            document.getElementById('navLogin').innerText = t.navLogin;
+            document.getElementById('heroTitle').innerHTML = t.heroTitle;
+            document.getElementById('heroSub').innerText = t.heroSub;
+            document.getElementById('ctaBtn').innerText = t.ctaBtn;
+            document.getElementById('exploreHeading').innerText = t.exploreHeading;
+            document.getElementById('weatherTitle').innerText = t.weatherTitle;
+            document.getElementById('weatherDesc').innerText = t.weatherDesc;
+            document.getElementById('mandiTitle').innerText = t.mandiTitle;
+            document.getElementById('mandiDesc').innerText = t.mandiDesc;
+            document.getElementById('cropTitle').innerText = t.cropTitle;
+            document.getElementById('cropDesc').innerText = t.cropDesc;
+            document.getElementById('voiceTitle').innerText = t.voiceTitle;
+            document.getElementById('voiceDesc').innerText = t.voiceDesc;
+            document.getElementById('whyHeading').innerText = t.whyHeading;
+            document.getElementById('learnMore').innerText = t.learnMore;
+            document.getElementById('whyMain').innerText = t.whyMain;
+            document.getElementById('whyDesc1').innerText = t.whyDesc1;
+            document.getElementById('whyDesc2').innerText = t.whyDesc2;
+            document.getElementById('whyDesc3').innerText = t.whyDesc3;
+        }
+
+        // Check if language was selected previously and apply it immediately
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('kisanGlobalLang');
+            if (savedLang) {
+                langSelect.value = savedLang;
+                applyTranslation(savedLang);
+            }
+        });
+    </script>
 </body>
 </html>

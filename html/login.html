@@ -11,7 +11,7 @@
 
     <div class="login-card">
         <div class="login-header">
-            <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
+            <a href="dashboard.html" class="back-link" id="backLink">← Back to Dashboard</a>
             <select id="login-lang" class="lang-select">
                 <option value="en-IN">English</option>
                 <option value="hi-IN">हिंदी</option>
@@ -21,27 +21,90 @@
 
         <div class="login-body">
             <div class="brand-title">🌾 Kisan Vani</div>
-            <h2>Welcome Back</h2>
-            <p>Enter your details to open your Digital Saathi</p>
+            <h2 id="welcomeTitle">Welcome Back</h2>
+            <p id="welcomeSub">Enter your details to open your Digital Saathi</p>
 
             <form id="loginForm">
                 
                 <div class="input-group">
-                    <label for="fullName">Full Name</label>
+                    <label for="fullName" id="nameLabel">Full Name</label>
                     <input type="text" id="fullName" name="fullName" required placeholder="E.g. Ramesh Kumar">
                 </div>
                 
                 <div class="input-group">
-                    <label for="phone">Mobile Number</label>
+                    <label for="phone" id="phoneLabel">Mobile Number</label>
                     <input type="tel" id="phone" name="phone" required placeholder="+91" pattern="[0-9]{10}" title="Please enter a valid 10-digit number">
                 </div>
 
-                <button type="button" class="login-submit-btn" onclick="handleLogin()">GET STARTED</button>
+                <button type="button" class="login-submit-btn" id="loginBtn" onclick="handleLogin()">GET STARTED</button>
             </form>
         </div>
     </div>
 
     <script src="../js/login.js"></script>
 
+    <script>
+        const loginTranslations = {
+            "en-IN": {
+                backLink: "← Back to Dashboard",
+                welcomeTitle: "Welcome Back",
+                welcomeSub: "Enter your details to open your Digital Saathi",
+                nameLabel: "Full Name",
+                namePlaceholder: "E.g. Ramesh Kumar",
+                phoneLabel: "Mobile Number",
+                loginBtn: "GET STARTED"
+            },
+            "hi-IN": {
+                backLink: "← डैशबोर्ड पर वापस जाएं",
+                welcomeTitle: "वापसी पर स्वागत है",
+                welcomeSub: "अपना डिजिटल साथी खोलने के लिए अपना विवरण दर्ज करें",
+                nameLabel: "पूरा नाम",
+                namePlaceholder: "उदा. रमेश कुमार",
+                phoneLabel: "मोबाइल नंबर",
+                loginBtn: "शुरू करें"
+            },
+            "or-IN": {
+                backLink: "← ଡ୍ୟାସବୋର୍ଡକୁ ଫେରନ୍ତୁ",
+                welcomeTitle: "ସ୍ଵାଗତମ୍",
+                welcomeSub: "ଆପଣଙ୍କର ଡିଜିଟାଲ୍ ସାଥୀ ଖୋଲିବାକୁ ନିଜର ବିବରଣୀ ପ୍ରଦାନ କରନ୍ତୁ",
+                nameLabel: "ପୂରା ନାମ",
+                namePlaceholder: "ଉଦାହରଣ: ରମେଶ କୁମାର",
+                phoneLabel: "ମୋବାଇଲ୍ ନମ୍ବର",
+                loginBtn: "ଆରମ୍ଭ କରନ୍ତୁ"
+            }
+        };
+
+        const loginLangSelect = document.getElementById('login-lang');
+        
+        // Function to apply translation
+        function applyLoginTranslation(lang) {
+            const t = loginTranslations[lang];
+            if (!t) return;
+            
+            document.getElementById('backLink').innerText = t.backLink;
+            document.getElementById('welcomeTitle').innerText = t.welcomeTitle;
+            document.getElementById('welcomeSub').innerText = t.welcomeSub;
+            document.getElementById('nameLabel').innerText = t.nameLabel;
+            document.getElementById('fullName').placeholder = t.namePlaceholder;
+            document.getElementById('phoneLabel').innerText = t.phoneLabel;
+            document.getElementById('loginBtn').innerText = t.loginBtn;
+        }
+
+        // 1. When dropdown changes on this page, save the choice and translate
+        loginLangSelect.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            localStorage.setItem('kisanGlobalLang', lang); // Save globally
+            applyLoginTranslation(lang);
+        });
+
+        // 2. On page load, instantly check if a language was already chosen on the Dashboard!
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('kisanGlobalLang');
+            if (savedLang) {
+                loginLangSelect.value = savedLang;
+                applyLoginTranslation(savedLang);
+            }
+        });
+    </script>
 </body>
 </html>

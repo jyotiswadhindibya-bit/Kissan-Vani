@@ -25,46 +25,28 @@ app.use(bodyParser.json());
 
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/js', express.static(path.join(__dirname, 'js')));
-app.use(express.static(path.join(__dirname, 'html'))); 
+app.use(express.static(path.join(__dirname, 'html'), { index: false })); 
 
 app.get('/', (_req, res) => {
     res.sendFile(path.join(__dirname, 'html', 'dashboard.html'));
 });
 
 // ==========================================
-// 🤖 3. AI PERSONA & MEMORY 
+// 🤖 3. AI SETUP & DATA
 // ==========================================
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-// 🟢 FIX: Correctly set to the powerful 'gemini-2.5-flash' model
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" }); 
-
-const chatSession = model.startChat({
-    history: [
-        {
-            role: "user",
-            parts: [{ text: `
-            [SYSTEM INSTRUCTION]
-            You are 'Kisan Vani', a friendly and expert agricultural assistant (Digital Saathi).
-            
-            [STRICT RULES]0
-            1. Response Style: Short, simple, like a wise village elder.
-            2. Format: PLAIN TEXT ONLY. No markdown (**bold**). Voice friendly.
-            3. Goal: Help with crops, weather, mandi prices, and government schemes.
-            ` }],
-        },
-        {
-            role: "model",
-            parts: [{ text: "Namaste! I am Kisan Vani. I understand my instructions. I am ready to help." }],
-        },
-    ],
-});
+// 🟢 THE FIX: A list of fallback models to try if one is overloaded!
+const modelsToTry = [
+    "gemini-2.5-flash-lite", // 1st Choice (Fastest, High Quota)
+    "gemini-2.0-flash",      // 2nd Choice (Highly Stable)
+    "gemini-2.5-flash"       // 3rd Choice (Powerful, lower quota)
+];
 
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 let SCHEME_CONTEXT = "";
 let MANDI_DB = {};
 
-// --- Load Data ---
 async function loadPDF() {
     try {
         const pdfPath = path.join(__dirname, 'scheme.pdf');
@@ -90,9 +72,6 @@ function loadMandiDB() {
 loadPDF();
 loadMandiDB();
 
-// ==========================================
-// 🛠️ 4. HELPER FUNCTIONS
-// ==========================================
 function detectLocation(text) {
     const textLower = text.toLowerCase();
     const cityMap = {
@@ -122,31 +101,39 @@ async function getWeather(city) {
 }
 
 // ==========================================
-// 🚀 5. CHAT API
+// 🚀 5. CHAT API (With Auto-Fallback)
 // ==========================================
 app.post('/api/chat', async (req, res) => {
     try {
         const { text, language, image } = req.body;
-        console.log(`User (${language}): ${text} | Image: ${!!image}`);
+        console.log(`\nUser (${language}): ${text}`);
 
         const city = detectLocation(text);
         const weatherInfo = await getWeather(city);
 
-        // 🟢 STRICT LANGUAGE ENFORCER
         let scriptInstruction = "";
+        let translationRule = "";
+        
         if (language.includes("Odia") || language.includes("or-IN")) {
-            scriptInstruction = "The user is speaking Odia. Even if their input is in English letters, you MUST strictly reply in ODIA SCRIPT (e.g., ନମସ୍କାର). Do not use English letters.";
+            scriptInstruction = "STRICTLY write the 'reply' in pure Odia script (e.g., ନମସ୍କାର).";
+            translationRule = "Translate the user's input into pure Odia script.";
         } else if (language.includes("Hindi") || language.includes("hi-IN")) {
-            scriptInstruction = "STRICTLY REPLY IN HINDI SCRIPT (Devanagari).";
+            scriptInstruction = "STRICTLY write the 'reply' in pure Hindi Devanagari script.";
+            translationRule = "Translate the user's input into pure Hindi Devanagari script.";
         } else {
-            scriptInstruction = "Reply in English.";
+            scriptInstruction = "STRICTLY reply in English.";
+            translationRule = "DO NOT TRANSLATE. Return the exact English text.";
         }
         
         let dynamicContext = `
-        [REAL-TIME DATA UPDATE]
-        - User Language: ${language}
-        - Formatting Rule: ${scriptInstruction}
-        - Current Weather: ${weatherInfo}
+        [TASK]
+        Return a JSON object with THREE keys:
+        1. "translatedQuery": ${translationRule}
+        2. "reply": Your simple agricultural answer. ${scriptInstruction}
+        3. "spokenReply": The EXACT SAME answer from 'reply', but transliterated into English letters (e.g., 'Namaskar, aji weather bhala achi') so a computer voice can read it.
+        
+        [RULES]
+        - Weather: ${weatherInfo}
         - Mandi Prices: ${JSON.stringify(MANDI_DB)}
         - Govt Schemes: ${SCHEME_CONTEXT}
         
@@ -157,27 +144,58 @@ app.post('/api/chat', async (req, res) => {
         let parts = [{ text: dynamicContext }];
         
         if (image) {
-            parts.push({
-                inlineData: {
-                    mimeType: "image/jpeg",
-                    data: image
-                }
-            });
+            parts.push({ inlineData: { mimeType: "image/jpeg", data: image } });
             parts.push({ text: " (Analyze this crop image for disease)" });
         }
 
-        const result = await chatSession.sendMessage(parts);
-        const response = await result.response;
-        
-        let replyText = response.text().replace(/[*#_~`]/g, '').trim(); 
-        console.log(`AI Replied: ${replyText.substring(0, 50)}...`);
-        
+        let aiData = null;
+        let lastError = null;
+
+        // 🟢 THE FIX: Loop through backups until one works!
+        for (const modelName of modelsToTry) {
+            try {
+                console.log(`🤖 Consulting model: ${modelName}...`);
+                const model = genAI.getGenerativeModel({ 
+                    model: modelName,
+                    generationConfig: { responseMimeType: "application/json" }
+                }); 
+                
+                const chatSession = model.startChat({
+                    history: [{ role: "user", parts: [{ text: "You are Kisan Vani. Always respond in JSON format." }] }]
+                });
+
+                const result = await chatSession.sendMessage(parts);
+                const responseText = result.response.text();
+                aiData = JSON.parse(responseText);
+                
+                console.log(`✅ Success using ${modelName}`);
+                break; // Stop looping, we got the answer!
+
+            } catch (error) {
+                console.log(`⚠️ ${modelName} failed (${error.statusText || error.message}). Trying backup...`);
+                lastError = error;
+            }
+        }
+
+        // If ALL models failed
+        if (!aiData) {
+            throw lastError; 
+        }
+
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
-        res.json({ reply: replyText });
+        res.json({ 
+            reply: aiData.reply,
+            translatedQuery: aiData.translatedQuery,
+            spokenReply: aiData.spokenReply 
+        });
 
     } catch (error) {
-        console.error("Server Error:", error);
-        res.status(500).json({ reply: "Maaf karein, network samasya hai. (Network Error)" });
+        console.error("❌ Final Server Error:", error.message);
+        res.status(500).json({ 
+            reply: "Maaf karein, server par bahut load hai. Kripya thodi der baad prayas karein.", 
+            translatedQuery: "Server Busy", 
+            spokenReply: "Server is very busy right now. Please try again in a few minutes." 
+        });
     }
 });
 
