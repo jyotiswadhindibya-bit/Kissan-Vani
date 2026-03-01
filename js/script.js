@@ -74,10 +74,19 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 const recognition = new SpeechRecognition();
 
 micBtn.addEventListener('click', () => {
-    recognition.lang = langSelect.value; 
-    recognition.start(); 
-    micBtn.classList.add('listening');
-    statusText.innerText = getStatus('listening');
+    if (micBtn.classList.contains('listening')) {
+        recognition.stop(); 
+        micBtn.classList.remove('listening');
+        statusText.innerText = getStatus('tapAgain');
+    } 
+    else {
+        recognition.lang = langSelect.value; 
+        try {
+            recognition.start(); 
+        } catch (e) {}
+        micBtn.classList.add('listening');
+        statusText.innerText = getStatus('listening');
+    }
 });
 
 imageInput.addEventListener('change', function(event) {
@@ -106,13 +115,17 @@ recognition.onresult = async (event) => {
     micBtn.classList.remove('listening');
     const userText = event.results[0][0].transcript;
 
+    // 1. Show User Bubble
     const userBubble = addMessage(userText, 'user-msg');
     
-    if (selectedImageBase64) {
-        statusText.innerText = getStatus('analyzing');
-    } else {
-        statusText.innerText = getStatus('consulting');
-    }
+    // 2. Get the correct loading text (Consulting or Analyzing)
+    const loadingText = selectedImageBase64 ? getStatus('analyzing') : getStatus('consulting');
+    
+    // 3. Show status at the bottom
+    statusText.innerText = loadingText;
+    
+    // 🟢 THE FIX: Add a temporary loading bubble in the chat box!
+    const loadingBubble = addMessage("⏳ " + loadingText, 'bot-msg');
 
     try {
         const response = await fetch('/api/chat', {  
@@ -127,10 +140,15 @@ recognition.onresult = async (event) => {
 
         const data = await response.json();
         
+        // Translate the English-letter input into Odia/Hindi script
         if (data.translatedQuery) {
             userBubble.innerText = data.translatedQuery;
         }
 
+        // 🟢 Remove the temporary loading bubble from the screen
+        chatBox.removeChild(loadingBubble);
+
+        // Show the actual AI answer
         addMessage(data.reply, 'bot-msg');
         statusText.innerText = getStatus('tapAgain');
         
@@ -145,6 +163,10 @@ recognition.onresult = async (event) => {
 
     } catch (error) {
         console.error(error);
+        // Remove the loading bubble if the server fails
+        if(chatBox.contains(loadingBubble)) {
+            chatBox.removeChild(loadingBubble);
+        }
         statusText.innerText = getStatus('error');
         addMessage("⚠️ Server Error. Please check if your backend is running.", 'bot-msg');
     }
@@ -153,6 +175,13 @@ recognition.onresult = async (event) => {
 recognition.onerror = () => {
     micBtn.classList.remove('listening');
     statusText.innerText = getStatus('tapAgain');
+};
+
+recognition.onend = () => {
+    micBtn.classList.remove('listening');
+    if (statusText.innerText === getStatus('listening')) {
+        statusText.innerText = getStatus('tapAgain');
+    }
 };
 
 function addMessage(text, className) {
