@@ -10,30 +10,35 @@
 <body>
 
     <div class="app-container">
-        <header>
-            <h1>🌾 Kisan Vani</h1>
-            <p id="appSubTitle">Your AI Agriculture Expert</p>
-            <a href="dashboard.html" onclick="logout()" class="logout-btn" id="logoutBtn">Logout</a>
-        </header>
+    <header>
+        <h1>🌾 Kisan Vani</h1>
+        <p id="appSubTitle">Your AI Agriculture Expert</p>
+        <a href="dashboard.html" onclick="logout()" class="logout-btn" id="logoutBtn">Logout</a>
+    </header>
 
-        <div class="lang-switch">
-            <label for="language" id="langLabel">Choose Language / भाषा चुनें:</label>
-            <select id="language">
-                <option value="en-IN">English</option>
-                <option value="hi-IN">Hindi (हिंदी)</option>
-                <option value="or-IN">Odia (ଓଡ଼ିଆ)</option>
-            </select>
+    <div class="lang-switch">
+        <label for="language" id="langLabel">Choose Language / भाषा चुनें:</label>
+        <select id="language">
+            <option value="en-IN">English</option>
+            <option value="hi-IN">Hindi (हिंदी)</option>
+            <option value="or-IN">Odia (ଓଡ଼ିଆ)</option>
+        </select>
+    </div>
+
+    <div class="chat-box" id="chat-box"></div>
+
+    <p id="status-text">Tap the mic or type to ask a question</p>
+
+    <div class="input-section">
+        
+        <div class="text-input-wrapper">
+            <input type="text" id="text-input" placeholder="Type your message here...">
+            <button id="send-btn" type="button">➤</button>
         </div>
-
-        <div class="chat-box" id="chat-box">
-        </div>
-
-        <p id="status-text">Tap the mic to ask a question</p>
 
         <div class="mic-container">
-            
             <div class="mic-group">
-                <button id="mic-btn">
+                <button id="mic-btn" type="button">
                     <span id="mic-icon">🎙️</span>
                 </button>
                 <div class="pulse-ring"></div>
@@ -41,18 +46,17 @@
 
             <input type="file" id="imageInput" accept="image/*" class="hidden">
 
-            <button id="camera-btn" onclick="document.getElementById('imageInput').click()">
+            <button id="camera-btn" type="button" title="Upload Photo" onclick="document.getElementById('imageInput').click()">
                 📷
             </button>
 
             <div id="imagePreviewContainer" class="hidden">
                 <img id="imagePreview" src="" alt="Crop Preview">
-                <button id="clearBtn" onclick="clearImage()">✖</button>
+                <button id="clearBtn" type="button" onclick="clearImage()">✖</button>
             </div>
-
         </div>
-    </div>
-
+    </div> 
+    
     <script>
         const indexTranslations = {
             "en-IN": {

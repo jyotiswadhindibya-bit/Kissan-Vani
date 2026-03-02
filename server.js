@@ -21,7 +21,8 @@ const path = require('path');
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
+// 🟢 INCREASED LIMIT: Essential for high-quality camera photos
+app.use(bodyParser.json({ limit: '10mb' }));
 
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/js', express.static(path.join(__dirname, 'js')));
@@ -36,11 +37,11 @@ app.get('/', (_req, res) => {
 // ==========================================
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-// 🟢 THE FIX: A list of fallback models to try if one is overloaded!
+// 🟢 YOUR ORIGINAL MODELS KEPT HERE
 const modelsToTry = [
-    "gemini-2.5-flash-lite", // 1st Choice (Fastest, High Quota)
-    "gemini-2.0-flash",      // 2nd Choice (Highly Stable)
-    "gemini-2.5-flash"       // 3rd Choice (Powerful, lower quota)
+    "gemini-2.5-flash-lite", 
+    "gemini-2.0-flash",      
+    "gemini-2.5-flash"       
 ];
 
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
@@ -53,7 +54,7 @@ async function loadPDF() {
         if (fs.existsSync(pdfPath)) {
             const dataBuffer = fs.readFileSync(pdfPath);
             const data = await pdfParse(dataBuffer);
-            SCHEME_CONTEXT = data.text.substring(0, 40000); 
+            SCHEME_CONTEXT = data.text.substring(0, 30000); 
             console.log("✅ PDF Loaded");
         }
     } catch (e) { console.log("⚠️ PDF Error:", e.message); }
@@ -73,13 +74,12 @@ loadPDF();
 loadMandiDB();
 
 function detectLocation(text) {
+    if (!text) return null;
     const textLower = text.toLowerCase();
     const cityMap = {
         "bhubaneswar": "Bhubaneswar", "bbsr": "Bhubaneswar",
-        "cuttack": "Cuttack", "puri": "Puri", 
-        "delhi": "Delhi", "mumbai": "Mumbai",
-        "kolkata": "Kolkata", "chennai": "Chennai",
-        "bangalore": "Bangalore", "hyderabad": "Hyderabad",
+        "cuttack": "Cuttack", "puri": "Puri", "delhi": "Delhi",
+        "mumbai": "Mumbai", "kolkata": "Kolkata", "chennai": "Chennai",
         "balasore": "Balasore", "bhadrak": "Bhadrak"
     };
     for (const [keyword, englishName] of Object.entries(cityMap)) {
@@ -89,112 +89,100 @@ function detectLocation(text) {
 }
 
 async function getWeather(city) {
-    if (!city) return "Location not detected.";
+    const targetCity = city || "Bhubaneswar"; // Default city if none mentioned
     if (!WEATHER_API_KEY) return "Weather API Key missing.";
     try {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${WEATHER_API_KEY}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${targetCity}&units=metric&appid=${WEATHER_API_KEY}`;
         const response = await fetch(url);
         const data = await response.json();
-        if (data.cod !== 200) return `Weather unavailable`;
-        return `In ${city}: ${data.main.temp}°C, ${data.weather[0].description}`;
+        if (data.cod !== 200) return `Weather unavailable for ${targetCity}`;
+        return `In ${targetCity}: ${data.main.temp}°C, ${data.weather[0].description}`;
     } catch (error) { return "Weather Service Error"; }
 }
 
 // ==========================================
-// 🚀 5. CHAT API (With Auto-Fallback)
+// 🚀 4. CHAT API (Optimized for Independent Inputs)
 // ==========================================
 app.post('/api/chat', async (req, res) => {
     try {
         const { text, language, image } = req.body;
-        console.log(`\nUser (${language}): ${text}`);
-
+        
         const city = detectLocation(text);
         const weatherInfo = await getWeather(city);
 
+        // Define Script Rules
         let scriptInstruction = "";
         let translationRule = "";
-        
         if (language.includes("Odia") || language.includes("or-IN")) {
-            scriptInstruction = "STRICTLY write the 'reply' in pure Odia script (e.g., ନମସ୍କାର).";
+            scriptInstruction = "STRICTLY write the 'reply' in pure Odia script.";
             translationRule = "Translate the user's input into pure Odia script.";
         } else if (language.includes("Hindi") || language.includes("hi-IN")) {
-            scriptInstruction = "STRICTLY write the 'reply' in pure Hindi Devanagari script.";
-            translationRule = "Translate the user's input into pure Hindi Devanagari script.";
+            scriptInstruction = "STRICTLY write the 'reply' in pure Hindi script.";
+            translationRule = "Translate the user's input into pure Hindi script.";
         } else {
             scriptInstruction = "STRICTLY reply in English.";
             translationRule = "DO NOT TRANSLATE. Return the exact English text.";
         }
-        
+
+        // Updated AI Brain Logic for Crops vs Sky
         let dynamicContext = `
         [TASK]
-        Return a JSON object with THREE keys:
-        1. "translatedQuery": ${translationRule}
-        2. "reply": Your simple agricultural answer. ${scriptInstruction}
-        3. "spokenReply": The EXACT SAME answer from 'reply', but transliterated into English letters (e.g., 'Namaskar, aji weather bhala achi') so a computer voice can read it.
-        
-        [RULES]
-        - Weather: ${weatherInfo}
+        You are Kisan Vani AI, an agricultural expert built to assist farmers facing problems in agriculture. your answers should be clear,consise and simple to be understood by the lay man farmer. Answer the questions asked by the user only, do not provide anything uneccessary until asked for. Return a JSON object with keys: "translatedQuery", "reply", "spokenReply".
+
+        [RELEVANT DATA]
+        - Current Weather: ${weatherInfo}
         - Mandi Prices: ${JSON.stringify(MANDI_DB)}
-        - Govt Schemes: ${SCHEME_CONTEXT}
+        - Govt Schemes Context: ${SCHEME_CONTEXT}
+
+        [ANALYSIS RULES]
+        1. If an image is provided:
+           - If it is a CROP: Identify the crop and strictly analyze the health of the crop and give suggestions to prevent it from diseases.If there is any disease in the crop or plant, identify it suggest solutions to cure the crop or plant.  
+           - If it is the SKY: Use the provided weather data to explain current conditions and advise on farming activities (irrigation, sowing, etc.).
+           - If the image is unclear, state that you cannot analyze it and rely solely on the text input for your response.
+           - Don't give any unnecessary information other than what is asked for in the question. Be concise and to the point.
+           - Don't mention the government schemes if the user doesn't ask for it. Only provide information about government schemes if the user specifically asks for it.
+        2. If only text is provided: Strictly answer the agricultural question using the data above.
         
-        [USER QUESTION]
-        "${text}"
+        [OUTPUT RULES]
+        - reply: ${scriptInstruction}
+        - translatedQuery: ${translationRule}
+        - spokenReply: Phonetic English letters for TTS reading.
         `;
 
         let parts = [{ text: dynamicContext }];
-        
-        if (image) {
-            parts.push({ inlineData: { mimeType: "image/jpeg", data: image } });
-            parts.push({ text: " (Analyze this crop image for disease)" });
-        }
+        if (text) parts.push({ text: `User Question: ${text}` });
+        if (image) parts.push({ inlineData: { mimeType: "image/jpeg", data: image } });
 
         let aiData = null;
         let lastError = null;
 
-        // 🟢 THE FIX: Loop through backups until one works!
         for (const modelName of modelsToTry) {
             try {
-                console.log(`🤖 Consulting model: ${modelName}...`);
                 const model = genAI.getGenerativeModel({ 
                     model: modelName,
                     generationConfig: { responseMimeType: "application/json" }
                 }); 
                 
-                const chatSession = model.startChat({
-                    history: [{ role: "user", parts: [{ text: "You are Kisan Vani. Always respond in JSON format." }] }]
-                });
-
-                const result = await chatSession.sendMessage(parts);
+                const result = await model.generateContent(parts);
                 const responseText = result.response.text();
                 aiData = JSON.parse(responseText);
-                
-                console.log(`✅ Success using ${modelName}`);
-                break; // Stop looping, we got the answer!
+                break; 
 
             } catch (error) {
-                console.log(`⚠️ ${modelName} failed (${error.statusText || error.message}). Trying backup...`);
+                console.log(`⚠️ ${modelName} failed. Trying backup...`);
                 lastError = error;
             }
         }
 
-        // If ALL models failed
-        if (!aiData) {
-            throw lastError; 
-        }
+        if (!aiData) throw lastError;
 
-        res.setHeader('Content-Type', 'application/json; charset=utf-8');
-        res.json({ 
-            reply: aiData.reply,
-            translatedQuery: aiData.translatedQuery,
-            spokenReply: aiData.spokenReply 
-        });
+        res.json(aiData);
 
     } catch (error) {
         console.error("❌ Final Server Error:", error.message);
         res.status(500).json({ 
-            reply: "Maaf karein, server par bahut load hai. Kripya thodi der baad prayas karein.", 
-            translatedQuery: "Server Busy", 
-            spokenReply: "Server is very busy right now. Please try again in a few minutes." 
+            reply: "Server Error. Please try again later.", 
+            spokenReply: "Server error. Please try again later." 
         });
     }
 });
