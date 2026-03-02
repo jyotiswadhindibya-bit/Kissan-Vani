@@ -4,33 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kissan Vani | Digital Saathi</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+<body>
 <body>
 
     <div class="app-container">
         <header>
-            <h1 data-key="logo">🌾 Kisan Vani</h1>
-            <p data-key="hero-desc">Your AI Agriculture Expert</p>
-            <a href="dashboard.html" onclick="logout()" class="logout-btn" data-key="logout-text">Logout</a>
+            <h1>🌾 Kisan Vani</h1>
+            <p>Your AI Agriculture Expert</p>
         </header>
 
         <div class="lang-switch">
-            <label for="dashboard-lang" data-key="lang-label">Choose Language / भाषा चुनें:</label>
-            <select id="dashboard-lang">
-                <option value="en-IN">English</option>
+            <label for="language">Choose Language / भाषा चुनें:</label>
+            <select id="language">
                 <option value="hi-IN">Hindi (हिंदी)</option>
-                <option value="or-IN">Odia (ଓଡ଼ିଆ)</option>
+                <option value="en-IN">English</option>
+                <option value="or-IN">Odia (ଓଡ଼ିଆ)</option> 
             </select>
         </div>
 
         <div class="chat-box" id="chat-box">
             </div>
 
-        <p id="status-text" data-key="mic-instruction">Tap the mic to ask a question</p>
+        <p id="status-text">Tap the mic to ask a question</p>
 
         <div class="mic-container">
+            
             <div class="mic-group">
                 <button id="mic-btn">
                     <span id="mic-icon">🎙️</span>
@@ -48,11 +49,11 @@
                 <img id="imagePreview" src="" alt="Crop Preview">
                 <button id="clearBtn" onclick="clearImage()">✖</button>
             </div>
+
         </div>
     </div>
 
-    <script src="../js/translations.js"></script>
-    <script src="../js/script.js"></script>
-
+    <script src="script.js"></script>
+</body>
 </body>
 </html>
