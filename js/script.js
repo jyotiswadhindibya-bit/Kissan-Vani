@@ -188,10 +188,17 @@ async function handleSubmission() {
         addMessage(data.reply, 'bot-msg');
         statusText.innerText = getStatus('tapAgain');
         
-        let voiceLang = langSelect.value;
-        if (voiceLang === 'or-IN') voiceLang = 'hi-IN'; 
-        speak(data.spokenReply || data.reply, voiceLang);
+       let voiceText = data.reply; 
+let voiceLang = langSelect.value;
 
+if (voiceLang === 'hi-IN') {
+    voiceText = data.reply; 
+} else if (voiceLang === 'or-IN') {
+    voiceText = data.spokenReply || data.reply; 
+    voiceLang = 'en-IN'; 
+}
+
+speak(voiceText, voiceLang);
     } catch (error) {
         console.error(error);
         if (chatBox.contains(loadingBubble)) chatBox.removeChild(loadingBubble);
