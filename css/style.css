@@ -116,7 +116,7 @@ select {
 
 #status-text {
     text-align: center; 
-    padding: 10px 0; 
+    padding: 6px 0 2px; 
     color: #666; 
     font-size: 0.8rem;
     width: 100%;
@@ -127,16 +127,66 @@ select {
 }
 
 /* =========================================
+   Try Saying Suggestions
+   ========================================= */
+
+.try-saying {
+    padding: 8px 15px 4px;
+    background: white;
+}
+
+.try-saying-label {
+    font-size: 11px;
+    color: #888;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.suggestion-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 11px;
+    background: #f1f8e9;
+    border: 1px solid #c5e1a5;
+    color: #33691e;
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    white-space: nowrap;
+}
+
+.chip:hover {
+    background: #dcedc8;
+    box-shadow: 0 2px 6px rgba(46,125,50,0.15);
+    transform: translateY(-1px);
+}
+
+.chip:active {
+    transform: scale(0.96);
+}
+
+/* =========================================
    Bottom Input Section (Text + Mic + Camera)
    ========================================= */
 
 .input-section {
-    padding: 15px;
+    padding: 10px 15px 15px;
     background: white;
     border-top: 1px solid #eee;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 .text-input-wrapper {
@@ -231,7 +281,7 @@ select {
     border-radius: 50%;
     background: rgba(67, 160, 71, 0.4);
     z-index: 1;
-    pointer-events: none; /* Ensures clicks pass through to the mic */
+    pointer-events: none;
 }
 
 #mic-btn.listening + .pulse-ring {
@@ -247,6 +297,14 @@ select {
         transform: translate(-50%, -50%) scale(2);
         opacity: 0;
     }
+}
+
+/* =========================================
+   Camera Button & Popover
+   ========================================= */
+
+.camera-wrapper {
+    position: relative;
 }
 
 #camera-btn {
@@ -270,6 +328,85 @@ select {
 #camera-btn:active {
     transform: scale(0.95);
     background: #01579b;
+}
+
+/* Camera Popover */
+.camera-popover {
+    position: absolute;
+    bottom: 65px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 50;
+    min-width: 160px;
+    border: 1px solid #e0e0e0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.camera-popover::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.08));
+}
+
+.camera-popover.open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(-50%) scale(1);
+}
+
+.popover-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    border: none;
+    background: #f5f9ff;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #1565c0;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.18s;
+    width: 100%;
+    text-align: left;
+}
+
+.popover-btn:hover {
+    background: #e3f2fd;
+}
+
+.popover-btn .icon {
+    font-size: 18px;
+}
+
+/* Overlay to close popover on outside click */
+#popover-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: none;
+}
+
+#popover-overlay.active {
+    display: block;
 }
 
 #imagePreviewContainer {

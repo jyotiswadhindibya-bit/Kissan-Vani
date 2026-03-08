@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kisan Vani | Digital Saathi</title>
-    <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -29,6 +29,14 @@
 
     <p id="status-text">Tap the mic or type to ask a question</p>
 
+    <!-- Try Saying Suggestions -->
+    <div class="try-saying">
+        <div class="try-saying-label" id="trySayingLabel">✨ Try saying</div>
+        <div class="suggestion-chips" id="suggestion-chips">
+            <!-- Chips injected by JS based on language -->
+        </div>
+    </div>
+
     <div class="input-section">
         
         <div class="text-input-wrapper">
@@ -44,11 +52,28 @@
                 <div class="pulse-ring"></div>
             </div>
 
-            <input type="file" id="imageInput" accept="image/*" class="hidden">
+            <!-- Hidden file inputs -->
+            <input type="file" id="imageInput" accept="image/*" capture="environment" class="hidden">
+            <input type="file" id="galleryInput" accept="image/*" class="hidden">
 
-            <button id="camera-btn" type="button" title="Upload Photo" onclick="document.getElementById('imageInput').click()">
-                📷
-            </button>
+            <!-- Camera button with popover -->
+            <div class="camera-wrapper">
+                <button id="camera-btn" type="button" title="Upload Photo">📷</button>
+
+                <div class="camera-popover" id="cameraPopover">
+                    <button class="popover-btn" onclick="openCamera()">
+                        <span class="icon">📸</span>
+                        <span id="takePhotoLabel">Take a Photo</span>
+                    </button>
+                    <button class="popover-btn" onclick="openGallery()">
+                        <span class="icon">🖼️</span>
+                        <span id="uploadPhotoLabel">Upload a Photo</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Popover backdrop -->
+            <div id="popover-overlay" onclick="closePopover()"></div>
 
             <div id="imagePreviewContainer" class="hidden">
                 <img id="imagePreview" src="" alt="Crop Preview">
@@ -58,24 +83,57 @@
     </div> 
     
     <script>
+        /* =========================================
+           Translations
+           ========================================= */
         const indexTranslations = {
             "en-IN": {
                 appSubTitle: "Your AI Agriculture Expert",
                 logoutBtn: "Logout",
                 langLabel: "Choose Language / भाषा चुनें:",
-                statusText: "Tap the mic to ask a question"
+                statusText: "Tap the mic or type to ask a question",
+                trySayingLabel: "✨ Try saying",
+                takePhoto: "Take a Photo",
+                uploadPhoto: "Upload a Photo",
+                suggestions: [
+                    { icon: "🌤️", text: "What's the weather today?" },
+                    { icon: "💰", text: "Price of rice today" },
+                    { icon: "🏛️", text: "Government schemes for farmers" },
+                    { icon: "🌱", text: "How to treat yellow leaves?" },
+                    { icon: "💧", text: "Best time to irrigate wheat" },
+                ]
             },
             "hi-IN": {
                 appSubTitle: "आपका एआई कृषि विशेषज्ञ",
                 logoutBtn: "लॉगआउट",
                 langLabel: "भाषा चुनें:",
-                statusText: "प्रश्न पूछने के लिए माइक पर टैप करें"
+                statusText: "प्रश्न पूछने के लिए माइक पर टैप करें",
+                trySayingLabel: "✨ यह पूछें",
+                takePhoto: "फोटो लें",
+                uploadPhoto: "फोटो अपलोड करें",
+                suggestions: [
+                    { icon: "🌤️", text: "आज का मौसम कैसा है?" },
+                    { icon: "💰", text: "आज चावल का भाव क्या है?" },
+                    { icon: "🏛️", text: "किसानों के लिए सरकारी योजना" },
+                    { icon: "🌱", text: "पत्ते पीले क्यों हो रहे हैं?" },
+                    { icon: "💧", text: "गेहूं में पानी कब दें?" },
+                ]
             },
             "or-IN": {
                 appSubTitle: "ଆପଣଙ୍କର AI କୃଷି ବିଶେଷଜ୍ଞ",
                 logoutBtn: "ଲଗଆଉଟ୍",
                 langLabel: "ଭାଷା ବାଛନ୍ତୁ:",
-                statusText: "ପ୍ରଶ୍ନ ପଚାରିବାକୁ ମାଇକ୍ ଟ୍ୟାପ୍ କରନ୍ତୁ"
+                statusText: "ପ୍ରଶ୍ନ ପଚାରିବାକୁ ମାଇକ୍ ଟ୍ୟାପ୍ କରନ୍ତୁ",
+                trySayingLabel: "✨ ଏହା ପଚାରନ୍ତୁ",
+                takePhoto: "ଫଟୋ ଉଠାନ୍ତୁ",
+                uploadPhoto: "ଫଟୋ ଅପଲୋଡ୍ କରନ୍ତୁ",
+                suggestions: [
+                    { icon: "🌤️", text: "ଆଜି ପାଣିପାଗ କେମିତି?" },
+                    { icon: "💰", text: "ଆଜି ଚାଉଳ ଦାମ କେତେ?" },
+                    { icon: "🏛️", text: "କୃଷକଙ୍କ ପାଇଁ ସରକାରୀ ଯୋଜନା" },
+                    { icon: "🌱", text: "ପତ୍ର ହଳଦିଆ କାହିଁକି ହେଉଛି?" },
+                    { icon: "💧", text: "ଗହମରେ ଜଳସେଚନ କ'ଣ ସମୟ?" },
+                ]
             }
         };
 
@@ -88,11 +146,28 @@
             document.getElementById('appSubTitle').innerText = t.appSubTitle;
             document.getElementById('logoutBtn').innerText = t.logoutBtn;
             document.getElementById('langLabel').innerText = t.langLabel;
+            document.getElementById('trySayingLabel').innerText = t.trySayingLabel;
+            document.getElementById('takePhotoLabel').innerText = t.takePhoto;
+            document.getElementById('uploadPhotoLabel').innerText = t.uploadPhoto;
             
             const statusEl = document.getElementById('status-text');
             if (statusEl.innerText.includes('Tap') || statusEl.innerText.includes('टैप') || statusEl.innerText.includes('ଟ୍ୟାପ୍')) {
                 statusEl.innerText = t.statusText;
             }
+
+            // Render suggestion chips
+            const chipsContainer = document.getElementById('suggestion-chips');
+            chipsContainer.innerHTML = '';
+            t.suggestions.forEach(s => {
+                const chip = document.createElement('button');
+                chip.className = 'chip';
+                chip.innerHTML = `<span>${s.icon}</span><span>${s.text}</span>`;
+                chip.onclick = () => {
+                    document.getElementById('text-input').value = s.text;
+                    document.getElementById('text-input').focus();
+                };
+                chipsContainer.appendChild(chip);
+            });
         }
 
         appLangSelect.addEventListener('change', (e) => {
@@ -102,12 +177,69 @@
         });
 
         window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('kisanGlobalLang');
-            if (savedLang) {
-                appLangSelect.value = savedLang;
-                applyIndexTranslation(savedLang);
+            const savedLang = localStorage.getItem('kisanGlobalLang') || 'en-IN';
+            appLangSelect.value = savedLang;
+            applyIndexTranslation(savedLang);
+        });
+
+        /* =========================================
+           Camera Popover Logic
+           ========================================= */
+        const cameraBtnEl = document.getElementById('camera-btn');
+        const cameraPopover = document.getElementById('cameraPopover');
+        const popoverOverlay = document.getElementById('popover-overlay');
+
+        cameraBtnEl.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = cameraPopover.classList.contains('open');
+            if (isOpen) {
+                closePopover();
+            } else {
+                cameraPopover.classList.add('open');
+                popoverOverlay.classList.add('active');
             }
         });
+
+        function closePopover() {
+            cameraPopover.classList.remove('open');
+            popoverOverlay.classList.remove('active');
+        }
+
+        function openCamera() {
+            closePopover();
+            document.getElementById('imageInput').click();
+        }
+
+        function openGallery() {
+            closePopover();
+            document.getElementById('galleryInput').click();
+        }
+
+        /* Handle both inputs feeding into the same preview */
+        function handleImageFile(file) {
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.getElementById('imagePreview').src = e.target.result;
+                document.getElementById('imagePreviewContainer').classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        document.getElementById('imageInput').addEventListener('change', (e) => {
+            handleImageFile(e.target.files[0]);
+        });
+
+        document.getElementById('galleryInput').addEventListener('change', (e) => {
+            handleImageFile(e.target.files[0]);
+        });
+
+        function clearImage() {
+            document.getElementById('imagePreviewContainer').classList.add('hidden');
+            document.getElementById('imagePreview').src = '';
+            document.getElementById('imageInput').value = '';
+            document.getElementById('galleryInput').value = '';
+        }
     </script>
     
     <script src="../js/script.js"></script>
