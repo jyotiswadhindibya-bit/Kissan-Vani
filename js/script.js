@@ -74,22 +74,20 @@ const imagePreview = document.getElementById('imagePreview');
 let selectedImageBase64 = null;
 
 // ==========================================
-// 🎙️ ROBUST MICROPHONE LOGIC
+// 🎙️ HYBRID MICROPHONE LOGIC (Browser + Sarvam)
 // ==========================================
 let recognition;
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 if (SpeechRecognition) {
     recognition = new SpeechRecognition();
-    recognition.continuous = false; // Stops automatically after you finish a sentence
+    recognition.continuous = false; 
     
-    // Triggered the exact moment the mic successfully turns on
     recognition.onstart = () => {
         micBtn.classList.add('listening');
         statusText.innerText = getStatus('listening');
     };
 
-    // Triggered when you finish speaking
     recognition.onresult = (event) => {
         micBtn.classList.remove('listening');
         const transcript = event.results[0][0].transcript;
@@ -97,20 +95,16 @@ if (SpeechRecognition) {
         handleSubmission(); 
     };
 
-    // Triggered if the mic closes due to silence or finishes naturally
     recognition.onend = () => {
         micBtn.classList.remove('listening');
-        // Only reset text if it was still showing "Listening..."
         if (statusText.innerText === getStatus('listening')) {
             statusText.innerText = getStatus('tapAgain');
         }
     };
 
-    // 🟢 THE FIX: Smart Error Handling
     recognition.onerror = (event) => {
         micBtn.classList.remove('listening');
         console.warn("Speech Recognition Error:", event.error);
-        
         if (event.error === 'not-allowed') {
             statusText.innerText = getStatus('micDenied');
         } else if (event.error === 'no-speech') {
@@ -123,23 +117,94 @@ if (SpeechRecognition) {
     console.warn("Speech Recognition is not supported in this browser.");
 }
 
-// Button Click Event
-micBtn.addEventListener('click', () => {
-    if (!recognition) {
-        alert("Voice input is not supported in your browser. Please use Google Chrome.");
-        return;
-    }
+// Custom variables for Odia MediaRecorder
+let mediaRecorder = null;
+let audioChunks = [];
+let isRecordingOdia = false;
 
-    if (micBtn.classList.contains('listening')) {
-        recognition.stop();
-        micBtn.classList.remove('listening');
-        statusText.innerText = getStatus('tapAgain');
-    } else {
-        recognition.lang = langSelect.value;
-        try { 
-            recognition.start(); 
-        } catch (e) {
-            console.warn("Mic already starting...");
+// Button Click Event with Hybrid Logic
+micBtn.addEventListener('click', async () => {
+    const currentLang = langSelect.value;
+
+    // 🟢 SCENARIO 1: ODIA IS SELECTED (Use Sarvam AI API via Backend)
+    if (currentLang === 'or-IN') {
+        if (isRecordingOdia) {
+            // Stop recording
+            mediaRecorder.stop();
+            micBtn.classList.remove('listening');
+            statusText.innerText = "Transcribing Odia... ⏳";
+            isRecordingOdia = false;
+        } else {
+            // Start recording
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = e => {
+                    if (e.data.size > 0) audioChunks.push(e.data);
+                };
+
+                mediaRecorder.onstop = async () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    const reader = new FileReader();
+                    
+                    reader.readAsDataURL(audioBlob);
+                    reader.onloadend = async () => {
+                        const base64Audio = reader.result.split(',')[1];
+                        
+                        try {
+                            const response = await fetch('/api/transcribe', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ audioBase64: base64Audio, language: 'or-IN' })
+                            });
+                            
+                            const data = await response.json();
+                            
+                            if (data.text) {
+                                textInput.value = data.text; 
+                                handleSubmission();          
+                            } else {
+                                statusText.innerText = getStatus('error');
+                            }
+                        } catch(e) {
+                            statusText.innerText = "Transcription error.";
+                            console.error(e);
+                        }
+                    };
+                    stream.getTracks().forEach(track => track.stop());
+                };
+
+                mediaRecorder.start();
+                isRecordingOdia = true;
+                micBtn.classList.add('listening');
+                statusText.innerText = getStatus('listening'); 
+
+            } catch (err) {
+                console.error("Mic access denied:", err);
+                statusText.innerText = getStatus('micDenied');
+            }
+        }
+    } 
+    // 🟢 SCENARIO 2: ENGLISH OR HINDI SELECTED (Use native browser API)
+    else {
+        if (!recognition) {
+            alert("Voice input is not supported in your browser. Please use Google Chrome.");
+            return;
+        }
+
+        if (micBtn.classList.contains('listening')) {
+            recognition.stop();
+            micBtn.classList.remove('listening');
+            statusText.innerText = getStatus('tapAgain');
+        } else {
+            recognition.lang = currentLang;
+            try { 
+                recognition.start(); 
+            } catch (e) {
+                console.warn("Mic already starting...");
+            }
         }
     }
 });
@@ -188,17 +253,9 @@ async function handleSubmission() {
         addMessage(data.reply, 'bot-msg');
         statusText.innerText = getStatus('tapAgain');
         
-       let voiceText = data.reply; 
-let voiceLang = langSelect.value;
+        // Use the new hybrid speak function
+        speak(data.reply, langSelect.value);
 
-if (voiceLang === 'hi-IN') {
-    voiceText = data.reply; 
-} else if (voiceLang === 'or-IN') {
-    voiceText = data.spokenReply || data.reply; 
-    voiceLang = 'en-IN'; 
-}
-
-speak(voiceText, voiceLang);
     } catch (error) {
         console.error(error);
         if (chatBox.contains(loadingBubble)) chatBox.removeChild(loadingBubble);
@@ -246,10 +303,42 @@ function addMessage(text, className) {
     return div;
 }
 
-function speak(text, lang) {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = lang;
-    utterance.rate = 1.0; 
-    window.speechSynthesis.speak(utterance);
+// ==========================================
+// 🔊 HYBRID TEXT-TO-SPEECH LOGIC
+// ==========================================
+async function speak(text, lang) {
+    // 🟢 SCENARIO 1: ODIA IS SELECTED (Use Sarvam AI via Backend)
+    if (lang === 'or-IN') {
+        try {
+            statusText.innerText = "Generating Odia voice... ⏳";
+            
+            const response = await fetch('/api/speak', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: text, language: lang })
+            });
+            
+            const data = await response.json();
+            
+            if (data.audioBase64) {
+                const audio = new Audio("data:audio/wav;base64," + data.audioBase64);
+                audio.play();
+                audio.onended = () => { statusText.innerText = getStatus('clearImg'); };
+            } else {
+                console.error("Failed to get audio from server.");
+                statusText.innerText = getStatus('clearImg');
+            }
+        } catch (e) {
+            console.error("Sarvam TTS Error:", e);
+            statusText.innerText = getStatus('clearImg');
+        }
+    } 
+    // 🟢 SCENARIO 2: ENGLISH OR HINDI SELECTED (Use Browser API)
+    else {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = 1.0; 
+        window.speechSynthesis.speak(utterance);
+    }
 }

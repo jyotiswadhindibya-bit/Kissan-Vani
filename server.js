@@ -1,11 +1,4 @@
-// ==========================================
-// 🟢 1. NETWORK FIX (CROSS-FETCH)
-// ==========================================
-const fetch = require('cross-fetch');
-global.fetch = fetch;
-global.Headers = fetch.Headers;
-global.Request = fetch.Request;
-global.Response = fetch.Response;
+
 
 require('dotenv').config();
 const express = require('express');
@@ -122,6 +115,87 @@ async function getWeather(city) {
     } catch (error) { return "Weather Service Error"; }
 }
 
+// ==========================================
+// 🎙️ SARVAM AI SPEECH-TO-TEXT ROUTE
+// ==========================================
+app.post('/api/transcribe', async (req, res) => {
+    try {
+        const { audioBase64 } = req.body;
+
+        const audioBuffer = Buffer.from(audioBase64, 'base64');
+        const audioBlob = new Blob([audioBuffer], { type: 'audio/webm' });
+
+        const formData = new FormData();
+        formData.append('file', audioBlob, 'audio.webm'); 
+        
+        // 🟢 FIX 1: Strict requirement to use saaras:v2.5
+        formData.append('model', 'saaras:v2.5');           
+
+        // 🟢 FIX 2: The correct endpoint uses hyphens, NOT slashes
+        const response = await fetch("https://api.sarvam.ai/speech-to-text-translate", {
+            method: 'POST',
+            headers: { 'api-subscription-key': process.env.SARVAM_API_KEY },
+            body: formData
+        });
+
+        const data = await response.json();
+        
+        if (data.transcript) {
+            res.json({ text: data.transcript });
+        } else {
+            console.error("⚠️ Detailed Sarvam API Response:", data); 
+            throw new Error("Transcription missing from Sarvam response");
+        }
+
+    } catch (error) {
+        console.error("❌ Sarvam Error:", error.message);
+        res.status(500).json({ error: "Failed to transcribe audio." });
+    }
+});
+
+// ==========================================
+// 🔊 SARVAM AI TEXT-TO-SPEECH ROUTE
+// ==========================================
+app.post('/api/speak', async (req, res) => {
+    try {
+        const { text, language } = req.body;
+        
+        // Map frontend language to Sarvam's exact format (od-IN for Odia)
+        const targetLanguage = language === 'or-IN' ? 'od-IN' : language;
+
+        const response = await fetch("https://api.sarvam.ai/text-to-speech", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'api-subscription-key': process.env.SARVAM_API_KEY
+            },
+            // Note: Sarvam strictly requires the text to be inside an array called 'inputs'
+            body: JSON.stringify({
+                inputs: [text], 
+                target_language_code: targetLanguage,
+                model: "bulbul:v3",
+                speaker: "simran" // 'simran' is Sarvam's highly natural default female voice
+            })
+        });
+
+        const data = await response.json();
+
+        // Sarvam returns the generated audio as a Base64 string array
+        if (data.audios && data.audios.length > 0) {
+            res.json({ audioBase64: data.audios[0] });
+        } else {
+            console.error("⚠️ Detailed Sarvam TTS Response:", data);
+            throw new Error("TTS Generation failed");
+        }
+
+    } catch (error) {
+        console.error("❌ Sarvam TTS Error:", error.message);
+        res.status(500).json({ error: "Failed to generate audio." });
+    }
+});
+// ==========================================
+// 💬 MAIN GEMINI CHAT ROUTE
+// ==========================================
 app.post('/api/chat', async (req, res) => {
     try {
         const { text, language, image } = req.body;
@@ -166,7 +240,7 @@ app.post('/api/chat', async (req, res) => {
         - translatedQuery: ${translationRule}
         - spokenReply: Phonetic English letters for TTS reading.
         `;
-
+        
         let parts = [{ text: dynamicContext }];
         if (text) parts.push({ text: `User Question: ${text}` });
         if (image) parts.push({ inlineData: { mimeType: "image/jpeg", data: image } });
@@ -183,7 +257,6 @@ app.post('/api/chat', async (req, res) => {
                     generationConfig: { responseMimeType: "application/json" }
                 }); 
                 
-                // 🟢 Load the safe history
                 const sessionHistory = JSON.parse(JSON.stringify(chatHistory));
                 const chatSession = model.startChat({ history: sessionHistory });
 
@@ -192,7 +265,7 @@ app.post('/api/chat', async (req, res) => {
                 
                 aiData = JSON.parse(successfulResponseText);
                 console.log(`✅ Success using ${modelName}`);
-                break; // Stop looping if successful!
+                break; 
 
             } catch (error) {
                 console.log(`⚠️ ${modelName} failed (${error.message}). Trying backup...`);
@@ -202,7 +275,6 @@ app.post('/api/chat', async (req, res) => {
 
         if (!aiData) throw lastError;
 
-        // 🟢 ONLY update the memory if the AI successfully answered!
         chatHistory.push({ role: "user", parts: parts });
         chatHistory.push({ role: "model", parts: [{ text: successfulResponseText }] });
 
