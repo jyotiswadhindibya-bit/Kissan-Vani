@@ -273,23 +273,36 @@ textInput.addEventListener('keypress', (e) => {
 // ==========================================
 // 📷 IMAGE LOGIC & UTILITIES
 // ==========================================
-imageInput.addEventListener('change', function(event) {
+const galleryInput = document.getElementById('galleryInput');
+
+// One function to handle both Camera and Gallery uploads
+function processImageSelection(event) {
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
+            // 1. Save the actual data so Gemini can read it
             selectedImageBase64 = e.target.result.split(',')[1]; 
+            
+            // 2. Show the preview on the screen
             imagePreview.src = e.target.result;
             imagePreviewContainer.classList.remove('hidden');
             statusText.innerText = getStatus('imgAttached');
         };
         reader.readAsDataURL(file);
     }
-});
+}
+
+// Attach this logic to BOTH buttons
+imageInput.addEventListener('change', processImageSelection);
+if (galleryInput) {
+    galleryInput.addEventListener('change', processImageSelection);
+}
 
 window.clearImage = function() {
     selectedImageBase64 = null;
     imageInput.value = "";
+    if (galleryInput) galleryInput.value = "";
     imagePreviewContainer.classList.add('hidden');
     statusText.innerText = getStatus('clearImg');
 };
@@ -302,11 +315,85 @@ function addMessage(text, className) {
     chatBox.scrollTop = chatBox.scrollHeight;
     return div;
 }
+/* =========================================
+           📸 ADVANCED WEBCAM LOGIC
+           ========================================= */
+        const cameraModal = document.getElementById('cameraModal');
+        const cameraVideo = document.getElementById('cameraVideo');
+        const cameraCanvas = document.getElementById('cameraCanvas');
+        let videoStream = null;
+
+        async function openCamera() {
+            closePopover(); // Close the menu
+            
+            try {
+                // Request the camera (prefers the back camera on mobile)
+                videoStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: 'environment' } 
+                });
+                
+                // Connect the live camera to our video box
+                cameraVideo.srcObject = videoStream;
+                cameraModal.classList.remove('hidden');
+            } catch (err) {
+                console.error("Camera access denied:", err);
+                alert("Could not access the camera. Please check your browser permissions.");
+            }
+        }
+
+        // Handle the "Cancel" button
+        document.getElementById('closeCameraBtn').addEventListener('click', () => {
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop()); // Turn off the webcam light
+            }
+            cameraModal.classList.add('hidden');
+        });
+
+        // Handle the "Snap Photo" button
+        document.getElementById('snapPhotoBtn').addEventListener('click', () => {
+            // 1. Draw the exact video frame onto our hidden canvas
+            cameraCanvas.width = cameraVideo.videoWidth;
+            cameraCanvas.height = cameraVideo.videoHeight;
+            const ctx = cameraCanvas.getContext('2d');
+            ctx.drawImage(cameraVideo, 0, 0, cameraCanvas.width, cameraCanvas.height);
+            
+            // 2. Convert the canvas into a Base64 Image String
+            const base64DataUrl = cameraCanvas.toDataURL('image/jpeg');
+            
+            // 3. Save it to the global variable so script.js can send it to Gemini
+            selectedImageBase64 = base64DataUrl.split(',')[1];
+            
+            // 4. Show the thumbnail preview in the chat box
+            document.getElementById('imagePreview').src = base64DataUrl;
+            document.getElementById('imagePreviewContainer').classList.remove('hidden');
+            document.getElementById('status-text').innerText = getStatus('imgAttached');
+            
+            // 5. Turn off the webcam and hide the modal
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+            }
+            cameraModal.classList.add('hidden');
+        });
 
 // ==========================================
 // 🔊 HYBRID TEXT-TO-SPEECH LOGIC
 // ==========================================
+
+// 🟢 NEW: Helper function to strip out Markdown symbols before speaking
+function cleanTextForSpeech(rawText) {
+    if (!rawText) return "";
+    return rawText
+        .replace(/\*/g, '')      // Remove all asterisks
+        .replace(/#/g, '')       // Remove hash/pound signs
+        .replace(/_/g, '')       // Remove underscores
+        .replace(/`/g, '')       // Remove backticks
+        .replace(/~/g, '');      // Remove tildes
+}
+
 async function speak(text, lang) {
+    // 🟢 FIX: Clean the text before doing anything else!
+    const cleanText = cleanTextForSpeech(text);
+
     // 🟢 SCENARIO 1: ODIA IS SELECTED (Use Sarvam AI via Backend)
     if (lang === 'or-IN') {
         try {
@@ -315,7 +402,7 @@ async function speak(text, lang) {
             const response = await fetch('/api/speak', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ text: text, language: lang })
+                body: JSON.stringify({ text: cleanText, language: lang }) // Send clean text
             });
             
             const data = await response.json();
@@ -336,7 +423,7 @@ async function speak(text, lang) {
     // 🟢 SCENARIO 2: ENGLISH OR HINDI SELECTED (Use Browser API)
     else {
         window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
+        const utterance = new SpeechSynthesisUtterance(cleanText); // Speak clean text
         utterance.lang = lang;
         utterance.rate = 1.0; 
         window.speechSynthesis.speak(utterance);

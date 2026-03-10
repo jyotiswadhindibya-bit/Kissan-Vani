@@ -81,6 +81,16 @@
             </div>
         </div>
     </div> 
+    <div id="cameraModal" class="hidden">
+        <div class="camera-content">
+            <video id="cameraVideo" autoplay playsinline></video>
+            <div class="camera-controls">
+                <button id="closeCameraBtn" type="button">✖ Cancel</button>
+                <button id="snapPhotoBtn" type="button">📸 Snap Photo</button>
+            </div>
+            <canvas id="cameraCanvas" class="hidden"></canvas>
+        </div>
+    </div>
     
     <script>
         /* =========================================
@@ -215,24 +225,7 @@
             document.getElementById('galleryInput').click();
         }
 
-        /* Handle both inputs feeding into the same preview */
-        function handleImageFile(file) {
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                document.getElementById('imagePreview').src = e.target.result;
-                document.getElementById('imagePreviewContainer').classList.remove('hidden');
-            };
-            reader.readAsDataURL(file);
-        }
-
-        document.getElementById('imageInput').addEventListener('change', (e) => {
-            handleImageFile(e.target.files[0]);
-        });
-
-        document.getElementById('galleryInput').addEventListener('change', (e) => {
-            handleImageFile(e.target.files[0]);
-        });
+        
 
         function clearImage() {
             document.getElementById('imagePreviewContainer').classList.add('hidden');

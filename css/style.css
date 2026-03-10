@@ -459,3 +459,29 @@ select {
         transform: translateY(0); 
     }
 }
+/* ==========================================
+   📷 LIVE CAMERA MODAL STYLES
+   ========================================== */
+#cameraModal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95); z-index: 3000;
+    display: flex; justify-content: center; align-items: center;
+}
+#cameraModal.hidden { display: none; }
+.camera-content { 
+    position: relative; width: 100%; max-width: 500px; 
+    display: flex; flex-direction: column; padding: 15px;
+}
+#cameraVideo { 
+    width: 100%; background: #000; border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+.camera-controls { 
+    display: flex; justify-content: space-between; margin-top: 20px; 
+}
+.camera-controls button { 
+    padding: 12px 25px; font-size: 16px; border-radius: 8px; 
+    border: none; cursor: pointer; font-weight: 600;
+}
+#snapPhotoBtn { background: #4CAF50; color: white; }
+#closeCameraBtn { background: #f44336; color: white; }

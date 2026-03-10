@@ -217,8 +217,7 @@ app.post('/api/chat', async (req, res) => {
             scriptInstruction = "STRICTLY reply in English.";
             translationRule = "DO NOT TRANSLATE. Return the exact English text.";
         }
-
-        let dynamicContext = `
+let dynamicContext = `
         [TASK]
         You are Kisan Vani AI, an agricultural expert. Answers should be clear, concise, and simple.
         Return a JSON object with keys: "translatedQuery", "reply", "spokenReply".
@@ -230,10 +229,10 @@ app.post('/api/chat', async (req, res) => {
 
         [ANALYSIS RULES]
         1. If an image is provided:
-           - If it is a CROP: Identify the crop. Analyze health and give suggestions to prevent/cure diseases.
-           - If it is the SKY: Use weather data to advise on farming activities.
-           - If unclear, state that you cannot analyze it.
-        2. If only text is provided: Strictly answer using the data above.
+           - Identify the crop/issue. Analyze health and give suggestions.
+           - If it is the SKY: Use weather data to advise.
+        2. If the user asks about prices, weather, or government schemes, prioritize using the [RELEVANT DATA] provided above.
+        3. If the user asks general farming questions (e.g., pests, fertilizers, crop cycles), use your expert agricultural knowledge to provide helpful, accurate advice.
         
         [OUTPUT RULES]
         - reply: ${scriptInstruction}
