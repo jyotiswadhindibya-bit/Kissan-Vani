@@ -25,9 +25,22 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+.nav-left {
+    display: flex;
+    flex-direction: column;
+}
+
 .logo {
     font-size: 24px;
     font-weight: 700;
+}
+
+/* Weather Widget Integration */
+.weather-widget {
+    font-size: 13px;
+    color: #aed581;
+    margin-top: 2px;
+    font-weight: 300;
 }
 
 .nav-right {
@@ -92,22 +105,37 @@ body {
     line-height: 1.6;
 }
 
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .cta-button {
     display: inline-block;
     padding: 14px 28px;
     background: #e44a03e9;
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(67, 160, 71, 0.4);
-    transition: transform 0.2s;
+    transition: transform 0.2s, background 0.3s;
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
     background: #2e7d32;
+}
+
+.cta-button.secondary {
+    background: #2e7d32;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.cta-button.secondary:hover {
+    background: #1b5e20;
 }
 
 .hero-image {
@@ -249,6 +277,9 @@ body {
     }
     .hero-content {
         margin-top: 30px;
+    }
+    .hero-buttons {
+        justify-content: center;
     }
     .hero-image {
         width: 100%;

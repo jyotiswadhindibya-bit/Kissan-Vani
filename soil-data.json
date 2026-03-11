@@ -1,0 +1,82 @@
+{
+    "alluvial": {
+        "en-IN": {
+            "name": "Alluvial Soil",
+            "crops": ["Rice", "Wheat", "Sugarcane", "Cotton", "Jute"],
+            "pros": ["Highly fertile", "Rich in potash", "Good water retention"],
+            "cons": ["Lacks nitrogen and phosphorus", "Requires regular fertilization for high yield"]
+        },
+        "hi-IN": {
+            "name": "जलोढ़ मिट्टी",
+            "crops": ["चावल", "गेहूँ", "गन्ना", "कपास", "जूट"],
+            "pros": ["अत्यधिक उपजाऊ", "पोटाश से भरपूर", "अच्छी जल धारण क्षमता"],
+            "cons": ["नाइट्रोजन और फास्फोरस की कमी", "उच्च उपज के लिए नियमित खाद की आवश्यकता"]
+        },
+        "or-IN": {
+            "name": "ଜଳୋଢ଼ ମୃତ୍ତିକା",
+            "crops": ["ଧାନ", "ଗହମ", "ଆଖୁ", "କପା", "ଝୋଟ"],
+            "pros": ["ଅତ୍ୟନ୍ତ ଉର୍ବର", "ପୋଟାସ୍ ରେ ଭରପୂର", "ଭଲ ଜଳ ଧାରଣ କ୍ଷମତା"],
+            "cons": ["ଯବକ୍ଷାରଜାନ ଏବଂ ଫସଫରସ୍ ର ଅଭାବ", "ଅଧିକ ଅମଳ ପାଇଁ ନିୟମିତ ସାର ଆବଶ୍ୟକ"]
+        }
+    },
+    "black": {
+        "en-IN": {
+            "name": "Black Soil",
+            "crops": ["Cotton", "Soybean", "Millets", "Tobacco"],
+            "pros": ["Excellent moisture retention", "Rich in calcium and magnesium"],
+            "cons": ["Sticky when wet, hard to plough", "Develops deep cracks in dry season"]
+        },
+        "hi-IN": {
+            "name": "काली मिट्टी",
+            "crops": ["कपास", "सोयाबीन", "बाजरा", "तंबाकू"],
+            "pros": ["उत्कृष्ट नमी धारण क्षमता", "कैल्शियम और मैग्नीशियम से भरपूर"],
+            "cons": ["गीली होने पर चिपचिपी, जोतने में मुश्किल", "सूखे मौसम में गहरी दरारें पड़ जाती हैं"]
+        },
+        "or-IN": {
+            "name": "କଳା ମୃତ୍ତିକା",
+            "crops": ["କପା", "ସୋୟାବିନ୍", "ବାଜରା", "ତମାଖୁ"],
+            "pros": ["ଉତ୍କୃଷ୍ଟ ଆର୍ଦ୍ରତା ଧାରଣ", "କ୍ୟାଲସିୟମ୍ ଏବଂ ମ୍ୟାଗ୍ନେସିୟମ୍ ରେ ଭରପୂର"],
+            "cons": ["ଓଦା ଥିଲେ ଅଠାଳିଆ, ଚାଷ କରିବା କଷ୍ଟକର", "ଶୁଖିଲା ଋତୁରେ ଗଭୀର ଫାଟ ସୃଷ୍ଟି ହୁଏ"]
+        }
+    },
+    "red": {
+        "en-IN": {
+            "name": "Red Soil",
+            "crops": ["Groundnut", "Potato", "Maize", "Fruits"],
+            "pros": ["Good drainage", "Responds well to fertilizers"],
+            "cons": ["Poor in humus and nitrogen", "Requires heavy irrigation"]
+        },
+        "hi-IN": {
+            "name": "लाल मिट्टी",
+            "crops": ["मूंगफली", "आलू", "मक्का", "फल"],
+            "pros": ["अच्छी जल निकासी", "उर्वरकों के प्रति अच्छी प्रतिक्रिया"],
+            "cons": ["ह्यूमस और नाइट्रोजन में खराब", "भारी सिंचाई की आवश्यकता है"]
+        },
+        "or-IN": {
+            "name": "ନାଲି ମୃତ୍ତିକା",
+            "crops": ["ଚିନାବାଦାମ", "ଆଳୁ", "ମକା", "ଫଳ"],
+            "pros": ["ଭଲ ଜଳ ନିଷ୍କାସନ", "ସାର ପାଇଁ ଭଲ ପ୍ରତିକ୍ରିୟା ଦିଏ"],
+            "cons": ["ହ୍ୟୁମସ୍ ଏବଂ ଯବକ୍ଷାରଜାନ କମ୍", "ଅଧିକ ଜଳସେଚନ ଆବଶ୍ୟକ"]
+        }
+    },
+    "laterite": {
+        "en-IN": {
+            "name": "Laterite Soil",
+            "crops": ["Tea", "Coffee", "Cashew", "Rubber"],
+            "pros": ["Good for plantation crops", "Excellent building material when dried"],
+            "cons": ["Highly acidic", "Low fertility without manures"]
+        },
+        "hi-IN": {
+            "name": "लेटराइट मिट्टी",
+            "crops": ["चाय", "कॉफी", "काजू", "रबड़"],
+            "pros": ["बागान फसलों के लिए अच्छा", "सूखने पर उत्कृष्ट निर्माण सामग्री"],
+            "cons": ["अत्यधिक अम्लीय", "खाद के बिना कम उर्वरता"]
+        },
+        "or-IN": {
+            "name": "ଲାଟେରାଇଟ୍ ମୃତ୍ତିକା",
+            "crops": ["ଚା", "କଫି", "କାଜୁ", "ରବର"],
+            "pros": ["ବଗିଚା ଫସଲ ପାଇଁ ଭଲ", "ଶୁଖିଗଲେ ଉତ୍କୃଷ୍ଟ ନିର୍ମାଣ ସାମଗ୍ରୀ"],
+            "cons": ["ଅଧିକ ଅମ୍ଳୀୟ", "ଖତ ବିନା କମ୍ ଉର୍ବରତା"]
+        }
+    }
+}
