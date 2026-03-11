@@ -1,106 +1,5613 @@
 {
-  "Bhubaneswar": {
-    "updated_at": "08-02-2026",
-    "region": "Odisha",
+  "Odisha": {
+    "updated_at": "11-03-2026",
+    "region": "East India",
     "commodities": [
-      { "name": "Potato (Aloo)", "price": "₹20/kg", "trend": "Falling" },
-      { "name": "Onion (Pyaaz)", "price": "₹25/kg", "trend": "Falling" },
-      { "name": "Tomato", "price": "₹40/kg", "trend": "Rising" },
-      { "name": "Rice (Common)", "price": "₹3800/quintal", "trend": "Stable" },
-      { "name": "Wheat", "price": "₹3200/quintal", "trend": "Stable" },
-      { "name": "Brinjal (Baigana)", "price": "₹40/kg", "trend": "Falling" },
-      { "name": "Pointed Gourd (Potala)", "price": "₹60/kg", "trend": "Stable" }
-    ]
-  },
-  "Cuttack": {
-    "updated_at": "08-02-2026",
-    "region": "Odisha",
-    "commodities": [
-      { "name": "Potato (Aloo)", "price": "₹18/kg", "trend": "Falling" },
-      { "name": "Onion (Pyaaz)", "price": "₹24/kg", "trend": "Falling" },
-      { "name": "Tomato", "price": "₹38/kg", "trend": "Rising" },
-      { "name": "Rice (Common)", "price": "₹3600/quintal", "trend": "Stable" },
-      { "name": "Wheat", "price": "₹3000/quintal", "trend": "Stable" },
-      { "name": "Brinjal (Baigana)", "price": "₹35/kg", "trend": "Falling" },
-      { "name": "Pointed Gourd (Potala)", "price": "₹65/kg", "trend": "Stable" }
-    ]
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹20/kg",
+        "trend": "Falling",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹25/kg",
+        "trend": "Falling",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹40/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹3800/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3200/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹40/kg",
+        "trend": "Falling",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹60/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹50/kg",
+        "trend": "Rising",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹25/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage (Bandha Kobi)",
+        "price": "₹20/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower (Phulkobi)",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹40/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli (Lanka)",
+        "price": "₹80/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic (Rasuna)",
+        "price": "₹120/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger (Ada)",
+        "price": "₹100/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin (Kakharu)",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy (Dhana)",
+        "price": "₹2200/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1800/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut (China Badam)",
+        "price": "₹70/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "ओडिशा",
+    "name_or": "ଓଡ଼ିଶା",
+    "region_hi": "पूर्व भारत",
+    "region_or": "ପୂର୍ବ ଭାରତ"
   },
   "Delhi": {
-    "updated_at": "08-02-2026",
+    "updated_at": "11-03-2026",
     "region": "North India",
     "commodities": [
-      { "name": "Potato (Aloo)", "price": "₹15/kg", "trend": "Falling" },
-      { "name": "Onion (Pyaaz)", "price": "₹30/kg", "trend": "Stable" },
-      { "name": "Tomato", "price": "₹25/kg", "trend": "Stable" },
-      { "name": "Rice (Common)", "price": "₹4200/quintal", "trend": "Stable" },
-      { "name": "Wheat", "price": "₹2800/quintal", "trend": "Stable" },
-      { "name": "Brinjal (Baigana)", "price": "₹30/kg", "trend": "Stable" },
-      { "name": "Pointed Gourd (Potala)", "price": "₹90/kg", "trend": "Expensive" }
-    ]
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹15/kg",
+        "trend": "Falling",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹25/kg",
+        "trend": "Stable",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4200/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2800/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹90/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹55/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹15/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹25/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹45/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹60/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹100/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹90/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹18/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2000/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1900/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹72/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "दिल्ली",
+    "name_or": "ଦିଲ୍ଲୀ",
+    "region_hi": "उत्तर भारत",
+    "region_or": "ଉତ୍ତର ଭାରତ"
   },
-  "Mumbai": {
-    "updated_at": "08-02-2026",
-    "region": "Maharashtra",
+  "Maharashtra": {
+    "updated_at": "11-03-2026",
+    "region": "West India",
     "commodities": [
-     { "name": "Potato (Aloo)", "price": "₹22/kg", "trend": "Stable" },
-      { "name": "Onion (Pyaaz)", "price": "₹35/kg", "trend": "Stable" },
-      { "name": "Tomato", "price": "₹30/kg", "trend": "Rising" },
-      { "name": "Rice (Common)", "price": "₹5000/quintal", "trend": "Stable" },
-      { "name": "Wheat", "price": "₹4200/quintal", "trend": "Rising" },
-      { "name": "Brinjal (Baigana)", "price": "₹45/kg", "trend": "Stable" },
-      { "name": "Pointed Gourd (Potala)", "price": "₹110/kg", "trend": "Expensive" }
-    ]
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹35/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹30/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹5000/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹4200/quintal",
+        "trend": "Rising",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹45/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹110/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹60/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹35/kg",
+        "trend": "Rising",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹55/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹70/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹130/kg",
+        "trend": "Rising",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹110/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2300/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹2000/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹80/kg",
+        "trend": "Rising",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      }
+    ],
+    "name_hi": "महाराष्ट्र",
+    "name_or": "ମହାରାଷ୍ଟ୍ର",
+    "region_hi": "पश्चिम भारत",
+    "region_or": "ପଶ୍ଚିମ ଭାରତ"
   },
-  "Kolkata": {
-    "updated_at": "08-02-2026",
-    "region": "West Bengal",
+  "West Bengal": {
+    "updated_at": "11-03-2026",
+    "region": "East India",
     "commodities": [
-      { "name": "Potato (Aloo)", "price": "₹12/kg", "trend": "Falling" },
-      { "name": "Onion (Pyaaz)", "price": "₹26/kg", "trend": "Falling" },
-      { "name": "Tomato", "price": "₹24/kg", "trend": "Falling" },
-      { "name": "Rice (Common)", "price": "₹4000/quintal", "trend": "Stable" },
-      { "name": "Wheat", "price": "₹3000/quintal", "trend": "Stable" },
-      { "name": "Brinjal (Baigana)", "price": "₹32/kg", "trend": "Falling" },
-      { "name": "Pointed Gourd (Potala)", "price": "₹50/kg", "trend": "Stable" }
-    ]
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹12/kg",
+        "trend": "Falling",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹26/kg",
+        "trend": "Falling",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹24/kg",
+        "trend": "Falling",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4000/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3000/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹32/kg",
+        "trend": "Falling",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹50/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹45/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹20/kg",
+        "trend": "Falling",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹14/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹38/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹55/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹95/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹85/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹16/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2100/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1700/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹65/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "पश्चिम बंगाल",
+    "name_or": "ପଶ୍ଚିମ ବଙ୍ଗ",
+    "region_hi": "पूर्व भारत",
+    "region_or": "ପୂର୍ବ ଭାରତ"
   },
-  "Chennai": {
-    "updated_at": "08-02-2026",
-    "region": "Tamil Nadu",
+  "Tamil Nadu": {
+    "updated_at": "11-03-2026",
+    "region": "South India",
     "commodities": [
-      { "name": "Potato (Aloo)", "price": "₹25/kg", "trend": "Stable" },
-      { "name": "Onion (Pyaaz)", "price": "₹32/kg", "trend": "Stable" },
-      { "name": "Tomato", "price": "₹45/kg", "trend": "Stable" },
-      { "name": "Rice (Common)", "price": "₹4800/quintal", "trend": "Rising" },
-      { "name": "Wheat", "price": "₹3800/quintal", "trend": "Stable" },
-      { "name": "Brinjal (Baigana)", "price": "₹50/kg", "trend": "Rising" },
-      { "name": "Pointed Gourd (Potala)", "price": "₹120/kg", "trend": "Expensive" }
-    ]
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹25/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹32/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹45/kg",
+        "trend": "Stable",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4800/quintal",
+        "trend": "Rising",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3800/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹50/kg",
+        "trend": "Rising",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹120/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹65/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹35/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹40/kg",
+        "trend": "Rising",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹50/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹75/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹115/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹105/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹25/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2400/quintal",
+        "trend": "Rising",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹2100/quintal",
+        "trend": "Rising",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹78/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "तमिलनाडु",
+    "name_or": "ତାମିଲନାଡ଼ୁ",
+    "region_hi": "दक्षिण भारत",
+    "region_or": "ଦକ୍ଷିଣ ଭାରତ"
   },
-  "Bangalore": {
-    "updated_at": "08-02-2026",
-    "region": "Karnataka",
+  "Karnataka": {
+    "updated_at": "11-03-2026",
+    "region": "South India",
     "commodities": [
-     { "name": "Potato (Aloo)", "price": "₹24/kg", "trend": "Stable" },
-      { "name": "Onion (Pyaaz)", "price": "₹28/kg", "trend": "Stable" },
-      { "name": "Tomato", "price": "₹45/kg", "trend": "Rising" },
-      { "name": "Rice (Common)", "price": "₹5200/quintal", "trend": "Rising" },
-      { "name": "Wheat", "price": "₹3600/quintal", "trend": "Stable" },
-      { "name": "Brinjal (Baigana)", "price": "₹40/kg", "trend": "Stable" },
-      { "name": "Pointed Gourd (Potala)", "price": "₹110/kg", "trend": "Expensive" }
-    ]
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹24/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹45/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹5200/quintal",
+        "trend": "Rising",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3600/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹40/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹110/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹62/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹32/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹26/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹38/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹48/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹72/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹118/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹108/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹24/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2350/quintal",
+        "trend": "Rising",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹2050/quintal",
+        "trend": "Rising",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹75/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "कर्नाटक",
+    "name_or": "କର୍ଣ୍ଣାଟକ",
+    "region_hi": "दक्षिण भारत",
+    "region_or": "ଦକ୍ଷିଣ ଭାରତ"
   },
-  "Hyderabad": {
-    "updated_at": "08-02-2026",
-    "region": "Telangana",
+  "Telangana": {
+    "updated_at": "11-03-2026",
+    "region": "South India",
     "commodities": [
-      { "name": "Potato (Aloo)", "price": "₹20/kg", "trend": "Stable" },
-      { "name": "Onion (Pyaaz)", "price": "₹22/kg", "trend": "Falling" },
-      { "name": "Tomato", "price": "₹18/kg", "trend": "Stable" },
-      { "name": "Rice (Common)", "price": "₹4500/quintal", "trend": "Rising" },
-      { "name": "Wheat", "price": "₹3400/quintal", "trend": "Stable" },
-      { "name": "Brinjal (Baigana)", "price": "₹25/kg", "trend": "Falling" },
-      { "name": "Pointed Gourd (Potala)", "price": "₹105/kg", "trend": "Expensive" }
-    ]
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹22/kg",
+        "trend": "Falling",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹18/kg",
+        "trend": "Stable",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4500/quintal",
+        "trend": "Rising",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3400/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹25/kg",
+        "trend": "Falling",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹105/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹58/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹22/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹35/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹42/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹68/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹105/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹95/kg",
+        "trend": "Falling",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2250/quintal",
+        "trend": "Rising",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1950/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹72/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "तेलंगाना",
+    "name_or": "ତେଲଙ୍ଗାନା",
+    "region_hi": "दक्षिण भारत",
+    "region_or": "ଦକ୍ଷିଣ ଭାରତ"
+  },
+  "Punjab": {
+    "updated_at": "11-03-2026",
+    "region": "North India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹14/kg",
+        "trend": "Falling",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹27/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹3900/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2450/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹26/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹85/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹48/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹14/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹24/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹36/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹55/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹92/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹85/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹16/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2050/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1800/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹68/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "पंजाब",
+    "name_or": "ପଞ୍ଜାବ",
+    "region_hi": "उत्तर भारत",
+    "region_or": "ଉତ୍ତର ଭାରତ"
+  },
+  "Uttar Pradesh": {
+    "updated_at": "11-03-2026",
+    "region": "North India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹13/kg",
+        "trend": "Falling",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹3800/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2500/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹25/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹80/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹45/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹13/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹38/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹58/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹95/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹88/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹15/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2000/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1750/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹66/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "उत्तर प्रदेश",
+    "name_or": "ଉତ୍ତର ପ୍ରଦେଶ",
+    "region_hi": "उत्तर भारत",
+    "region_or": "ଉତ୍ତର ଭାରତ"
+  },
+  "Gujarat": {
+    "updated_at": "11-03-2026",
+    "region": "West India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹14/kg",
+        "trend": "Falling",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹22/kg",
+        "trend": "Falling",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4200/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2600/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹22/kg",
+        "trend": "Falling",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹95/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹50/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹16/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹26/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹35/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹55/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹90/kg",
+        "trend": "Falling",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹82/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹16/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2100/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1850/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹65/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "गुजरात",
+    "name_or": "ଗୁଜରାଟ",
+    "region_hi": "पश्चिम भारत",
+    "region_or": "ପଶ୍ଚିମ ଭାରତ"
+  },
+  "Rajasthan": {
+    "updated_at": "11-03-2026",
+    "region": "North India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹16/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹25/kg",
+        "trend": "Falling",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹23/kg",
+        "trend": "Stable",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4000/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2550/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹88/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹47/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹15/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹25/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹40/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹62/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹98/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹90/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹17/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2050/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1820/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹67/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "राजस्थान",
+    "name_or": "ରାଜସ୍ଥାନ",
+    "region_hi": "उत्तर भारत",
+    "region_or": "ଉତ୍ତର ଭାରତ"
+  },
+  "Haryana": {
+    "updated_at": "11-03-2026",
+    "region": "North India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹13/kg",
+        "trend": "Falling",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹26/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹21/kg",
+        "trend": "Stable",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹3850/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2420/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹24/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹82/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹44/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹19/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹13/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹36/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹54/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹91/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹83/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹15/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2020/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1780/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹64/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "हरियाणा",
+    "name_or": "ହରିଆଣା",
+    "region_hi": "उत्तर भारत",
+    "region_or": "ଉତ୍ତର ଭାରତ"
+  },
+  "Madhya Pradesh": {
+    "updated_at": "11-03-2026",
+    "region": "Central India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹15/kg",
+        "trend": "Falling",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹24/kg",
+        "trend": "Falling",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹3700/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2480/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹26/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹78/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹46/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹14/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹23/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹37/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹56/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹93/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹86/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹16/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2050/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1760/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹66/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "मध्य प्रदेश",
+    "name_or": "ମଧ୍ୟ ପ୍ରଦେଶ",
+    "region_hi": "मध्य भारत",
+    "region_or": "ମଧ୍ୟ ଭାରତ"
+  },
+  "Andhra Pradesh": {
+    "updated_at": "11-03-2026",
+    "region": "South India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹21/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹24/kg",
+        "trend": "Falling",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹30/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4600/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3500/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹100/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹55/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹32/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹44/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹70/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹108/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹98/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹21/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2280/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1980/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹73/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "आंध्र प्रदेश",
+    "name_or": "ଆନ୍ଧ୍ର ପ୍ରଦେଶ",
+    "region_hi": "दक्षिण भारत",
+    "region_or": "ଦକ୍ଷିଣ ଭାରତ"
+  },
+  "Bihar": {
+    "updated_at": "11-03-2026",
+    "region": "East India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹14/kg",
+        "trend": "Falling",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹27/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹3600/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2400/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹24/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹55/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹42/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹18/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹13/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹21/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹35/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹52/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹88/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹80/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹14/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹1980/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1700/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹62/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "बिहार",
+    "name_or": "ବିହାର",
+    "region_hi": "पूर्व भारत",
+    "region_or": "ପୂର୍ବ ଭାରତ"
+  },
+  "Jharkhand": {
+    "updated_at": "11-03-2026",
+    "region": "East India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹17/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹26/kg",
+        "trend": "Falling",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹28/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹3700/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2600/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹58/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹46/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹16/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹26/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹37/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹60/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹95/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹88/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹18/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2050/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1750/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹65/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "झारखंड",
+    "name_or": "ଝାଡ଼ଖଣ୍ଡ",
+    "region_hi": "पूर्व भारत",
+    "region_or": "ପୂର୍ବ ଭାରତ"
+  },
+  "Kerala": {
+    "updated_at": "11-03-2026",
+    "region": "South India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹38/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹50/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹5500/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹4000/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹55/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹130/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹70/kg",
+        "trend": "Rising",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹40/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹45/kg",
+        "trend": "Rising",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹60/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹85/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹140/kg",
+        "trend": "Rising",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹120/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2600/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹2200/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹85/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "केरल",
+    "name_or": "କେରଳ",
+    "region_hi": "दक्षिण भारत",
+    "region_or": "ଦକ୍ଷିଣ ଭାରତ"
+  },
+  "Assam": {
+    "updated_at": "11-03-2026",
+    "region": "Northeast India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹30/kg",
+        "trend": "Rising",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹35/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹3900/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3100/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹35/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹65/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹52/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹32/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹42/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹65/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹105/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹95/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2150/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1850/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹68/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "असम",
+    "name_or": "ଅସମ",
+    "region_hi": "पूर्वोत्तर भारत",
+    "region_or": "ଉତ୍ତର-ପୂର୍ବ ଭାରତ"
+  },
+  "Chhattisgarh": {
+    "updated_at": "11-03-2026",
+    "region": "Central India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹18/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹26/kg",
+        "trend": "Falling",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹25/kg",
+        "trend": "Stable",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹3500/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2550/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹62/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹48/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹16/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹25/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹38/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹58/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹95/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹88/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹18/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2100/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1750/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹65/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "छत्तीसगढ़",
+    "name_or": "ଛତ୍ତିଶଗଡ଼",
+    "region_hi": "मध्य भारत",
+    "region_or": "ମଧ୍ୟ ଭାରତ"
+  },
+  "Uttarakhand": {
+    "updated_at": "11-03-2026",
+    "region": "North India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹18/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹30/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4000/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2600/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹80/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹50/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹24/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹18/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹40/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹60/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹100/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹92/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹18/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2100/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1850/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹68/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "उत्तराखंड",
+    "name_or": "ଉତ୍ତରାଖଣ୍ଡ",
+    "region_hi": "उत्तर भारत",
+    "region_or": "ଉତ୍ତର ଭାରତ"
+  },
+  "Himachal Pradesh": {
+    "updated_at": "11-03-2026",
+    "region": "North India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹35/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4200/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2700/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹32/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹85/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹52/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹26/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹18/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹42/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹62/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹102/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹95/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2150/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1900/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹70/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "हिमाचल प्रदेश",
+    "name_or": "ହିମାଚଳ ପ୍ରଦେଶ",
+    "region_hi": "उत्तर भारत",
+    "region_or": "ଉତ୍ତର ଭାରତ"
+  },
+  "Jammu and Kashmir": {
+    "updated_at": "11-03-2026",
+    "region": "North India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹22/kg",
+        "trend": "Rising",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹35/kg",
+        "trend": "Rising",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹40/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4500/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹2800/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹35/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹90/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹55/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹20/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹48/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹68/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹110/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹100/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2300/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹2000/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹72/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "जम्मू और कश्मीर",
+    "name_or": "ଜମ୍ମୁ ଓ କାଶ୍ମୀର",
+    "region_hi": "उत्तर भारत",
+    "region_or": "ଉତ୍ତର ଭାରତ"
+  },
+  "Goa": {
+    "updated_at": "11-03-2026",
+    "region": "West India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹38/kg",
+        "trend": "Stable",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹45/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹5200/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹4000/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹50/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹120/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹65/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹38/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹42/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹58/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹80/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹135/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹115/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹26/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2500/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹2100/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹82/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "गोवा",
+    "name_or": "ଗୋଆ",
+    "region_hi": "पश्चिम भारत",
+    "region_or": "ପଶ୍ଚିମ ଭାରତ"
+  },
+  "Manipur": {
+    "updated_at": "11-03-2026",
+    "region": "Northeast India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹25/kg",
+        "trend": "Rising",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹35/kg",
+        "trend": "Rising",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹40/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4200/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3400/quintal",
+        "trend": "Rising",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹38/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹70/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹55/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹35/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹45/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹70/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹112/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹100/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹24/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2200/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1900/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹70/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "मणिपुर",
+    "name_or": "ମଣିପୁର",
+    "region_hi": "पूर्वोत्तर भारत",
+    "region_or": "ଉତ୍ତର-ପୂର୍ବ ଭାରତ"
+  },
+  "Meghalaya": {
+    "updated_at": "11-03-2026",
+    "region": "Northeast India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹24/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹34/kg",
+        "trend": "Rising",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹38/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4100/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3200/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹36/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹68/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹53/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹29/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹18/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹43/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹66/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹108/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹98/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2180/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1870/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹69/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "मेघालय",
+    "name_or": "ମେଘାଳୟ",
+    "region_hi": "पूर्वोत्तर भारत",
+    "region_or": "ଉତ୍ତର-ପୂର୍ବ ଭାରତ"
+  },
+  "Nagaland": {
+    "updated_at": "11-03-2026",
+    "region": "Northeast India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹26/kg",
+        "trend": "Rising",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹36/kg",
+        "trend": "Rising",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹42/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4300/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3500/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹40/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹72/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹56/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹32/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹22/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹34/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹46/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹68/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹112/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹102/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹24/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2220/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1920/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹71/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "नागालैंड",
+    "name_or": "ନାଗାଲ୍ୟାଣ୍ଡ",
+    "region_hi": "पूर्वोत्तर भारत",
+    "region_or": "ଉତ୍ତର-ପୂର୍ବ ଭାରତ"
+  },
+  "Tripura": {
+    "updated_at": "11-03-2026",
+    "region": "Northeast India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹23/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹32/kg",
+        "trend": "Rising",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹36/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹3950/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3100/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹34/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹64/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹50/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹27/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹19/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹31/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹41/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹64/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹106/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹96/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹21/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2130/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1830/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹67/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "त्रिपुरा",
+    "name_or": "ତ୍ରିପୁରା",
+    "region_hi": "पूर्वोत्तर भारत",
+    "region_or": "ଉତ୍ତର-ପୂର୍ବ ଭାରତ"
+  },
+  "Mizoram": {
+    "updated_at": "11-03-2026",
+    "region": "Northeast India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹28/kg",
+        "trend": "Rising",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹38/kg",
+        "trend": "Rising",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹45/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4400/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3600/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹42/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹75/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹58/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹33/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹24/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹36/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹48/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹72/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹115/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹105/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹25/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2250/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1950/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹73/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "मिजोरम",
+    "name_or": "ମିଜୋରାମ",
+    "region_hi": "पूर्वोत्तर भारत",
+    "region_or": "ଉତ୍ତର-ପୂର୍ବ ଭାରତ"
+  },
+  "Arunachal Pradesh": {
+    "updated_at": "11-03-2026",
+    "region": "Northeast India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹27/kg",
+        "trend": "Rising",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹37/kg",
+        "trend": "Rising",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹43/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4350/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3550/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹41/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹73/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹57/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹31/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹23/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹35/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹47/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹70/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹113/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹103/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹23/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2230/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1930/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹71/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "अरुणाचल प्रदेश",
+    "name_or": "ଅରୁଣାଚଳ ପ୍ରଦେଶ",
+    "region_hi": "पूर्वोत्तर भारत",
+    "region_or": "ଉତ୍ତର-ପୂର୍ବ ଭାରତ"
+  },
+  "Sikkim": {
+    "updated_at": "11-03-2026",
+    "region": "Northeast India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹26/kg",
+        "trend": "Stable",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹36/kg",
+        "trend": "Rising",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹42/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4250/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3450/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹39/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹71/kg",
+        "trend": "Stable",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹55/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹30/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹20/kg",
+        "trend": "Falling",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "गिर रहा है",
+        "trend_or": "କମୁଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹33/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹45/kg",
+        "trend": "Stable",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹68/kg",
+        "trend": "Stable",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹110/kg",
+        "trend": "Stable",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹100/kg",
+        "trend": "Stable",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹23/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2200/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹1900/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹70/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "सिक्किम",
+    "name_or": "ସିକ୍କିମ",
+    "region_hi": "पूर्वोत्तर भारत",
+    "region_or": "ଉତ୍ତର-ପୂର୍ବ ଭାରତ"
+  },
+  "Ladakh": {
+    "updated_at": "11-03-2026",
+    "region": "North India",
+    "commodities": [
+      {
+        "name": "Potato (Aloo)",
+        "price": "₹30/kg",
+        "trend": "Rising",
+        "name_hi": "आलू",
+        "name_or": "ଆଳୁ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Onion (Pyaaz)",
+        "price": "₹42/kg",
+        "trend": "Rising",
+        "name_hi": "प्याज",
+        "name_or": "ପିଆଜ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Tomato",
+        "price": "₹50/kg",
+        "trend": "Rising",
+        "name_hi": "टमाटर",
+        "name_or": "ଟମାଟୋ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Rice (Common)",
+        "price": "₹4800/quintal",
+        "trend": "Stable",
+        "name_hi": "चावल (सामान्य)",
+        "name_or": "ଚାଉଳ (ସାଧାରଣ)",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Wheat",
+        "price": "₹3200/quintal",
+        "trend": "Stable",
+        "name_hi": "गेहूं",
+        "name_or": "ଗହମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Brinjal (Baigana)",
+        "price": "₹45/kg",
+        "trend": "Stable",
+        "name_hi": "बैंगन",
+        "name_or": "ବାଇଗଣ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Pointed Gourd (Potala)",
+        "price": "₹100/kg",
+        "trend": "Expensive",
+        "name_hi": "परवल",
+        "name_or": "ପଟୋଳ",
+        "trend_hi": "महंगा है",
+        "trend_or": "ମହଙ୍ଗା ଅଛି"
+      },
+      {
+        "name": "Bitter Gourd (Karela)",
+        "price": "₹62/kg",
+        "trend": "Stable",
+        "name_hi": "करेला",
+        "name_or": "କଲରା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Bottle Gourd (Lauki)",
+        "price": "₹35/kg",
+        "trend": "Stable",
+        "name_hi": "लौकी",
+        "name_or": "ଲାଉ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cabbage",
+        "price": "₹25/kg",
+        "trend": "Stable",
+        "name_hi": "पत्तागोभी",
+        "name_or": "ବନ୍ଧାକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Cauliflower",
+        "price": "₹38/kg",
+        "trend": "Stable",
+        "name_hi": "फूलगोभी",
+        "name_or": "ଫୁଲକୋବି",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Lady Finger (Bhindi)",
+        "price": "₹55/kg",
+        "trend": "Rising",
+        "name_hi": "भिंडी",
+        "name_or": "ଭେଣ୍ଡି",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Green Chilli",
+        "price": "₹75/kg",
+        "trend": "Rising",
+        "name_hi": "हरी मिर्च",
+        "name_or": "ଲଙ୍କା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Garlic",
+        "price": "₹120/kg",
+        "trend": "Rising",
+        "name_hi": "लहसुन",
+        "name_or": "ରସୁଣ",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Ginger",
+        "price": "₹110/kg",
+        "trend": "Rising",
+        "name_hi": "अदरक",
+        "name_or": "ଅଦା",
+        "trend_hi": "बढ़ रहा है",
+        "trend_or": "ବଢ଼ୁଛି"
+      },
+      {
+        "name": "Pumpkin",
+        "price": "₹28/kg",
+        "trend": "Stable",
+        "name_hi": "कद्दू",
+        "name_or": "କଖାରୁ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Paddy",
+        "price": "₹2500/quintal",
+        "trend": "Stable",
+        "name_hi": "धान",
+        "name_or": "ଧାନ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Maize (Makka)",
+        "price": "₹2100/quintal",
+        "trend": "Stable",
+        "name_hi": "मक्का",
+        "name_or": "ମକା",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      },
+      {
+        "name": "Groundnut",
+        "price": "₹78/kg",
+        "trend": "Stable",
+        "name_hi": "मूंगफली",
+        "name_or": "ଚିନାବାଦାମ",
+        "trend_hi": "स्थिर है",
+        "trend_or": "ସ୍ଥିର ଅଛି"
+      }
+    ],
+    "name_hi": "लद्दाख",
+    "name_or": "ଲଡ଼ାଖ",
+    "region_hi": "उत्तर भारत",
+    "region_or": "ଉତ୍ତର ଭାରତ"
   }
 }

@@ -1,5 +1,3 @@
-
-
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -193,82 +191,6 @@ app.post('/api/speak', async (req, res) => {
         res.status(500).json({ error: "Failed to generate audio." });
     }
 });
-
-
-// ==========================================
-// 📈 MARKET TREND & NEWS ANALYSIS ROUTE
-// ==========================================
-app.post('/api/market-trend', async (req, res) => {
-    try {
-        const { crop, language, userQuery } = req.body; 
-        
-        if (!crop) return res.status(400).json({ error: "Crop name is required" });
-
-        const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
-        if (!GNEWS_API_KEY) throw new Error("Missing GNews API Key");
-        
-        console.log(`📰 Fetching news for: ${crop}...`);
-
-        const newsUrl = `https://gnews.io/api/v4/search?q=${crop} agriculture India&lang=en&max=5&apikey=${GNEWS_API_KEY}`;
-        const newsResponse = await fetch(newsUrl);
-        const newsData = await newsResponse.json();
-
-        if (!newsData.articles || newsData.articles.length === 0) {
-            return res.json({ 
-                translatedQuery: userQuery, 
-                trend: "Stable", 
-                probability: "50%", 
-                reasoning: "No recent major news found to cause sudden price shifts.", 
-                disclaimer: "Please verify local rates at your Mandi before selling." 
-            });
-        }
-
-        const headlines = newsData.articles.map(a => `- ${a.title}: ${a.description}`).join("\n");
-
-        // 🟢 FIX 2: Exact matching based on the language code from frontend
-        let scriptInstruction = "English";
-        
-        if (language === 'hi-IN') {
-            scriptInstruction = "Hindi using pure Devanagari script. NO English letters.";
-        } else if (language === 'or-IN') {
-            scriptInstruction = "Odia using pure Odia script. NO English letters.";
-        }
-
-        // 🟢 FIX 3: Moved translation instructions outside the JSON structure!
-        const prompt = `
-        [TASK]
-        You are an agricultural economist. Read these recent news headlines regarding "${crop}" in India:
-        ${headlines}
-
-        Analyze market sentiment and predict the short-term price trend.
-
-        CRITICAL TRANSLATION RULE:
-        1. Translate this user query into ${scriptInstruction}: "${userQuery || crop}". Place the translated text in the "translatedQuery" field.
-        2. You MUST write the "reasoning" and "disclaimer" fields ENTIRELY in ${scriptInstruction}. 
-
-        Return ONLY this exact JSON format:
-        {
-            "translatedQuery": "Translated text goes here",
-            "trend": "Upward" | "Downward" | "Stable",
-            "probability": "percentage from 0 to 100",
-            "reasoning": "1-sentence explanation written STRICTLY in ${scriptInstruction}",
-            "disclaimer": "Strict warning stating this is AI prediction, not financial advice, written STRICTLY in ${scriptInstruction}"
-        }`;
-
-        const model = genAI.getGenerativeModel({ 
-            model: "gemini-2.5-flash", 
-            generationConfig: { responseMimeType: "application/json" }
-        });
-
-        const result = await model.generateContent(prompt);
-        res.json(JSON.parse(result.response.text()));
-
-    } catch (error) {
-        console.error("❌ Market Trend Error:", error.message);
-        res.status(500).json({ error: "Failed to analyze market trends." });
-    }
-});
-
 // ==========================================
 // 💬 MAIN GEMINI CHAT ROUTE
 // ==========================================
@@ -293,27 +215,56 @@ app.post('/api/chat', async (req, res) => {
             scriptInstruction = "STRICTLY reply in English.";
             translationRule = "DO NOT TRANSLATE. Return the exact English text.";
         }
-let dynamicContext = `
+
+        let dynamicContext = `
         [TASK]
-        You are Kisan Vani AI, an agricultural expert. Answers should be clear, concise, and simple.
+        You are Kisan Vani AI, an agricultural expert for Indian farmers.
+        Answers should be clear, concise, and simple enough for a rural farmer to understand.
         Return a JSON object with keys: "translatedQuery", "reply", "spokenReply".
+        CRITICAL: You HAVE mandi price data for ALL 17 Indian states in MANDI_DB. 
+        NEVER say you don't have data. Always look up MANDI_DB first before responding to any price query. The data is provided above — use it.
 
         [RELEVANT DATA]
         - Current Weather: ${weatherInfo}
-        - Mandi Prices: ${JSON.stringify(MANDI_DB)}
-        - Govt Schemes Context: ${SCHEME_CONTEXT}
+        - Mandi Price Database (19 commodities for 31 states including Odisha, Delhi, Maharashtra, West Bengal, Tamil Nadu, Karnataka, Telangana, Punjab, Uttar Pradesh, Gujarat, Rajasthan, Haryana, Madhya Pradesh, Andhra Pradesh, Bihar, Jharkhand, Kerala, Assam, Chhattisgarh, Uttarakhand, Himachal Pradesh, Jammu and Kashmir, Goa, Manipur, Meghalaya, Nagaland, Tripura, Mizoram, Arunachal Pradesh, Sikkim, Ladakh): ${JSON.stringify(MANDI_DB)}
+        - Govt Schemes Context (PDF): ${SCHEME_CONTEXT}
 
         [ANALYSIS RULES]
         1. If an image is provided:
-           - Identify the crop/issue. Analyze health and give suggestions.
-           - If it is the SKY: Use weather data to advise.
-        2. If the user asks about prices, weather, or government schemes, prioritize using the [RELEVANT DATA] provided above.
-        3. If the user asks general farming questions (e.g., pests, fertilizers, crop cycles), use your expert agricultural knowledge to provide helpful, accurate advice.
-        
+           - If it is a CROP: Identify the crop. Analyze health and give suggestions to prevent/cure diseases.
+           - If it is the SKY: Use weather data to advise on farming activities.
+           - If unclear, state that you cannot analyze it.
+        2. If only text is provided: Strictly answer using the data above.
+        3. For government scheme queries: List scheme names, eligibility, and how to apply.
+        4. For mandi/price queries: Give the modal price (most common trading price) first,
+           then mention min and max. Tell the farmer whether the price is rising or falling
+           if trend data is available.
+        5. For crop arrival queries: Explain how much of their crop has arrived in the market
+           and what that means for prices (high arrivals = lower prices, low arrivals = higher).
+        [MANDI PRICE RULES]
+        1. MANDI_DB contains state-wise prices — always match the state the user asks about
+        2. If user says city name, map it to state: Mumbai→Maharashtra, Chennai→Tamil Nadu, Kolkata→West Bengal, Bangalore→Karnataka, Hyderabad→Telangana, Lucknow→Uttar Pradesh, Ahmedabad→Gujarat, Jaipur→Rajasthan, Bhubaneswar/Cuttack/Puri→Odisha
+        3. Always mention the trend (Rising/Falling/Stable/Expensive) along with price
+        4. If user asks about a specific vegetable, show only that vegetable's price across multiple states for comparison
+        5. Default state is Odisha if no state or city is mentioned
+        6. Always answer in the language the user is speaking (Hindi/Odia/English)
+
         [OUTPUT RULES]
         - reply: ${scriptInstruction}
         - translatedQuery: ${translationRule}
-        - spokenReply: Phonetic English letters for TTS reading.
+        - spokenReply: A short (2–3 sentence) phonetic version suitable for TTS read aloud to a farmer.
+        CRITICAL RULES FOR spokenReply — MUST FOLLOW EXACTLY:
+        1. ALWAYS keep numbers as numerals/digits — NEVER write them as words
+        2. WRONG: "three thousand five hundred rupees" → RIGHT: "rupees 3500"
+        3. WRONG: "forty rupees per kilogram" → RIGHT: "40 rupees per kilo"
+        4. WRONG: "₹40/kg" → RIGHT: "40 rupees per kilo"
+        5. NEVER use the ₹ symbol — always say "rupees" before the number
+        6. NEVER use "/" slash — say "per" instead
+        7. NEVER use bullet points, dashes, or symbols of any kind
+        8. Maximum 3 short sentences only
+        9. End with trend if available: "Price is rising" or "Price is falling" or "Price is stable"
+        CORRECT EXAMPLE: "Tomato price in Odisha is 40 rupees per kilo. Onion is 25 rupees per kilo. Prices are falling."
+        WRONG EXAMPLE: "The tomato price is forty rupees per kilogram and onion is twenty-five rupees."
         `;
         
         let parts = [{ text: dynamicContext }];
