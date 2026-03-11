@@ -210,7 +210,7 @@ micBtn.addEventListener('click', async () => {
 });
 
 // ==========================================
-// 💬 CHAT SUBMISSION LOGIC
+// 💬 CHAT SUBMISSION LOGIC (With Smart Trend Detection)
 // ==========================================
 async function handleSubmission() {
     const userText = textInput.value.trim();
@@ -219,6 +219,47 @@ async function handleSubmission() {
         statusText.innerText = getStatus('clearImg');
         return;
     }
+
+// --- 🟢 NEW: SMART TREND INTERCEPTOR ---
+    const textLower = userText.toLowerCase();
+    
+    const trendKeywords = [
+        "trend", "news", "predict", "future", "market", "forecast", "sentiment",
+        "bhavishya", "samachar", "bazar", "bazaar", "khabar", "ruzhaan", "anuman",
+        "ट्रेंड", "रुझान", "भविष्य", "भविष्यवाणी", "समाचार", "खबर", "बाज़ार", "बाजार", "न्यूज़", "अनुमान", "संभावना",
+        "ଖବର", "ବଜାର", "ଟ୍ରେଣ୍ଡ", "ଭବିଷ୍ୟତ", "ପୂର୍ବାନୁମାନ", "ଆଗକୁ", "ସମ୍ଭାବନା", "ନ୍ୟୁଜ୍", "ସମ୍ବାଦ"
+    ];
+    
+    const crops = ["potato", "आलू", "ଆଳୁ", "onion", "प्याज", "ପିଆଜ", "wheat", "गेहूँ", "ଗହମ", "rice", "धान", "ଧାନ", "tomato", "टमाटर", "ଟମାଟୋ"];
+
+    const isTrendQuery = trendKeywords.some(kw => textLower.includes(kw));
+    const detectedCrop = crops.find(c => textLower.includes(c));
+
+    // If they ask about trends/news...
+    if (isTrendQuery && !selectedImageBase64) {
+        const userBubble = addMessage(userText, 'user-msg'); // 🟢 Capture the bubble!
+        textInput.value = ""; 
+        
+        if (!detectedCrop) {
+            const promptMsg = "Which specific crop's future trend would you like me to check? (e.g., Onion, Tomato, Wheat)";
+            addMessage(promptMsg, 'bot-msg');
+            speak(promptMsg, langSelect.value);
+            return; 
+        }
+
+        const cropMap = { 
+            "आलू": "potato", "ଆଳୁ": "potato", "प्याज": "onion", "ପିଆଜ": "onion", 
+            "गेहूँ": "wheat", "ଗହମ": "wheat", "धान": "rice", "ଧାନ": "rice", 
+            "टमाटर": "tomato", "ଟମାଟୋ": "tomato" 
+        };
+        const englishCrop = cropMap[detectedCrop] || detectedCrop;
+        
+        // 🟢 FIX 1: Pass the user's text and bubble to the fetch function
+        fetchMarketTrend(englishCrop, userText, userBubble); 
+        return; 
+    }
+    // ---------------------------------------
+    // ---------------------------------------
 
     const displayMsg = userText || (selectedImageBase64 ? "Analyzing uploaded image..." : "");
     const userBubble = addMessage(displayMsg, 'user-msg');
@@ -253,7 +294,6 @@ async function handleSubmission() {
         addMessage(data.reply, 'bot-msg');
         statusText.innerText = getStatus('tapAgain');
         
-        // Use the new hybrid speak function
         speak(data.reply, langSelect.value);
 
     } catch (error) {
@@ -427,5 +467,79 @@ async function speak(text, lang) {
         utterance.lang = lang;
         utterance.rate = 1.0; 
         window.speechSynthesis.speak(utterance);
+    }
+}
+
+// ==========================================
+// 📈 MARKET TREND UI LOGIC (Multilingual)
+// ==========================================
+// 📈 MARKET TREND UI LOGIC (Multilingual)
+// ==========================================
+async function fetchMarketTrend(cropName, userText, userBubble) { 
+    const loadingBubble = addMessage(`📰 Fetching news for ${cropName}...`, 'bot-msg');
+    
+    try {
+        const currentLangVal = langSelect.value; // e.g., 'or-IN'
+
+        const response = await fetch('/api/market-trend', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                crop: cropName, 
+                // 🟢 FIX 1: Send the exact language code so the backend never gets confused
+                language: currentLangVal, 
+                userQuery: userText || cropName
+            })
+        });
+
+        const data = await response.json();
+        chatBox.removeChild(loadingBubble);
+
+        // Update the user's green bubble with the Odia/Hindi translation!
+        if (data.translatedQuery && userBubble) {
+            userBubble.innerText = data.translatedQuery;
+        }
+
+        // 1. Setup Icons and Colors
+        let trendIcon = data.trend === "Upward" ? "📈" : data.trend === "Downward" ? "📉" : "⚖️";
+        let trendColor = data.trend === "Upward" ? "#4CAF50" : data.trend === "Downward" ? "#f44336" : "#ff9800";
+
+        // 2. Translate the hardcoded UI Labels & Trend word
+        let trendLabel = "Trend";
+        let analysisLabel = "AI Analysis";
+        let displayTrend = data.trend;
+
+        if (currentLangVal === 'hi-IN') {
+            trendLabel = "बाज़ार का रुझान";
+            analysisLabel = "एआई विश्लेषण";
+            displayTrend = data.trend === "Upward" ? "तेजी (Upward)" : data.trend === "Downward" ? "गिरावट (Downward)" : "स्थिर (Stable)";
+        } else if (currentLangVal === 'or-IN') {
+            trendLabel = "ବଜାର ଟ୍ରେଣ୍ଡ";
+            analysisLabel = "ଏଆଇ ବିଶ୍ଳେଷଣ";
+            displayTrend = data.trend === "Upward" ? "ବୃଦ୍ଧି (Upward)" : data.trend === "Downward" ? "ହ୍ରାସ (Downward)" : "ସ୍ଥିର (Stable)";
+        }
+
+        // 3. Build the fully translated HTML Card
+        const cardHTML = `
+            <div style="background: #f9f9f9; border-left: 4px solid ${trendColor}; padding: 10px; border-radius: 8px; margin-top: 5px; color: #333;">
+                <strong>${trendIcon} ${trendLabel}:</strong> ${displayTrend} (${data.probability})<br><br>
+                <strong>🧠 ${analysisLabel}:</strong> ${data.reasoning}<br><br>
+                <small style="color: #666;">⚠️ <em>${data.disclaimer}</em></small>
+            </div>
+        `;
+        
+        const div = document.createElement('div');
+        div.classList.add('msg', 'bot-msg');
+        div.innerHTML = cardHTML;
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Speak the reasoning in the correct language!
+        speak(data.reasoning, currentLangVal);
+
+    } catch (error) {
+        console.error(error);
+        if (chatBox.contains(loadingBubble)) chatBox.removeChild(loadingBubble);
+        addMessage("⚠️ Failed to fetch market news.", 'bot-msg');
     }
 }

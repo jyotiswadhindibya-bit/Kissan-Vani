@@ -193,6 +193,82 @@ app.post('/api/speak', async (req, res) => {
         res.status(500).json({ error: "Failed to generate audio." });
     }
 });
+
+
+// ==========================================
+// 📈 MARKET TREND & NEWS ANALYSIS ROUTE
+// ==========================================
+app.post('/api/market-trend', async (req, res) => {
+    try {
+        const { crop, language, userQuery } = req.body; 
+        
+        if (!crop) return res.status(400).json({ error: "Crop name is required" });
+
+        const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
+        if (!GNEWS_API_KEY) throw new Error("Missing GNews API Key");
+        
+        console.log(`📰 Fetching news for: ${crop}...`);
+
+        const newsUrl = `https://gnews.io/api/v4/search?q=${crop} agriculture India&lang=en&max=5&apikey=${GNEWS_API_KEY}`;
+        const newsResponse = await fetch(newsUrl);
+        const newsData = await newsResponse.json();
+
+        if (!newsData.articles || newsData.articles.length === 0) {
+            return res.json({ 
+                translatedQuery: userQuery, 
+                trend: "Stable", 
+                probability: "50%", 
+                reasoning: "No recent major news found to cause sudden price shifts.", 
+                disclaimer: "Please verify local rates at your Mandi before selling." 
+            });
+        }
+
+        const headlines = newsData.articles.map(a => `- ${a.title}: ${a.description}`).join("\n");
+
+        // 🟢 FIX 2: Exact matching based on the language code from frontend
+        let scriptInstruction = "English";
+        
+        if (language === 'hi-IN') {
+            scriptInstruction = "Hindi using pure Devanagari script. NO English letters.";
+        } else if (language === 'or-IN') {
+            scriptInstruction = "Odia using pure Odia script. NO English letters.";
+        }
+
+        // 🟢 FIX 3: Moved translation instructions outside the JSON structure!
+        const prompt = `
+        [TASK]
+        You are an agricultural economist. Read these recent news headlines regarding "${crop}" in India:
+        ${headlines}
+
+        Analyze market sentiment and predict the short-term price trend.
+
+        CRITICAL TRANSLATION RULE:
+        1. Translate this user query into ${scriptInstruction}: "${userQuery || crop}". Place the translated text in the "translatedQuery" field.
+        2. You MUST write the "reasoning" and "disclaimer" fields ENTIRELY in ${scriptInstruction}. 
+
+        Return ONLY this exact JSON format:
+        {
+            "translatedQuery": "Translated text goes here",
+            "trend": "Upward" | "Downward" | "Stable",
+            "probability": "percentage from 0 to 100",
+            "reasoning": "1-sentence explanation written STRICTLY in ${scriptInstruction}",
+            "disclaimer": "Strict warning stating this is AI prediction, not financial advice, written STRICTLY in ${scriptInstruction}"
+        }`;
+
+        const model = genAI.getGenerativeModel({ 
+            model: "gemini-2.5-flash", 
+            generationConfig: { responseMimeType: "application/json" }
+        });
+
+        const result = await model.generateContent(prompt);
+        res.json(JSON.parse(result.response.text()));
+
+    } catch (error) {
+        console.error("❌ Market Trend Error:", error.message);
+        res.status(500).json({ error: "Failed to analyze market trends." });
+    }
+});
+
 // ==========================================
 // 💬 MAIN GEMINI CHAT ROUTE
 // ==========================================
