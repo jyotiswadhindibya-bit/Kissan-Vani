@@ -253,13 +253,26 @@ app.post('/api/market-trend', async (req, res) => {
         const newsResponse = await fetch(newsUrl);
         const newsData = await newsResponse.json();
 
+     // 🟢 FIX: Create Multilingual Fallback Messages
+        let fallbackReasoning = "No recent major news found to cause sudden price shifts.";
+        let fallbackDisclaimer = "Please verify local rates at your Mandi before selling.";
+
+        if (language.includes("Hindi") || language.includes("hi-IN")) {
+            fallbackReasoning = "हाल ही में कीमतों में अचानक बदलाव का कोई प्रमुख समाचार नहीं मिला है।";
+            fallbackDisclaimer = "कृपया बेचने से पहले अपनी मंडी में स्थानीय दरों की पुष्टि करें।";
+        } else if (language.includes("Odia") || language.includes("or-IN")) {
+            fallbackReasoning = "ହଠାତ୍ ଦର ପରିବର୍ତ୍ତନ ହେବା ଭଳି କୌଣସି ମୁଖ୍ୟ ଖବର ମିଳିନାହିଁ।";
+            fallbackDisclaimer = "ଦୟାକରି ବିକ୍ରି କରିବା ପୂର୍ବରୁ ଆପଣଙ୍କ ମଣ୍ଡିରେ ସ୍ଥାନୀୟ ଦର ଯାଞ୍ଚ କରନ୍ତୁ।";
+        }
+
+        // If GNews finds absolutely zero articles, use the translated fallback
         if (!newsData.articles || newsData.articles.length === 0) {
             return res.json({ 
                 translatedQuery: userQuery, 
                 trend: "Stable", 
                 probability: "50%", 
-                reasoning: "No recent major news found to cause sudden price shifts.", 
-                disclaimer: "Please verify local rates at your Mandi before selling." 
+                reasoning: fallbackReasoning, 
+                disclaimer: fallbackDisclaimer 
             });
         }
 
