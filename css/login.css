@@ -1,135 +1,177 @@
 /* =========================================
-   Login Page Styles
+   Kisan Vani — Premium Login Page
    ========================================= */
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #e0f2f1 0%, #a5d6a7 100%);
+    font-family: 'Outfit', 'Poppins', sans-serif;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a1f0d 0%, #132a15 30%, #1a3c2a 60%, #0f2b12 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
     padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+}
+body::before {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(102, 187, 106, 0.12), transparent 70%);
+    top: -100px; right: -100px;
+}
+body::after {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(185, 245, 106, 0.08), transparent 70%);
+    bottom: -150px; left: -150px;
 }
 
 .login-card {
-    background: white;
     width: 100%;
-    max-width: 420px;
-    border-radius: 16px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    max-width: 440px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    animation: cardSlideIn 0.8s ease;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes cardSlideIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .login-header {
-    background: #f8fafc;
-    padding: 15px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #e2e8f0;
+    padding: 16px 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .back-link {
+    color: #81c784;
     text-decoration: none;
-    color: #64748b;
-    font-weight: 600;
     font-size: 14px;
-    transition: color 0.2s;
+    font-weight: 500;
+    transition: all 0.3s;
 }
-
-.back-link:hover {
-    color: #2e7d32;
-}
+.back-link:hover { color: #b9f56a; transform: translateX(-3px); }
 
 .lang-select {
-    padding: 5px 10px;
-    border-radius: 6px;
-    border: 1px solid #cbd5e1;
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    color: #333;
-    outline: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
 }
+.lang-select option { background: #132a15; color: #fff; }
 
-.login-body {
-    padding: 35px 30px;
-}
+.login-body { padding: 36px 32px 40px; }
 
 .brand-title {
-    color: #2e7d32;
-    font-size: 26px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 800;
     text-align: center;
     margin-bottom: 8px;
+    background: linear-gradient(135deg, #81c784, #b9f56a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .login-body h2 {
     text-align: center;
-    color: #1e293b;
-    font-size: 22px;
-    margin-bottom: 5px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
 }
 
 .login-body p {
     text-align: center;
-    color: #64748b;
     font-size: 14px;
-    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 32px;
 }
 
-.input-group {
-    margin-bottom: 20px;
-}
+.input-group { margin-bottom: 20px; }
 
 .input-group label {
     display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
     margin-bottom: 8px;
-    font-weight: 600;
-    color: #334155;
-    font-size: 14px;
 }
 
 .input-group input {
     width: 100%;
-    padding: 14px 15px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    transition: border-color 0.3s;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    transition: all 0.3s;
     outline: none;
 }
-
+.input-group input::placeholder { color: rgba(255, 255, 255, 0.25); }
 .input-group input:focus {
-    border-color: #43a047;
-    box-shadow: 0 0 0 3px rgba(67, 160, 71, 0.1);
+    border-color: #66bb6a;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.15);
 }
 
 .login-submit-btn {
     width: 100%;
     padding: 16px;
-    background-color: #43a047;
-    color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #43a047, #2e7d32);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
     font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
     cursor: pointer;
-    font-weight: 600;
+    transition: all 0.3s;
     margin-top: 10px;
-    transition: background 0.3s, transform 0.2s;
+    text-transform: uppercase;
+}
+.login-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(67, 160, 71, 0.4);
 }
 
-.login-submit-btn:hover {
-    background-color: #267b2a;
-    transform: translateY(-2px);
+@media (max-width: 480px) {
+    .login-card { border-radius: 20px; }
+    .login-body { padding: 28px 20px 32px; }
+    .brand-title { font-size: 24px; }
 }

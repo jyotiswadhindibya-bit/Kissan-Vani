@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Analysis | Kisan Vani</title>
+    <meta name="description" content="Analyze your soil type and local weather to find the best crops to grow in your region.">
+    <link rel="stylesheet" href="../css/soil-dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="dashboard.html"><div class="logo">🌾 Kisan Vani</div></a>
+        </div>
+        <div class="nav-right">
+            <select id="dashboard-lang" class="lang-select">
+                <option value="en-IN">English</option>
+                <option value="hi-IN">हिंदी</option>
+                <option value="or-IN">ଓଡ଼ିଆ</option>
+            </select>
+            <a href="dashboard.html" class="back-btn" id="backBtn">← Back</a>
+        </div>
+    </nav>
+
+    <!-- Wizard -->
+    <div class="wizard-container">
+
+        <!-- Step dots -->
+        <div class="step-indicator">
+            <div class="step-dot active" id="dot1"></div>
+            <div class="step-dot" id="dot2"></div>
+            <div class="step-dot" id="dot3"></div>
+        </div>
+
+        <!-- ======== STEP 1: Location ======== -->
+        <div class="wizard-step active" id="step1">
+            <h2 class="step-title">📍 Select Your Location</h2>
+            <p class="step-subtitle">Allow GPS access or manually enter your location</p>
+
+            <div class="location-options">
+                <button class="gps-btn" id="gpsBtn" onclick="useGPS()">
+                    <span>📡</span>
+                    <span>Use My Current Location</span>
+                </button>
+
+                <div class="divider"><span>OR</span></div>
+
+                <div class="manual-location">
+                    <input type="text" class="form-input" id="cityInput" placeholder="City (e.g. Bhubaneswar)">
+                    <input type="text" class="form-input" id="stateInput" placeholder="State (e.g. Odisha)">
+                    <select class="form-select" id="countrySelect">
+                        <option value="" disabled selected>Select Country</option>
+                        <option value="India">India</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="Nepal">Nepal</option>
+                        <option value="Sri Lanka">Sri Lanka</option>
+                        <option value="Pakistan">Pakistan</option>
+                    </select>
+                    <button class="next-btn" onclick="submitLocation()">Continue →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== STEP 2: Soil Type ======== -->
+        <div class="wizard-step" id="step2">
+            <h2 class="step-title">🧪 Select Your Soil Type</h2>
+            <p class="step-subtitle">Choose the soil type found in your farmland</p>
+
+            <div class="soil-grid">
+                <div class="soil-card" onclick="selectSoil('alluvial', this)">
+                    <span class="soil-icon">🟤</span>
+                    <span class="soil-name">Alluvial Soil</span>
+                    <span class="soil-detail">Indo-Gangetic plains</span>
+                </div>
+                <div class="soil-card" onclick="selectSoil('black', this)">
+                    <span class="soil-icon">⬛</span>
+                    <span class="soil-name">Black Soil</span>
+                    <span class="soil-detail">Deccan Plateau</span>
+                </div>
+                <div class="soil-card" onclick="selectSoil('red', this)">
+                    <span class="soil-icon">🟥</span>
+                    <span class="soil-name">Red Soil</span>
+                    <span class="soil-detail">Eastern & Southern India</span>
+                </div>
+                <div class="soil-card" onclick="selectSoil('laterite', this)">
+                    <span class="soil-icon">🟧</span>
+                    <span class="soil-name">Laterite Soil</span>
+                    <span class="soil-detail">Kerala, Karnataka hills</span>
+                </div>
+            </div>
+
+            <button class="next-btn" id="soilNextBtn" onclick="goToResults()" disabled style="max-width: 400px; margin: 24px auto 0; display: block;">
+                Analyze & Show Results →
+            </button>
+        </div>
+
+        <!-- ======== STEP 3: Results ======== -->
+        <div class="wizard-step" id="step3">
+            <div class="location-display" id="locationDisplay"></div>
+
+            <div class="results-container" id="resultsContainer">
+                <div style="text-align:center; padding: 50px;">
+                    <div class="spinner"></div>
+                    <p style="margin-top:14px; color:rgba(255,255,255,0.4);">Analyzing weather & soil data...</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 24px;">
+                <button class="restart-btn" onclick="restart()">🔄 Start Over</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let locationData = { city: '', state: '', country: '', lat: null, lon: null };
+        let selectedSoil = null;
+        let soilDB = null;
+
+        /* Load soil data */
+        fetch('/soil-data.json')
+            .then(r => r.json())
+            .then(data => { soilDB = data; })
+            .catch(() => console.error('Could not load soil-data.json'));
+
+        /* ===== GPS ===== */
+        async function useGPS() {
+            const btn = document.getElementById('gpsBtn');
+            btn.classList.add('loading');
+            btn.innerHTML = '<div class="spinner"></div> <span>Locating...</span>';
+
+            try {
+                const pos = await new Promise((resolve, reject) => {
+                    navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 10000 });
+                });
+                locationData.lat = pos.coords.latitude;
+                locationData.lon = pos.coords.longitude;
+
+                // Reverse geocode
+                try {
+                    const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${locationData.lat}&lon=${locationData.lon}&format=json`);
+                    const geoData = await geoRes.json();
+                    locationData.city = geoData.address.city || geoData.address.town || geoData.address.village || 'Unknown';
+                    locationData.state = geoData.address.state || '';
+                    locationData.country = geoData.address.country || 'India';
+                } catch {
+                    locationData.city = 'My Location';
+                    locationData.state = '';
+                    locationData.country = 'India';
+                }
+                goToStep(2);
+            } catch {
+                btn.classList.remove('loading');
+                btn.innerHTML = '<span>📡</span><span>Location denied. Try manual entry below.</span>';
+            }
+        }
+
+        function submitLocation() {
+            const city = document.getElementById('cityInput').value.trim();
+            const state = document.getElementById('stateInput').value.trim();
+            const country = document.getElementById('countrySelect').value;
+            if (!city) { document.getElementById('cityInput').focus(); return; }
+
+            locationData.city = city;
+            locationData.state = state;
+            locationData.country = country || 'India';
+            locationData.lat = null; locationData.lon = null;
+            goToStep(2);
+        }
+
+        /* ===== Soil Selection ===== */
+        function selectSoil(soilType, el) {
+            selectedSoil = soilType;
+            document.querySelectorAll('.soil-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            document.getElementById('soilNextBtn').disabled = false;
+        }
+
+        /* ===== Results ===== */
+        async function goToResults() {
+            if (!selectedSoil) return;
+            goToStep(3);
+            await generateResults();
+        }
+
+        async function generateResults() {
+            const container = document.getElementById('resultsContainer');
+            const lang = localStorage.getItem('kisanGlobalLang') || 'en-IN';
+
+            // Fetch weather from server API (uses WEATHER_API_KEY from .env)
+            let weatherData = null;
+            try {
+                const city = locationData.city || 'Bhubaneswar';
+                const serverRes = await fetch(`/api/weather?city=${encodeURIComponent(city)}`);
+                if (!serverRes.ok) throw new Error('Weather fetch failed');
+                weatherData = await serverRes.json();
+            } catch {
+                weatherData = null;
+            }
+
+            const temp = weatherData ? Math.round(weatherData.temp) : '--';
+            const humidity = weatherData ? weatherData.humidity : '--';
+            const wind = weatherData ? (weatherData.windSpeed || '--') : '--';
+
+            // Determine weather category
+            let weatherCategory = 'temperate';
+            if (temp !== '--') {
+                if (temp >= 30 && humidity >= 65) weatherCategory = 'hot_humid';
+                else if (temp >= 30 && humidity < 65) weatherCategory = 'hot_dry';
+                else if (temp < 20) weatherCategory = 'cool';
+                else weatherCategory = 'temperate';
+            }
+
+            // Get soil data
+            const soil = soilDB ? soilDB[selectedSoil] : null;
+            const soilInfo = soil ? soil[lang] || soil['en-IN'] : null;
+            const rawCrops = soil && soil.weatherCropMap ? (soil.weatherCropMap[weatherCategory] || []) : [];
+            // Sort by score descending (most favourable first)
+            const crops = [...rawCrops].sort((a, b) => (b.score || 0) - (a.score || 0));
+            const idealTemp = soil ? soil.idealTemp : '--';
+            const idealRain = soil ? soil.idealRainfall : '--';
+
+            // Location display
+            document.getElementById('locationDisplay').innerHTML = `📍 <strong>${locationData.city}</strong>${locationData.state ? ', ' + locationData.state : ''}`;
+
+            // Build crop rows HTML
+            function scoreColor(score) {
+                if (score >= 75) return '#4caf50';
+                if (score >= 50) return '#ff9800';
+                if (score >= 30) return '#ff5722';
+                return '#e53935';
+            }
+            function scoreLabel(score) {
+                if (score >= 85) return '🟢 Highly Recommended';
+                if (score >= 70) return '🟢 Recommended';
+                if (score >= 50) return '🟡 Moderate';
+                if (score >= 30) return '🟠 Low Suitability';
+                return '🔴 Not Recommended';
+            }
+            function scoreEmoji(score) {
+                if (score >= 85) return '🏆';
+                if (score >= 70) return '✅';
+                if (score >= 50) return '⚠️';
+                if (score >= 30) return '👎';
+                return '❌';
+            }
+
+            const cropRowsHTML = crops.map((crop, idx) => {
+                const score = crop.score || 0;
+                const color = scoreColor(score);
+                const isTop = idx === 0;
+                const isBottom = idx === crops.length - 1;
+                const rankBadge = isTop ? `<span style="background:#4caf50; color:#fff; padding:3px 10px; border-radius:8px; font-size:11px; font-weight:700; margin-left:8px;">BEST PICK</span>` :
+                                  isBottom ? `<span style="background:#e53935; color:#fff; padding:3px 10px; border-radius:8px; font-size:11px; font-weight:700; margin-left:8px;">LEAST SUITED</span>` : '';
+                return `
+                    <div style="padding:16px 18px; border-radius:14px; background:rgba(255,255,255,${isTop ? '0.08' : '0.03'}); border:1px solid ${isTop ? 'rgba(76,175,80,0.3)' : isBottom ? 'rgba(229,57,53,0.2)' : 'rgba(255,255,255,0.06)'}; ${isTop ? 'box-shadow:0 0 20px rgba(76,175,80,0.12);' : ''}">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span style="font-size:20px;">${scoreEmoji(score)}</span>
+                                <span style="font-size:17px; font-weight:700;">${crop.name}</span>
+                                ${rankBadge}
+                            </div>
+                            <span style="font-size:22px; font-weight:800; color:${color};">${score}%</span>
+                        </div>
+                        <!-- Score bar -->
+                        <div style="width:100%; height:8px; border-radius:4px; background:rgba(255,255,255,0.08); overflow:hidden; margin-bottom:8px;">
+                            <div style="width:${score}%; height:100%; border-radius:4px; background:${color}; transition:width 1s ease;"></div>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:13px; color:rgba(255,255,255,0.5); font-style:italic;">${crop.reason}</span>
+                            <span style="font-size:11px; color:rgba(255,255,255,0.35); white-space:nowrap; margin-left:12px;">${scoreLabel(score)}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = `
+                <!-- Compact Weather Summary -->
+                <div class="result-card" style="padding:20px 24px;">
+                    <h3 style="margin-bottom:12px;">🌤️ Weather in ${locationData.city} — <span style="color:rgba(255,255,255,0.5); font-weight:400; font-size:14px;">${categoryLabel(weatherCategory)} conditions</span></h3>
+                    <div class="weather-grid">
+                        <div class="weather-item">
+                            <span class="value">${temp}°C</span>
+                            <span class="label">Temperature</span>
+                        </div>
+                        <div class="weather-item">
+                            <span class="value">${humidity}%</span>
+                            <span class="label">Humidity</span>
+                        </div>
+                        <div class="weather-item">
+                            <span class="value">${wind} km/h</span>
+                            <span class="label">Wind</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ★ MAIN HIGHLIGHT: Crop Favourability Ranking ★ -->
+                <div class="result-card" style="padding:24px 22px; border:1px solid rgba(102,187,106,0.2);">
+                    <h3 style="margin-bottom:6px; font-size:20px;">🌾 Crop Suitability Ranking</h3>
+                    <p style="font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:20px;">
+                        For <strong style="color:#81c784;">${soilInfo ? soilInfo.name : selectedSoil}</strong> in <strong style="color:#81c784;">${categoryLabel(weatherCategory)}</strong> weather — ranked from most to least favourable
+                    </p>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                        ${cropRowsHTML}
+                    </div>
+                </div>
+
+                <!-- Soil Pros & Cons (secondary info) -->
+                ${soilInfo ? `
+                <div class="result-card" style="padding:22px 24px;">
+                    <h3 style="margin-bottom:14px;">🧪 ${soilInfo.name} — Properties</h3>
+                    <p class="soil-info-text" style="margin-bottom:10px;">
+                        <strong>Ideal Temp:</strong> ${idealTemp} &nbsp;&nbsp; <strong>Ideal Rainfall:</strong> ${idealRain}
+                    </p>
+                    <p class="soil-info-text">
+                        <strong>✅ Pros:</strong> ${soilInfo.pros.join(' • ')}
+                    </p>
+                    <p class="soil-info-text" style="margin-top: 6px;">
+                        <strong>⚠️ Cons:</strong> ${soilInfo.cons.join(' • ')}
+                    </p>
+                </div>
+                ` : ''}
+            `;
+        }
+
+        function categoryLabel(cat) {
+            const labels = { hot_humid: 'Hot & Humid', hot_dry: 'Hot & Dry', cool: 'Cool', temperate: 'Temperate' };
+            return labels[cat] || cat;
+        }
+
+        /* ===== Navigation ===== */
+        function goToStep(num) {
+            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + num).classList.add('active');
+            for (let i = 1; i <= 3; i++) {
+                const dot = document.getElementById('dot' + i);
+                dot.classList.remove('active', 'done');
+                if (i < num) dot.classList.add('done');
+                if (i === num) dot.classList.add('active');
+            }
+        }
+
+        function restart() {
+            selectedSoil = null;
+            locationData = { city: '', state: '', country: '', lat: null, lon: null };
+            document.getElementById('cityInput').value = '';
+            document.getElementById('stateInput').value = '';
+            document.getElementById('countrySelect').selectedIndex = 0;
+            document.querySelectorAll('.soil-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('soilNextBtn').disabled = true;
+            const gpsBtn = document.getElementById('gpsBtn');
+            gpsBtn.classList.remove('loading');
+            gpsBtn.innerHTML = '<span>📡</span><span>Use My Current Location</span>';
+            goToStep(1);
+        }
+
+        const langSelect = document.getElementById('dashboard-lang');
+
+        langSelect.addEventListener('change', async (e) => {
+            const lang = e.target.value;
+            localStorage.setItem('kisanGlobalLang', lang);
+            if (document.getElementById('step3').classList.contains('active')) {
+                await generateResults();
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('kisanGlobalLang') || 'en-IN';
+            langSelect.value = savedLang;
+        });
+    </script>
+</body>
+</html>
