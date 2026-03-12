@@ -1,0 +1,237 @@
+/* =========================================
+   Kisan Vani — Soil Dashboard Wizard
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --forest-deep: #0a1f0d;
+    --forest-dark: #132a15;
+    --green-700: #2e7d32;
+    --green-500: #43a047;
+    --green-400: #66bb6a;
+    --green-300: #81c784;
+    --lime: #b9f56a;
+    --white: #ffffff;
+    --glass-bg: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.12);
+}
+
+body {
+    font-family: 'Outfit', 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a1f0d 0%, #132a15 30%, #1a3c2a 60%, #0f2b12 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Navbar */
+.navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,31,13,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-left a { text-decoration: none; }
+.logo {
+    font-size: 24px; font-weight: 800;
+    background: linear-gradient(135deg, var(--green-300), var(--lime));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.nav-right { display: flex; align-items: center; gap: 14px; }
+.lang-select {
+    padding: 7px 12px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.07); color: var(--white);
+    font-family: 'Outfit', sans-serif; font-size: 13px; cursor: pointer;
+}
+.lang-select option { background: var(--forest-dark); color: var(--white); }
+.back-btn {
+    padding: 7px 18px; border-radius: 8px;
+    background: rgba(255,255,255,0.07); color: var(--green-300);
+    text-decoration: none; font-size: 13px; font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s;
+}
+.back-btn:hover { background: rgba(255,255,255,0.12); }
+
+/* Wizard */
+.wizard-container {
+    max-width: 700px; margin: 100px auto 60px; padding: 0 20px;
+    animation: fadeInUp 0.8s ease;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Step dots */
+.step-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; }
+.step-dot {
+    width: 40px; height: 5px; border-radius: 3px;
+    background: rgba(255,255,255,0.12); transition: all 0.5s;
+}
+.step-dot.active { background: var(--green-400); width: 60px; }
+.step-dot.done { background: var(--lime); }
+
+/* Steps */
+.wizard-step { display: none; animation: stepFadeIn 0.5s ease; }
+.wizard-step.active { display: block; }
+@keyframes stepFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-title {
+    font-size: 28px; font-weight: 700; text-align: center;
+    margin-bottom: 8px;
+}
+.step-subtitle {
+    text-align: center; font-size: 15px;
+    color: rgba(255,255,255,0.45); margin-bottom: 36px;
+}
+
+/* Location */
+.location-options { display: flex; flex-direction: column; gap: 16px; align-items: center; }
+
+.gps-btn {
+    width: 100%; max-width: 400px; padding: 18px 24px;
+    border-radius: 16px; border: 1px solid var(--green-400);
+    background: linear-gradient(135deg, rgba(67,160,71,0.15), rgba(102,187,106,0.08));
+    color: var(--white); font-family: 'Outfit', sans-serif;
+    font-size: 16px; font-weight: 600; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: all 0.3s;
+}
+.gps-btn:hover {
+    background: linear-gradient(135deg, rgba(67,160,71,0.25), rgba(102,187,106,0.15));
+    transform: translateY(-2px); box-shadow: 0 8px 30px rgba(67,160,71,0.3);
+}
+.gps-btn.loading { pointer-events: none; opacity: 0.7; }
+
+.divider {
+    display: flex; align-items: center; gap: 16px; width: 100%; max-width: 400px;
+    color: rgba(255,255,255,0.3); font-size: 13px; margin: 8px 0;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+
+.manual-location { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 12px; }
+
+.form-input, .form-select {
+    width: 100%; padding: 14px 18px; border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05); color: var(--white);
+    font-family: 'Outfit', sans-serif; font-size: 15px;
+    outline: none; transition: all 0.3s;
+}
+.form-input::placeholder { color: rgba(255,255,255,0.25); }
+.form-input:focus, .form-select:focus {
+    border-color: var(--green-400); box-shadow: 0 0 0 3px rgba(102,187,106,0.15);
+}
+.form-select {
+    cursor: pointer; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='rgba(255,255,255,0.5)' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 16px center;
+}
+.form-select option { background: var(--forest-dark); color: var(--white); }
+
+.next-btn, .submit-btn {
+    width: 100%; padding: 16px; border: none; border-radius: 14px;
+    background: linear-gradient(135deg, var(--green-500), var(--green-700));
+    color: var(--white); font-family: 'Outfit', sans-serif;
+    font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 8px;
+}
+.next-btn:hover, .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(67,160,71,0.4); }
+.next-btn:disabled { opacity: 0.4; pointer-events: none; }
+
+/* Soil cards */
+.soil-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+.soil-card {
+    padding: 24px 20px; border-radius: 16px;
+    border: 2px solid rgba(255,255,255,0.08);
+    background: var(--glass-bg); text-align: center;
+    cursor: pointer; transition: all 0.3s;
+}
+.soil-card:hover { border-color: rgba(102,187,106,0.3); background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+.soil-card.selected {
+    border-color: var(--green-400); background: rgba(102,187,106,0.12);
+    box-shadow: 0 0 25px rgba(102,187,106,0.2);
+}
+.soil-card .soil-icon { font-size: 36px; margin-bottom: 10px; display: block; }
+.soil-card .soil-name { font-size: 16px; font-weight: 600; }
+.soil-card .soil-detail { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+/* Results */
+.results-container { display: flex; flex-direction: column; gap: 20px; }
+
+.result-card {
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    border-radius: 20px; padding: 28px; backdrop-filter: blur(15px);
+    animation: fadeInUp 0.6s ease;
+}
+.result-card h3 {
+    font-size: 18px; font-weight: 600; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+}
+
+.weather-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.weather-item {
+    text-align: center; padding: 16px; border-radius: 12px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+}
+.weather-item .value { font-size: 24px; font-weight: 700; color: var(--green-300); display: block; margin-bottom: 4px; }
+.weather-item .label { font-size: 12px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.5px; }
+
+.crop-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
+.crop-list li {
+    padding: 10px 20px; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(67,160,71,0.15), rgba(102,187,106,0.08));
+    border: 1px solid rgba(102,187,106,0.2);
+    font-size: 14px; font-weight: 500;
+    display: flex; align-items: center; gap: 6px;
+}
+
+.soil-info-text { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+.restart-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; border-radius: 12px;
+    background: rgba(255,255,255,0.08); color: var(--green-300);
+    font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.3s; margin-top: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+.restart-btn:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+.location-display {
+    text-align: center; margin-bottom: 12px;
+    font-size: 14px; color: rgba(255,255,255,0.5);
+}
+.location-display strong { color: var(--green-300); font-weight: 600; }
+
+.spinner {
+    display: inline-block; width: 20px; height: 20px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-top-color: var(--green-300);
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 600px) {
+    .wizard-container { margin-top: 80px; }
+    .step-title { font-size: 22px; }
+    .soil-grid { grid-template-columns: 1fr; }
+    .weather-grid { grid-template-columns: 1fr; }
+}

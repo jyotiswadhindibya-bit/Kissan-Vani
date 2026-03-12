@@ -2,81 +2,213 @@
     "alluvial": {
         "en-IN": {
             "name": "Alluvial Soil",
-            "crops": ["Rice", "Wheat", "Sugarcane", "Cotton", "Jute"],
             "pros": ["Highly fertile", "Rich in potash", "Good water retention"],
             "cons": ["Lacks nitrogen and phosphorus", "Requires regular fertilization for high yield"]
         },
         "hi-IN": {
             "name": "जलोढ़ मिट्टी",
-            "crops": ["चावल", "गेहूँ", "गन्ना", "कपास", "जूट"],
             "pros": ["अत्यधिक उपजाऊ", "पोटाश से भरपूर", "अच्छी जल धारण क्षमता"],
             "cons": ["नाइट्रोजन और फास्फोरस की कमी", "उच्च उपज के लिए नियमित खाद की आवश्यकता"]
         },
         "or-IN": {
             "name": "ଜଳୋଢ଼ ମୃତ୍ତିକା",
-            "crops": ["ଧାନ", "ଗହମ", "ଆଖୁ", "କପା", "ଝୋଟ"],
             "pros": ["ଅତ୍ୟନ୍ତ ଉର୍ବର", "ପୋଟାସ୍ ରେ ଭରପୂର", "ଭଲ ଜଳ ଧାରଣ କ୍ଷମତା"],
             "cons": ["ଯବକ୍ଷାରଜାନ ଏବଂ ଫସଫରସ୍ ର ଅଭାବ", "ଅଧିକ ଅମଳ ପାଇଁ ନିୟମିତ ସାର ଆବଶ୍ୟକ"]
-        }
+        },
+        "weatherCropMap": {
+            "hot_humid":   [
+                { "name": "Rice",       "score": 95, "reason": "Thrives in hot, humid flood plains" },
+                { "name": "Jute",       "score": 88, "reason": "Loves high moisture alluvial banks" },
+                { "name": "Sugarcane",  "score": 82, "reason": "Good growth in warm, moist soil" },
+                { "name": "Maize",      "score": 65, "reason": "Decent but prefers less waterlogging" },
+                { "name": "Wheat",      "score": 35, "reason": "Too hot & wet — rust risk high" },
+                { "name": "Mustard",    "score": 20, "reason": "Poorly suited — needs cool, dry weather" }
+            ],
+            "hot_dry":     [
+                { "name": "Cotton",     "score": 90, "reason": "Ideal dry heat crop for alluvial soil" },
+                { "name": "Wheat",      "score": 78, "reason": "Does well in irrigated alluvial tracts" },
+                { "name": "Maize",      "score": 75, "reason": "Good with irrigation in warm weather" },
+                { "name": "Sugarcane",  "score": 60, "reason": "Needs heavy irrigation if low humidity" },
+                { "name": "Rice",       "score": 40, "reason": "Needs standing water — hard in dry heat" },
+                { "name": "Jute",       "score": 15, "reason": "Not suited — requires high moisture" }
+            ],
+            "cool":        [
+                { "name": "Wheat",      "score": 95, "reason": "Perfect cool-season crop for alluvial soil" },
+                { "name": "Potato",     "score": 90, "reason": "Excellent in cool, fertile alluvial plains" },
+                { "name": "Mustard",    "score": 85, "reason": "Ideal rabi crop in cool alluvial belts" },
+                { "name": "Peas",       "score": 70, "reason": "Good legume for cool-season rotation" },
+                { "name": "Rice",       "score": 25, "reason": "Too cold — poor germination" },
+                { "name": "Cotton",     "score": 15, "reason": "Not viable — needs sustained heat" }
+            ],
+            "temperate":   [
+                { "name": "Rice",       "score": 90, "reason": "Versatile staple — ideal in temperate alluvial zones" },
+                { "name": "Wheat",      "score": 85, "reason": "Strong performer in mild alluvial conditions" },
+                { "name": "Sugarcane",  "score": 80, "reason": "Good growth with moderate warmth" },
+                { "name": "Cotton",     "score": 70, "reason": "Adequate but prefers more heat" },
+                { "name": "Maize",      "score": 65, "reason": "Fair performance in temperate zones" },
+                { "name": "Jute",       "score": 40, "reason": "Below ideal — needs more heat and moisture" }
+            ]
+        },
+        "idealTemp": "15–35°C",
+        "idealRainfall": "75–150 cm"
     },
     "black": {
         "en-IN": {
             "name": "Black Soil",
-            "crops": ["Cotton", "Soybean", "Millets", "Tobacco"],
-            "pros": ["Excellent moisture retention", "Rich in calcium and magnesium"],
+            "pros": ["Excellent moisture retention", "Rich in calcium and magnesium", "Self-ploughing due to deep cracks"],
             "cons": ["Sticky when wet, hard to plough", "Develops deep cracks in dry season"]
         },
         "hi-IN": {
             "name": "काली मिट्टी",
-            "crops": ["कपास", "सोयाबीन", "बाजरा", "तंबाकू"],
-            "pros": ["उत्कृष्ट नमी धारण क्षमता", "कैल्शियम और मैग्नीशियम से भरपूर"],
+            "pros": ["उत्कृष्ट नमी धारण क्षमता", "कैल्शियम और मैग्नीशियम से भरपूर", "गहरी दरारों के कारण स्व-जुताई"],
             "cons": ["गीली होने पर चिपचिपी, जोतने में मुश्किल", "सूखे मौसम में गहरी दरारें पड़ जाती हैं"]
         },
         "or-IN": {
             "name": "କଳା ମୃତ୍ତିକା",
-            "crops": ["କପା", "ସୋୟାବିନ୍", "ବାଜରା", "ତମାଖୁ"],
-            "pros": ["ଉତ୍କୃଷ୍ଟ ଆର୍ଦ୍ରତା ଧାରଣ", "କ୍ୟାଲସିୟମ୍ ଏବଂ ମ୍ୟାଗ୍ନେସିୟମ୍ ରେ ଭରପୂର"],
+            "pros": ["ଉତ୍କୃଷ୍ଟ ଆର୍ଦ୍ରତା ଧାରଣ", "କ୍ୟାଲସିୟମ୍ ଏବଂ ମ୍ୟାଗ୍ନେସିୟମ୍ ରେ ଭରପୂର", "ଗଭୀର ଫାଟ ମାଧ୍ୟମରେ ସ୍ୱ-ଚାଷ"],
             "cons": ["ଓଦା ଥିଲେ ଅଠାଳିଆ, ଚାଷ କରିବା କଷ୍ଟକର", "ଶୁଖିଲା ଋତୁରେ ଗଭୀର ଫାଟ ସୃଷ୍ଟି ହୁଏ"]
-        }
+        },
+        "weatherCropMap": {
+            "hot_humid":   [
+                { "name": "Cotton",     "score": 95, "reason": "King crop of black soil in warm monsoon" },
+                { "name": "Soybean",    "score": 90, "reason": "Excellent kharif crop in moist black soil" },
+                { "name": "Sugarcane",  "score": 78, "reason": "Good moisture retention supports growth" },
+                { "name": "Groundnut",  "score": 60, "reason": "Moderate — waterlogging risk exists" },
+                { "name": "Wheat",      "score": 30, "reason": "Too hot and wet for optimal wheat growth" },
+                { "name": "Sunflower",  "score": 25, "reason": "Poor drainage causes root rot risk" }
+            ],
+            "hot_dry":     [
+                { "name": "Millets",    "score": 92, "reason": "Drought-tolerant — perfect for hot, dry black soil" },
+                { "name": "Sunflower",  "score": 85, "reason": "Deep roots access stored moisture in cracks" },
+                { "name": "Groundnut",  "score": 80, "reason": "Handles dry heat well in black soil" },
+                { "name": "Cotton",     "score": 70, "reason": "Needs some irrigation but viable" },
+                { "name": "Soybean",    "score": 45, "reason": "Needs more moisture than available" },
+                { "name": "Rice",       "score": 10, "reason": "Impossible — no standing water in dry black soil" }
+            ],
+            "cool":        [
+                { "name": "Wheat",      "score": 92, "reason": "Ideal rabi crop in cool black soil regions" },
+                { "name": "Gram",       "score": 88, "reason": "Thrives in cool, moisture-retentive black soil" },
+                { "name": "Tobacco",    "score": 75, "reason": "Grown traditionally in cool black soil tracts" },
+                { "name": "Linseed",    "score": 65, "reason": "Fair rabi oilseed in cool conditions" },
+                { "name": "Cotton",     "score": 20, "reason": "Too cold for cotton germination" },
+                { "name": "Soybean",    "score": 15, "reason": "Kharif crop — very poor in cool season" }
+            ],
+            "temperate":   [
+                { "name": "Cotton",     "score": 90, "reason": "Classic black soil crop in mild weather" },
+                { "name": "Soybean",    "score": 85, "reason": "Strong performer in moderate conditions" },
+                { "name": "Millets",    "score": 75, "reason": "Reliable in temperate black soil zones" },
+                { "name": "Tobacco",    "score": 65, "reason": "Adequate but needs specific conditions" },
+                { "name": "Groundnut",  "score": 55, "reason": "Fair — competing crops perform better" },
+                { "name": "Wheat",      "score": 45, "reason": "Below ideal — prefers cooler temperatures" }
+            ]
+        },
+        "idealTemp": "20–35°C",
+        "idealRainfall": "50–100 cm"
     },
     "red": {
         "en-IN": {
             "name": "Red Soil",
-            "crops": ["Groundnut", "Potato", "Maize", "Fruits"],
-            "pros": ["Good drainage", "Responds well to fertilizers"],
-            "cons": ["Poor in humus and nitrogen", "Requires heavy irrigation"]
+            "pros": ["Good drainage", "Responds well to fertilizers", "Widely available in peninsular India"],
+            "cons": ["Poor in humus and nitrogen", "Requires heavy irrigation", "Low natural fertility"]
         },
         "hi-IN": {
             "name": "लाल मिट्टी",
-            "crops": ["मूंगफली", "आलू", "मक्का", "फल"],
-            "pros": ["अच्छी जल निकासी", "उर्वरकों के प्रति अच्छी प्रतिक्रिया"],
-            "cons": ["ह्यूमस और नाइट्रोजन में खराब", "भारी सिंचाई की आवश्यकता है"]
+            "pros": ["अच्छी जल निकासी", "उर्वरकों के प्रति अच्छी प्रतिक्रिया", "प्रायद्वीपीय भारत में व्यापक"],
+            "cons": ["ह्यूमस और नाइट्रोजन में खराब", "भारी सिंचाई की आवश्यकता है", "कम प्राकृतिक उर्वरता"]
         },
         "or-IN": {
             "name": "ନାଲି ମୃତ୍ତିକା",
-            "crops": ["ଚିନାବାଦାମ", "ଆଳୁ", "ମକା", "ଫଳ"],
-            "pros": ["ଭଲ ଜଳ ନିଷ୍କାସନ", "ସାର ପାଇଁ ଭଲ ପ୍ରତିକ୍ରିୟା ଦିଏ"],
-            "cons": ["ହ୍ୟୁମସ୍ ଏବଂ ଯବକ୍ଷାରଜାନ କମ୍", "ଅଧିକ ଜଳସେଚନ ଆବଶ୍ୟକ"]
-        }
+            "pros": ["ଭଲ ଜଳ ନିଷ୍କାସନ", "ସାର ପାଇଁ ଭଲ ପ୍ରତିକ୍ରିୟା ଦିଏ", "ଉପଦ୍ୱୀପୀୟ ଭାରତରେ ବ୍ୟାପକ"],
+            "cons": ["ହ୍ୟୁମସ୍ ଏବଂ ଯବକ୍ଷାରଜାନ କମ୍", "ଅଧିକ ଜଳସେଚନ ଆବଶ୍ୟକ", "କମ୍ ପ୍ରାକୃତିକ ଉର୍ବରତା"]
+        },
+        "weatherCropMap": {
+            "hot_humid":   [
+                { "name": "Rice",       "score": 88, "reason": "Good in irrigated red soil with monsoon rain" },
+                { "name": "Maize",      "score": 82, "reason": "Drainage helps avoid root rot in wet heat" },
+                { "name": "Groundnut",  "score": 78, "reason": "Classic kharif crop in red soil zones" },
+                { "name": "Ragi",       "score": 70, "reason": "Traditional millet, handles red soil well" },
+                { "name": "Wheat",      "score": 30, "reason": "Too hot, low moisture retention" },
+                { "name": "Potato",     "score": 20, "reason": "Poor — needs cooler, richer soil" }
+            ],
+            "hot_dry":     [
+                { "name": "Millets",    "score": 90, "reason": "Drought-hardy — ideal for dry red soil" },
+                { "name": "Ragi",       "score": 85, "reason": "Finger millet thrives in dry red laterite" },
+                { "name": "Groundnut",  "score": 80, "reason": "Deep-rooted, handles dry red soil well" },
+                { "name": "Pulses",     "score": 65, "reason": "Fair — needs supplemental irrigation" },
+                { "name": "Rice",       "score": 20, "reason": "Impossible without heavy irrigation" },
+                { "name": "Sugarcane",  "score": 10, "reason": "Too water-intensive for dry red soil" }
+            ],
+            "cool":        [
+                { "name": "Potato",     "score": 88, "reason": "Excellent in cool red soil with fertilizers" },
+                { "name": "Fruits",     "score": 82, "reason": "Citrus and guava do well in cool red soil" },
+                { "name": "Wheat",      "score": 75, "reason": "Viable with irrigation in cool red tracts" },
+                { "name": "Vegetables", "score": 70, "reason": "Leafy greens thrive in cool weather" },
+                { "name": "Maize",      "score": 40, "reason": "Below optimal — prefers warmer conditions" },
+                { "name": "Rice",       "score": 15, "reason": "Too cold and low moisture for paddy" }
+            ],
+            "temperate":   [
+                { "name": "Groundnut",  "score": 88, "reason": "Well-suited oilseed in mild red soil zones" },
+                { "name": "Maize",      "score": 82, "reason": "Versatile cereal — performs well" },
+                { "name": "Potato",     "score": 75, "reason": "Good with fertilizer and irrigation" },
+                { "name": "Fruits",     "score": 70, "reason": "Mango and citrus grow well" },
+                { "name": "Rice",       "score": 50, "reason": "Possible but not ideal without flooding" },
+                { "name": "Sugarcane",  "score": 30, "reason": "Difficult — red soil drains too fast" }
+            ]
+        },
+        "idealTemp": "20–40°C",
+        "idealRainfall": "50–100 cm"
     },
     "laterite": {
         "en-IN": {
             "name": "Laterite Soil",
-            "crops": ["Tea", "Coffee", "Cashew", "Rubber"],
-            "pros": ["Good for plantation crops", "Excellent building material when dried"],
-            "cons": ["Highly acidic", "Low fertility without manures"]
+            "pros": ["Good for plantation crops", "Excellent building material when dried", "Rich in iron and aluminium"],
+            "cons": ["Highly acidic", "Low fertility without manures", "Poor in organic matter"]
         },
         "hi-IN": {
             "name": "लेटराइट मिट्टी",
-            "crops": ["चाय", "कॉफी", "काजू", "रबड़"],
-            "pros": ["बागान फसलों के लिए अच्छा", "सूखने पर उत्कृष्ट निर्माण सामग्री"],
-            "cons": ["अत्यधिक अम्लीय", "खाद के बिना कम उर्वरता"]
+            "pros": ["बागान फसलों के लिए अच्छा", "सूखने पर उत्कृष्ट निर्माण सामग्री", "लोहे और एल्यूमीनियम से समृद्ध"],
+            "cons": ["अत्यधिक अम्लीय", "खाद के बिना कम उर्वरता", "कार्बनिक पदार्थों में कमी"]
         },
         "or-IN": {
             "name": "ଲାଟେରାଇଟ୍ ମୃତ୍ତିକା",
-            "crops": ["ଚା", "କଫି", "କାଜୁ", "ରବର"],
-            "pros": ["ବଗିଚା ଫସଲ ପାଇଁ ଭଲ", "ଶୁଖିଗଲେ ଉତ୍କୃଷ୍ଟ ନିର୍ମାଣ ସାମଗ୍ରୀ"],
-            "cons": ["ଅଧିକ ଅମ୍ଳୀୟ", "ଖତ ବିନା କମ୍ ଉର୍ବରତା"]
-        }
+            "pros": ["ବଗିଚା ଫସଲ ପାଇଁ ଭଲ", "ଶୁଖିଗଲେ ଉତ୍କୃଷ୍ଟ ନିର୍ମାଣ ସାମଗ୍ରୀ", "ଲୌହ ଏବଂ ଆଲୁମିନିୟମ୍ ରେ ସମୃଦ୍ଧ"],
+            "cons": ["ଅଧିକ ଅମ୍ଳୀୟ", "ଖତ ବିନା କମ୍ ଉର୍ବରତା", "ଜୈବ ପଦାର୍ଥ ରେ କମ୍"]
+        },
+        "weatherCropMap": {
+            "hot_humid":   [
+                { "name": "Rubber",     "score": 95, "reason": "Classic plantation crop — loves hot, wet laterite" },
+                { "name": "Coconut",    "score": 90, "reason": "Thrives in tropical humid laterite coast" },
+                { "name": "Pepper",     "score": 85, "reason": "Spice crop ideal for hot, moist laterite hills" },
+                { "name": "Cashew",     "score": 82, "reason": "Excellent in coastal humid laterite belts" },
+                { "name": "Rice",       "score": 50, "reason": "Possible in terraced fields with water" },
+                { "name": "Wheat",      "score": 10, "reason": "Completely unsuited — wrong climate & soil" }
+            ],
+            "hot_dry":     [
+                { "name": "Cashew",     "score": 88, "reason": "Drought-tolerant tree — handles dry laterite" },
+                { "name": "Mango",      "score": 82, "reason": "Deep-rooted fruit tree, handles dry periods" },
+                { "name": "Tapioca",    "score": 70, "reason": "Hardy tuber — survives poor laterite soil" },
+                { "name": "Millets",    "score": 60, "reason": "Possible with organic manure supplement" },
+                { "name": "Coconut",    "score": 35, "reason": "Needs more moisture than available" },
+                { "name": "Rubber",     "score": 15, "reason": "Too dry — rubber needs consistent rainfall" }
+            ],
+            "cool":        [
+                { "name": "Tea",        "score": 95, "reason": "Famous hill-station crop on cool laterite soil" },
+                { "name": "Coffee",     "score": 90, "reason": "Thrives in cool, shaded laterite highlands" },
+                { "name": "Cardamom",   "score": 78, "reason": "Spice crop suited to cool laterite hills" },
+                { "name": "Pepper",     "score": 65, "reason": "Fair in cool elevated laterite zones" },
+                { "name": "Cashew",     "score": 30, "reason": "Too cold for optimal cashew production" },
+                { "name": "Coconut",    "score": 15, "reason": "Not viable — needs tropical warmth" }
+            ],
+            "temperate":   [
+                { "name": "Tea",        "score": 85, "reason": "Well-suited in mild laterite highlands" },
+                { "name": "Coffee",     "score": 82, "reason": "Good in moderate laterite conditions" },
+                { "name": "Cashew",     "score": 78, "reason": "Reliable crop in temperate coastal belts" },
+                { "name": "Rubber",     "score": 70, "reason": "Possible but slower growth than in tropics" },
+                { "name": "Coconut",    "score": 55, "reason": "Marginal — prefers warmer conditions" },
+                { "name": "Rice",       "score": 30, "reason": "Low fertility makes it uneconomical" }
+            ]
+        },
+        "idealTemp": "22–35°C",
+        "idealRainfall": "150–300 cm"
     }
 }
