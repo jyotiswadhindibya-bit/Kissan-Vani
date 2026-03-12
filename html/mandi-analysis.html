@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisan Vani | Mandi Rate Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/mandi-analysis.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="bg-grid"></div>
+<div class="leaves">
+    <span class="leaf">🌿</span>
+    <span class="leaf">🍃</span>
+    <span class="leaf">🌾</span>
+    <span class="leaf">☘️</span>
+    <span class="leaf">🌿</span>
+    <span class="leaf">🍂</span>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">🌾 Kisan Vani</div>
+    <a href="dashboard.html" class="nav-back">← Back to Dashboard</a>
+</nav>
+
+<!-- Main -->
+<div class="main">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="tag">📊 LIVE MANDI INTELLIGENCE</div>
+        <h1>Commodity Price <span>Analysis</span></h1>
+        <p>Track historical trends, compare regional rates &amp; forecast market movement across Indian states</p>
+    </div>
+
+    <!-- Controls Panel -->
+    <div class="controls-panel">
+        <div class="controls-row">
+            <div class="control-group">
+                <label for="stateSelect">Select State / Region</label>
+                <select class="styled-select" id="stateSelect">
+                    <option value="">— Choose a State —</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="commoditySelect">Select Commodity</label>
+                <select class="styled-select" id="commoditySelect" disabled>
+                    <option value="">— Choose a Commodity —</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <button class="analyze-btn" id="analyzeBtn">📈 Analyze Trend</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stats-row" id="statsRow" style="display:none">
+        <div class="stat-card">
+            <div class="stat-label">Current Price</div>
+            <div class="stat-value" id="statCurrentPrice">—</div>
+            <div class="stat-sub" id="statUnit">per unit</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Market Trend</div>
+            <div class="stat-value" id="statTrend">—</div>
+            <div class="stat-sub">based on latest data</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Region</div>
+            <div class="stat-value gold" id="statRegion">—</div>
+            <div class="stat-sub" id="statState">State</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Data Updated</div>
+            <div class="stat-value" id="statUpdated">—</div>
+            <div class="stat-sub">last refresh</div>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="chart-section" id="chartSection" style="display:none">
+
+        <!-- Multi-Year Line Chart -->
+        <div class="chart-card full-width">
+            <div class="chart-card-header">
+                <div>
+                    <div class="chart-title" id="mainChartTitle">Price Trend Over Time</div>
+                    <div class="chart-subtitle">Simulated year-over-year price movement (2021–2026)</div>
+                </div>
+                <div class="chart-badge badge-stable" id="mainChartBadge">● Analyzing…</div>
+            </div>
+            <div class="year-legend" id="yearLegend"></div>
+            <canvas id="trendChart"></canvas>
+        </div>
+
+        <!-- Bar Chart: Cross-State Comparison -->
+        <div class="chart-card">
+            <div class="chart-card-header">
+                <div>
+                    <div class="chart-title">Cross-State Price Comparison</div>
+                    <div class="chart-subtitle">Current price for selected commodity</div>
+                </div>
+            </div>
+            <canvas id="stateCompareChart"></canvas>
+        </div>
+
+        <!-- Donut: Trend Distribution -->
+        <div class="chart-card">
+            <div class="chart-card-header">
+                <div>
+                    <div class="chart-title">Trend Distribution</div>
+                    <div class="chart-subtitle">All commodities in selected state</div>
+                </div>
+            </div>
+            <canvas id="trendDonut"></canvas>
+        </div>
+
+    </div>
+
+    <!-- Commodity Table -->
+    <div class="table-section" id="tableSection" style="display:none">
+        <div class="table-card">
+            <div class="table-header">
+               <div class="table-title" id="tablePanelState">All Commodities</div>
+                <div class="region-pill" id="tableRegion">Region</div>
+            </div>
+            <table id="commodityTable">
+                <thead>
+                    <tr>
+                        <th>Commodity</th>
+                        <th>Current Price</th>
+                        <th>Year-on-Year Est.</th>
+                        <th>Trend</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState">
+        <div class="icon">🌾</div>
+        <p>Select a state and commodity to begin your analysis</p>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2026 <a href="#">Kisan Vani</a> — Empowering Indian farmers with AI technology.</p>
+</footer>
+
+<script>
+// ==========================================
+// 🌐 LANGUAGE SYNC FROM DASHBOARD
+// ==========================================
+const mandiI18n = {
+    "en-IN": {
+        pageTitle:      "Commodity Price Analysis",
+        tagLine:        "📊 LIVE MANDI INTELLIGENCE",
+        subTitle:       "Track historical trends, compare regional rates & forecast market movement across Indian states",
+        selectState:    "Select State / Region",
+        selectComm:     "Select Commodity",
+        stateHolder:    "— Choose a State —",
+        commHolder:     "— Choose a Commodity —",
+        analyzeBtn:     "📈 Analyze Trend",
+        statPrice:      "Current Price",
+        statTrend:      "Market Trend",
+        statRegion:     "Region",
+        statUpdated:    "Data Updated",
+        trendSubtitle:  "Simulated year-over-year price movement (2021–2026)",
+        compareTitle:   "Cross-State Price Comparison",
+        compareSubtitle:"Current price for selected commodity",
+        donutTitle:     "Trend Distribution",
+        donutSubtitle:  "All commodities in selected state",
+        tableTitle:     "All Commodities",
+        colCommodity:   "Commodity",
+        colPrice:       "Current Price",
+        colYoY:         "Year-on-Year Est.",
+        colTrend:       "Trend",
+        emptyState:     "Select a state and commodity to begin your analysis",
+        perKg:          "per kg",
+        perQuintal:     "per quintal",
+        latestData:     "based on latest data",
+        lastRefresh:    "last refresh",
+        backBtn:        "← Back to Dashboard",
+        alertSelect:    "Please select both a state and a commodity.",
+        trendRising:    "▲ Rising",
+        trendFalling:   "▼ Falling",
+        trendStable:    "● Stable",
+        trendExpensive: "⚠ Expensive",
+        unitKg: "/kg",
+        unitQuintal: "/quintal"
+    },
+    "hi-IN": {
+        pageTitle:      "वस्तु मूल्य विश्लेषण",
+        tagLine:        "📊 लाइव मंडी इंटेलिजेंस",
+        subTitle:       "भारतीय राज्यों में ऐतिहासिक रुझान, क्षेत्रीय दरें और बाज़ार पूर्वानुमान ट्रैक करें",
+        selectState:    "राज्य / क्षेत्र चुनें",
+        selectComm:     "वस्तु चुनें",
+        stateHolder:    "— राज्य चुनें —",
+        commHolder:     "— वस्तु चुनें —",
+        analyzeBtn:     "📈 रुझान विश्लेषण",
+        statPrice:      "वर्तमान मूल्य",
+        statTrend:      "बाज़ार रुझान",
+        statRegion:     "क्षेत्र",
+        statUpdated:    "डेटा अपडेट",
+        trendSubtitle:  "अनुमानित वर्ष-दर-वर्ष मूल्य परिवर्तन (2021–2026)",
+        compareTitle:   "राज्य-वार मूल्य तुलना",
+        compareSubtitle:"चुनी गई वस्तु का वर्तमान मूल्य",
+        donutTitle:     "रुझान वितरण",
+        donutSubtitle:  "चुने गए राज्य की सभी वस्तुएं",
+        tableTitle:     "सभी वस्तुएं",
+        colCommodity:   "वस्तु",
+        colPrice:       "वर्तमान मूल्य",
+        colYoY:         "वर्ष-दर-वर्ष अनुमान",
+        colTrend:       "रुझान",
+        emptyState:     "विश्लेषण शुरू करने के लिए राज्य और वस्तु चुनें",
+        perKg:          "प्रति किलो",
+        perQuintal:     "प्रति क्विंटल",
+        latestData:     "नवीनतम डेटा के आधार पर",
+        lastRefresh:    "अंतिम अपडेट",
+        backBtn:        "← डैशबोर्ड पर वापस",
+        alertSelect:    "कृपया राज्य और वस्तु दोनों चुनें।",
+        trendRising:    "▲ तेजी",
+        trendFalling:   "▼ गिरावट",
+        trendStable:    "● स्थिर",
+        trendExpensive: "⚠ महंगा",
+        unitKg: "/किलो",
+        unitQuintal: "/क्विंटल"
+    },
+    "or-IN": {
+        pageTitle:      "ଦ୍ରବ୍ୟ ମୂଲ୍ୟ ବିଶ୍ଳେଷଣ",
+        tagLine:        "📊 ଲାଇଭ ମଣ୍ଡି ଇଣ୍ଟେଲିଜେନ୍ସ",
+        subTitle:       "ଭାରତୀୟ ରାଜ୍ୟଗୁଡ଼ିକରେ ଐତିହାସିକ ଟ୍ରେଣ୍ଡ, ଆଞ୍ଚଳିକ ମୂଲ୍ୟ ଏବଂ ବଜାର ପୂର୍ବାନୁମାନ ଟ୍ରାକ କରନ୍ତୁ",
+        selectState:    "ରାଜ୍ୟ / ଅଞ୍ଚଳ ବାଛନ୍ତୁ",
+        selectComm:     "ଦ୍ରବ୍ୟ ବାଛନ୍ତୁ",
+        stateHolder:    "— ରାଜ୍ୟ ବାଛନ୍ତୁ —",
+        commHolder:     "— ଦ୍ରବ୍ୟ ବାଛନ୍ତୁ —",
+        analyzeBtn:     "📈 ଟ୍ରେଣ୍ଡ ବିଶ୍ଳେଷଣ",
+        statPrice:      "ବର୍ତ୍ତମାନ ମୂଲ୍ୟ",
+        statTrend:      "ବଜାର ଟ୍ରେଣ୍ଡ",
+        statRegion:     "ଅଞ୍ଚଳ",
+        statUpdated:    "ଡାଟା ଅପଡେଟ",
+        trendSubtitle:  "ଅନୁମାନିତ ବାର୍ଷିକ ମୂଲ୍ୟ ପରିବର୍ତ୍ତନ (2021–2026)",
+        compareTitle:   "ରାଜ୍ୟ-ଭିତ୍ତିକ ମୂଲ୍ୟ ତୁଳନା",
+        compareSubtitle:"ଚୟନିତ ଦ୍ରବ୍ୟର ବର୍ତ୍ତମାନ ମୂଲ୍ୟ",
+        donutTitle:     "ଟ୍ରେଣ୍ଡ ବଣ୍ଟନ",
+        donutSubtitle:  "ଚୟନିତ ରାଜ୍ୟର ସମସ୍ତ ଦ୍ରବ୍ୟ",
+        tableTitle:     "ସମସ୍ତ ଦ୍ରବ୍ୟ",
+        colCommodity:   "ଦ୍ରବ୍ୟ",
+        colPrice:       "ବର୍ତ୍ତମାନ ମୂଲ୍ୟ",
+        colYoY:         "ବାର୍ଷିକ ଅନୁମାନ",
+        colTrend:       "ଟ୍ରେଣ୍ଡ",
+        emptyState:     "ବିଶ୍ଳେଷଣ ଆରମ୍ଭ କରିବାକୁ ରାଜ୍ୟ ଏବଂ ଦ୍ରବ୍ୟ ବାଛନ୍ତୁ",
+        perKg:          "ପ୍ରତି କିଲୋ",
+        perQuintal:     "ପ୍ରତି କ୍ୱିଣ୍ଟାଲ",
+        latestData:     "ସର୍ବଶେଷ ଡାଟା ଆଧାରରେ",
+        lastRefresh:    "ଶେଷ ଅପଡେଟ",
+        backBtn:        "← ଡ୍ୟାସବୋର୍ଡକୁ ଫେରନ୍ତୁ",
+        alertSelect:    "ଦୟାକରି ରାଜ୍ୟ ଏବଂ ଦ୍ରବ୍ୟ ଉଭୟ ବାଛନ୍ତୁ।",
+        trendRising:    "▲ ବୃଦ୍ଧି",
+        trendFalling:   "▼ ହ୍ରାସ",
+        trendStable:    "● ସ୍ଥିର",
+        trendExpensive: "⚠ ମହଙ୍ଗା",
+        unitKg: "/କିଗ୍ରା",
+        unitQuintal: "/କ୍ୱିଣ୍ଟାଲ"
+    }
+};
+
+// Read language set by dashboard
+const CURRENT_LANG = localStorage.getItem('kisanGlobalLang') || 'en-IN';
+const T = mandiI18n[CURRENT_LANG] || mandiI18n['en-IN'];
+
+function applyLanguage() {
+    // Navbar
+    document.querySelector('.nav-back').textContent        = T.backBtn;
+    // Header
+    document.querySelector('.page-header .tag').textContent = T.tagLine;
+    document.querySelector('.page-header h1').innerHTML    = T.pageTitle.includes('Analysis')
+        ? `Commodity Price <span>Analysis</span>`
+        : T.pageTitle;
+    document.querySelector('.page-header p').textContent   = T.subTitle;
+    // Controls
+    document.querySelector('label[for="stateSelect"]').textContent    = T.selectState;
+    document.querySelector('label[for="commoditySelect"]').textContent = T.selectComm;
+    document.querySelector('#stateSelect option').textContent          = T.stateHolder;
+    document.querySelector('#commoditySelect option').textContent      = T.commHolder;
+    document.getElementById('analyzeBtn').textContent                  = T.analyzeBtn;
+    // Stat labels
+    const statLabels = document.querySelectorAll('.stat-label');
+    statLabels[0].textContent = T.statPrice;
+    statLabels[1].textContent = T.statTrend;
+    statLabels[2].textContent = T.statRegion;
+    statLabels[3].textContent = T.statUpdated;
+    // Stat subs
+    document.querySelectorAll('.stat-sub')[1].textContent = T.latestData;
+    document.querySelectorAll('.stat-sub')[3].textContent = T.lastRefresh;
+    // Chart labels
+    document.querySelector('.chart-subtitle').textContent              = T.trendSubtitle;
+    document.querySelectorAll('.chart-title')[1].textContent           = T.compareTitle;
+    document.querySelectorAll('.chart-subtitle')[1].textContent        = T.compareSubtitle;
+    document.querySelectorAll('.chart-title')[2].textContent           = T.donutTitle;
+    document.querySelectorAll('.chart-subtitle')[2].textContent        = T.donutSubtitle;
+    // Table headers
+    const ths = document.querySelectorAll('#commodityTable th');
+    ths[0].textContent = T.colCommodity;
+    ths[1].textContent = T.colPrice;
+    ths[2].textContent = T.colYoY;
+    ths[3].textContent = T.colTrend;
+    // Empty state
+    document.querySelector('.empty-state p').textContent = T.emptyState;
+}
+
+applyLanguage();
+
+const YEARS = [2021, 2022, 2023, 2024, 2025, 2026];
+
+const YEAR_COLORS = [
+    { line: '#42a5f5', bg: 'rgba(66,165,245,0.12)' },
+    { line: '#ab47bc', bg: 'rgba(171,71,188,0.12)' },
+    { line: '#ffa726', bg: 'rgba(255,167,38,0.12)' },
+    { line: '#26c6da', bg: 'rgba(38,198,218,0.12)' },
+    { line: '#ef5350', bg: 'rgba(239,83,80,0.12)' },
+    { line: '#81c784', bg: 'rgba(129,199,132,0.15)' },
+];
+
+function extractNumericPrice(priceStr) {
+    const match = priceStr.match(/[\d.]+/);
+    return match ? parseFloat(match[0]) : 0;
+}
+
+function generateHistoricalPrices(currentPrice, trend) {
+    const factors = {
+        'Rising':    [0.72, 0.78, 0.84, 0.90, 0.96, 1.0],
+        'Falling':   [1.30, 1.22, 1.14, 1.08, 1.03, 1.0],
+        'Stable':    [0.92, 0.94, 0.96, 0.97, 0.99, 1.0],
+        'Expensive': [0.80, 0.85, 0.90, 0.94, 0.97, 1.0],
+    };
+    const base = factors[trend] || factors['Stable'];
+    return base.map(f => {
+        const noise = (Math.random() - 0.5) * 0.04;
+        return Math.round(currentPrice * (f + noise) * 10) / 10;
+    });
+}
+
+let trendChartInst   = null;
+let compareChartInst = null;
+let donutChartInst   = null;
+
+Chart.defaults.color       = 'rgba(255,255,255,0.45)';
+Chart.defaults.font.family = 'Outfit';
+
+let MANDI_DB = {};
+
+async function loadData() {
+    try {
+        const res = await fetch('/mandi_rates.json');
+        MANDI_DB  = await res.json();
+    } catch (e) {
+        console.warn('Could not load mandi_rates.json:', e.message);
+    }
+    populateStates();
+}
+
+function populateStates() {
+    const sel = document.getElementById('stateSelect');
+    Object.keys(MANDI_DB).sort().forEach(state => {
+        const opt       = document.createElement('option');
+        opt.value       = state; // keep English key for data lookup
+        const stateData = MANDI_DB[state];
+        opt.textContent = CURRENT_LANG === 'hi-IN' ? (stateData.name_hi || state)
+                        : CURRENT_LANG === 'or-IN' ? (stateData.name_or || state)
+                        : state;
+        sel.appendChild(opt);
+    });
+}
+
+document.getElementById('stateSelect').addEventListener('change', function () {
+    const state   = this.value;
+    const commSel = document.getElementById('commoditySelect');
+    commSel.innerHTML = `<option value="">${T.commHolder}</option>`;
+    commSel.disabled  = !state;
+    if (!state) return;
+
+    MANDI_DB[state].commodities.forEach(c => {
+        const opt       = document.createElement('option');
+        opt.value       = c.name; // keep English key for data lookup
+        opt.textContent = CURRENT_LANG === 'hi-IN' ? (c.name_hi || c.name)
+                        : CURRENT_LANG === 'or-IN' ? (c.name_or || c.name)
+                        : c.name;
+        commSel.appendChild(opt);
+    });
+    renderTable(state);
+});
+
+document.getElementById('analyzeBtn').addEventListener('click', () => {
+    const state     = document.getElementById('stateSelect').value;
+    const commodity = document.getElementById('commoditySelect').value;
+    if (!state || !commodity) {
+        alert(T.alertSelect);
+        return;
+    }
+    renderAnalysis(state, commodity);
+});
+
+function renderAnalysis(state, commodity) {
+    const data = MANDI_DB[state];
+    const item = data.commodities.find(c => c.name === commodity);
+    if (!item) return;
+
+    const price     = extractNumericPrice(item.price);
+    const isQuintal = item.price.includes('quintal');
+
+    document.getElementById('statsRow').style.display       = 'grid';
+    document.getElementById('statCurrentPrice').textContent = item.price;
+    document.getElementById('statUnit').textContent         = isQuintal ? T.perQuintal : T.perKg;
+
+    // Translated region name
+    document.getElementById('statRegion').textContent =
+        CURRENT_LANG === 'hi-IN' ? (data.region_hi || data.region)
+      : CURRENT_LANG === 'or-IN' ? (data.region_or || data.region)
+      : data.region;
+
+    document.getElementById('statState').textContent   = state;
+    document.getElementById('statUpdated').textContent = data.updated_at;
+
+    // Translated trend
+    const trendEl       = document.getElementById('statTrend');
+    trendEl.textContent = CURRENT_LANG === 'hi-IN' ? (item.trend_hi || item.trend)
+                        : CURRENT_LANG === 'or-IN' ? (item.trend_or || item.trend)
+                        : item.trend;
+    trendEl.className   = 'stat-value';
+    if (item.trend === 'Falling')     trendEl.classList.add('red');
+    else if (item.trend !== 'Rising') trendEl.classList.add('gold');
+
+    document.getElementById('chartSection').style.display = 'grid';
+    document.getElementById('emptyState').style.display   = 'none';
+
+    renderTrendChart(price, item.trend, commodity);
+    renderCompareChart(commodity, state);
+    renderDonut(state);
+}
+
+function renderTrendChart(price, trend, commodity) {
+    // Get translated commodity name
+    const translatedCommodity = Object.values(MANDI_DB).flatMap(s => s.commodities)
+        .find(c => c.name === commodity);
+    const displayCommodity = translatedCommodity
+        ? (CURRENT_LANG === 'hi-IN' ? (translatedCommodity.name_hi || commodity)
+         : CURRENT_LANG === 'or-IN' ? (translatedCommodity.name_or || commodity)
+         : commodity)
+        : commodity;
+
+    // Translated chart title
+    const chartTitleSuffix = CURRENT_LANG === 'hi-IN' ? '— वर्ष-दर-वर्ष मूल्य रुझान'
+                           : CURRENT_LANG === 'or-IN' ? '— ବାର୍ଷିକ ମୂଲ୍ୟ ଟ୍ରେଣ୍ଡ'
+                           : '— Year-on-Year Price Trend';
+    document.getElementById('mainChartTitle').textContent = `${displayCommodity} ${chartTitleSuffix}`;
+
+    const badge     = document.getElementById('mainChartBadge');
+    badge.className = 'chart-badge';
+    if (trend === 'Rising')       { badge.classList.add('badge-up');     badge.textContent = T.trendRising; }
+    else if (trend === 'Falling') { badge.classList.add('badge-down');   badge.textContent = T.trendFalling; }
+    else                          { badge.classList.add('badge-stable'); badge.textContent = T.trendStable; }
+
+    const histPrices = generateHistoricalPrices(price, trend);
+
+    // ✅ Define BEFORE using
+    const yearPrefix = CURRENT_LANG === 'hi-IN' ? 'वर्ष'
+                     : CURRENT_LANG === 'or-IN' ? 'ବର୍ଷ'
+                     : '';
+
+    const months = CURRENT_LANG === 'hi-IN'
+        ? ['जन','फर','मार्च','अप्रैल','मई','जून','जुल','अग','सित','अक्टू','नव','दिस']
+        : CURRENT_LANG === 'or-IN'
+        ? ['ଜାନ','ଫେବ','ମାର୍ଚ','ଅପ୍ରି','ମଇ','ଜୁନ','ଜୁଲ','ଅଗ','ସେପ','ଅକ୍ଟ','ନଭ','ଡିସ']
+        : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        
+
+    // ✅ Year legend — now yearPrefix is already defined
+    const leg     = document.getElementById('yearLegend');
+    leg.innerHTML = '';
+    YEARS.forEach((y, i) => {
+        const yearLabel = yearPrefix ? `${yearPrefix} ${y}` : String(y);
+        leg.innerHTML += `
+            <div class="legend-item">
+                <div class="legend-dot" style="background:${YEAR_COLORS[i].line}"></div>
+                ${yearLabel}: ₹${histPrices[i]}
+            </div>`;
+    }); // ✅ Closing }) was missing before
+
+    const datasets = YEARS.map((year, yi) => {
+        const yearPrice        = histPrices[yi];
+        const monthlyVariation = months.map((_, mi) => {
+            const seasonal = Math.sin((mi / 11) * Math.PI) * yearPrice * 0.08;
+            const noise    = (Math.random() - 0.5) * yearPrice * 0.04;
+            return Math.round((yearPrice + seasonal + noise) * 10) / 10;
+        });
+        return {
+            label:            yearPrefix ? `${yearPrefix} ${year}` : String(year),
+            data:             monthlyVariation,
+            borderColor:      YEAR_COLORS[yi].line,
+            backgroundColor:  YEAR_COLORS[yi].bg,
+            borderWidth:      yi === YEARS.length - 1 ? 3 : 1.5,
+            pointRadius:      yi === YEARS.length - 1 ? 4 : 2,
+            pointHoverRadius: 6,
+            tension:          0.45,
+            fill:             yi === YEARS.length - 1,
+        };
+    });
+
+    if (trendChartInst) trendChartInst.destroy();
+    trendChartInst = new Chart(document.getElementById('trendChart').getContext('2d'), {
+        type: 'line',
+        data: { labels: months, datasets },
+        options: {
+            responsive: true,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'circle', padding: 20, font: { size: 12 } } },
+                tooltip: {
+                    backgroundColor: 'rgba(10,31,13,0.92)', borderColor: 'rgba(129,199,132,0.3)', borderWidth: 1, padding: 12,
+                    callbacks: { label: ctx => ` ${ctx.dataset.label}: ₹${ctx.parsed.y}` }
+                }
+            },
+            scales: {
+                x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { font: { size: 12 } } },
+                y: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { font: { size: 12 }, callback: v => '₹' + v } }
+            }
+        }
+    });
+}
+
+function renderCompareChart(commodity, selectedState) {
+    const prices = [], colors = [], labels = [];
+    Object.keys(MANDI_DB).forEach(st => {
+        const found = MANDI_DB[st].commodities.find(c => c.name === commodity);
+        if (found) {
+            prices.push(extractNumericPrice(found.price));
+            labels.push(st === selectedState ? st + ' ★' : st);
+            colors.push(st === selectedState ? 'rgba(185,245,106,0.85)' : 'rgba(102,187,106,0.35)');
+        }
+    });
+
+    if (compareChartInst) compareChartInst.destroy();
+    compareChartInst = new Chart(document.getElementById('stateCompareChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Current Price', data: prices,
+                backgroundColor: colors,
+                borderColor: colors.map(c => c.replace('0.35','0.8').replace('0.85','1')),
+                borderWidth: 1, borderRadius: 6,
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: 'rgba(10,31,13,0.92)', borderColor: 'rgba(129,199,132,0.3)', borderWidth: 1,
+                    callbacks: { label: ctx => ` ₹${ctx.parsed.y}` }
+                }
+            },
+            scales: {
+                x: { grid: { display: false }, ticks: { font: { size: 9 }, maxRotation: 60 } },
+                y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { callback: v => '₹' + v, font: { size: 11 } } }
+            }
+        }
+    });
+}
+
+function renderDonut(state) {
+    const counts = { Rising: 0, Falling: 0, Stable: 0, Expensive: 0 };
+    MANDI_DB[state].commodities.forEach(c => {
+        if (counts[c.trend] !== undefined) counts[c.trend]++;
+        else counts['Stable']++;
+    });
+
+    // Translated legend labels
+    const trendLabels = CURRENT_LANG === 'hi-IN'
+        ? ['तेजी', 'गिरावट', 'स्थिर', 'महंगा']
+        : CURRENT_LANG === 'or-IN'
+        ? ['ବୃଦ୍ଧି', 'ହ୍ରାସ', 'ସ୍ଥିର', 'ମହଙ୍ଗା']
+        : ['Rising', 'Falling', 'Stable', 'Expensive'];
+
+    if (donutChartInst) donutChartInst.destroy();
+    donutChartInst = new Chart(document.getElementById('trendDonut').getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: trendLabels,   // ← use translated labels
+            datasets: [{
+                data: Object.values(counts),
+                backgroundColor: ['rgba(129,199,132,0.7)','rgba(239,83,80,0.7)','rgba(255,213,79,0.7)','rgba(255,87,34,0.7)'],
+                borderColor: 'rgba(10,31,13,0.8)', borderWidth: 3, hoverOffset: 10,
+            }]
+        },
+        options: {
+            responsive: true, cutout: '65%',
+            plugins: {
+                legend: { position: 'bottom', labels: { padding: 16, font: { size: 12 }, usePointStyle: true } },
+                tooltip: { backgroundColor: 'rgba(10,31,13,0.92)', borderColor: 'rgba(129,199,132,0.3)', borderWidth: 1 }
+            }
+        }
+    });
+}
+
+function renderTable(state) {
+    document.getElementById('tableSection').style.display = 'block';
+    document.getElementById('emptyState').style.display   = 'none';
+
+    // Translated state name for table title
+    const stateData        = MANDI_DB[state];
+    const translatedState  = CURRENT_LANG === 'hi-IN' ? (stateData.name_hi  || state)
+                           : CURRENT_LANG === 'or-IN' ? (stateData.name_or  || state)
+                           : state;
+
+    // Translated "All Commodities" prefix
+    const allCommsPrefix   = CURRENT_LANG === 'hi-IN' ? 'सभी वस्तुएं'
+                           : CURRENT_LANG === 'or-IN' ? 'ସମସ୍ତ ଦ୍ରବ୍ୟ'
+                           : 'All Commodities';
+
+    document.getElementById('tablePanelState').textContent = `${allCommsPrefix} — ${translatedState}`;
+
+    // Translated region
+    document.getElementById('tableRegion').textContent =
+        CURRENT_LANG === 'hi-IN' ? (stateData.region_hi || stateData.region)
+      : CURRENT_LANG === 'or-IN' ? (stateData.region_or || stateData.region)
+      : stateData.region;
+
+
+    const tbody     = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+
+    stateData.commodities.forEach(c => {
+        const price     = extractNumericPrice(c.price);
+        const simPrev   = Math.round(generateHistoricalPrices(price, c.trend)[4] * 10) / 10;
+        const yoyChange = ((price - simPrev) / simPrev * 100).toFixed(1);
+        const yoySign   = yoyChange > 0 ? '+' : '';
+
+        // Translated commodity name
+        const displayName = CURRENT_LANG === 'hi-IN' ? (c.name_hi || c.name)
+                          : CURRENT_LANG === 'or-IN' ? (c.name_or || c.name)
+                          : c.name;
+
+        // Translated trend badge
+        let trendClass = 'trend-stable', trendLabel = T.trendStable;
+        if (c.trend === 'Rising')    { trendClass = 'trend-up';   trendLabel = T.trendRising; }
+        if (c.trend === 'Falling')   { trendClass = 'trend-down'; trendLabel = T.trendFalling; }
+        if (c.trend === 'Expensive') { trendClass = 'trend-exp';  trendLabel = T.trendExpensive; }
+
+        const yoyColor = yoyChange > 0 ? 'var(--green-300)' : yoyChange < 0 ? '#ef9a9a' : 'var(--gold)';
+        // Translate the price string units
+        let displayPrice = c.price
+        .replace('/kg', T.unitKg)
+         .replace('/quintal', T.unitQuintal);
+
+        tbody.innerHTML += `
+            <tr>
+                <td>${displayName}</td>
+                <td><span class="price-tag">${c.price}</span></td>
+                <td style="color:${yoyColor}">${yoySign}${yoyChange}%</td>
+                <td><span class="trend-badge ${trendClass}">${trendLabel}</span></td>
+            </tr>`;
+    });
+}
+loadData();
+</script>
+
+</body>
+</html
