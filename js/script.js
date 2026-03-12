@@ -519,12 +519,12 @@ async function fetchMarketTrend(cropName, userText, userBubble) {
             displayTrend = data.trend === "Upward" ? "ବୃଦ୍ଧି (Upward)" : data.trend === "Downward" ? "ହ୍ରାସ (Downward)" : "ସ୍ଥିର (Stable)";
         }
 
-        // 3. Build the fully translated HTML Card
+       // 3. Build the fully translated, GLOSSY HTML Card
         const cardHTML = `
-            <div style="background: #f9f9f9; border-left: 4px solid ${trendColor}; padding: 10px; border-radius: 8px; margin-top: 5px; color: #333;">
-                <strong>${trendIcon} ${trendLabel}:</strong> ${displayTrend} (${data.probability})<br><br>
-                <strong>🧠 ${analysisLabel}:</strong> ${data.reasoning}<br><br>
-                <small style="color: #666;">⚠️ <em>${data.disclaimer}</em></small>
+            <div style="background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-left: 4px solid ${trendColor}; padding: 16px; border-radius: 14px; margin-top: 8px; color: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                <strong style="font-size: 1.05em; letter-spacing: 0.5px;">${trendIcon} ${trendLabel}:</strong> <span style="color: ${trendColor}; font-weight: 600;">${displayTrend} (${data.probability})</span><br><br>
+                <strong style="color: #b9f56a;">🧠 ${analysisLabel}:</strong> <span style="color: rgba(255, 255, 255, 0.85); line-height: 1.5;">${data.reasoning}</span><br><br>
+                <small style="color: rgba(255, 255, 255, 0.4); display: block; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 8px; margin-top: 5px;">⚠️ <em>${data.disclaimer}</em></small>
             </div>
         `;
         
