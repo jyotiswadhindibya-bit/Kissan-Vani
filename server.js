@@ -40,7 +40,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 const modelsToTry = [
     "gemini-2.5-flash-lite", 
-    "gemini-2.0-flash",      
+    "gemini-2-flash",      
     "gemini-2.5-flash"       
 ];
 
